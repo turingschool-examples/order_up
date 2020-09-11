@@ -23,7 +23,7 @@ RSpec.describe Dish, type: :model do
     end
 
     describe ".ingredient_list" do
-      it "can list of ingredients for a dish" do
+      it "can list ingredients for a dish" do
         expect(@dish_1.ingredient_list).to eq([@ingredient_1.name, @ingredient_2.name])
       end
     end
