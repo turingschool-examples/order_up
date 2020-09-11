@@ -4,4 +4,8 @@ class Chef < ApplicationRecord
 
   has_many :dishes
 
+  def unique_ingredients
+    dishes.joins(:ingredients).distinct.pluck('ingredients.name')
+  end
+
 end
