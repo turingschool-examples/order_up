@@ -9,6 +9,7 @@ RSpec.describe 'chef show page' do
     ingredient2 = Ingredient.create!(name: "Butter", calories: 100)
     ingredient3 = Ingredient.create!(name: "Bread", calories: 200)
     ingredient4 = Ingredient.create!(name: "Garlic", calories: 50)
+    ingredient5 = Ingredient.create!(name: "Chocolate", calories: 200)
     IngredientsDish.create!(ingredient_id: ingredient1.id, dish_id: dish1.id)
     IngredientsDish.create!(ingredient_id: ingredient2.id, dish_id: dish1.id)
     IngredientsDish.create!(ingredient_id: ingredient3.id, dish_id: dish2.id)
@@ -18,6 +19,14 @@ RSpec.describe 'chef show page' do
 
     expect(page).to have_content(chef.name)
 
+    click_link 'Chef Ingredients'
+
+    expect(current_path).to eq("/chefs/#{chef.id}/ingredients")
+    expect(page).to have_content(ingredient1.name)
+    expect(page).to have_content(ingredient2.name)
+    expect(page).to have_content(ingredient3.name)
+    expect(page).to have_content(ingredient4.name)
+    expect(page).to_not have_content(ingredient5.name)
   end
 end
 
