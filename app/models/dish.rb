@@ -8,4 +8,8 @@ class Dish <ApplicationRecord
   def total_calories
     ingredients.sum(:calories)
   end
+
+  def self.unique_ingredients
+    Ingredient.joins(:dishes).distinct
+  end
 end
