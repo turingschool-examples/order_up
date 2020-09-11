@@ -23,9 +23,9 @@ ActiveRecord::Schema.define(version: 2020_09_11_150929) do
 
   create_table "dish_ingredients", force: :cascade do |t|
     t.bigint "dish_id"
-    t.bigint "ingredients_id"
+    t.bigint "ingredient_id"
     t.index ["dish_id"], name: "index_dish_ingredients_on_dish_id"
-    t.index ["ingredients_id"], name: "index_dish_ingredients_on_ingredients_id"
+    t.index ["ingredient_id"], name: "index_dish_ingredients_on_ingredient_id"
   end
 
   create_table "dishes", force: :cascade do |t|
@@ -43,6 +43,6 @@ ActiveRecord::Schema.define(version: 2020_09_11_150929) do
   end
 
   add_foreign_key "dish_ingredients", "dishes"
-  add_foreign_key "dish_ingredients", "ingredients", column: "ingredients_id"
+  add_foreign_key "dish_ingredients", "ingredients"
   add_foreign_key "dishes", "chefs"
 end
