@@ -3,8 +3,9 @@ class Chef <ApplicationRecord
   has_many :dishes
   has_many :ingredients, through: :dishes
 
-  def favorite_ingredients
-    @ingredient_list = self.ingredients
-  end
+  # def favorite_ingredients
+  #   require "pry"; binding.pry
+  #   @ingredient_list = self.ingredients.order_by(:count)
+  # end
 
 end
