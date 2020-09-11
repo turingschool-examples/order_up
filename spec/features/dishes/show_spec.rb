@@ -1,8 +1,14 @@
+# User Story 1 of 3
 # As a visitor
 # - When I visit a dish's show page
 # - I see the dish’s name and description
 # - And I see a list of ingredients for that dish
 # - And I see the chef's name
+
+# User Story 2 of 3
+# As a visitor
+# - When I visit a dish's show page
+# - I see the total calorie count for that dish.
 
 require 'rails_helper'
 
@@ -29,6 +35,13 @@ RSpec.describe "Dish's Show page" do
     expect(page).to have_content(@milk.name)
     expect(page).to have_content(@jalapeno.name)
     expect(page).to have_content(@flour.name)
+  end
+
+  it "see the total calorie count for that dish" do
+    visit "/dishes/#{@dish_1.id}"
+
+    expect(page).to have_content(@dish_1.total_calories)
+    expect(@dish_1.total_calories).to eq(358)
   end
 
 end
