@@ -7,9 +7,7 @@ class ChefsController < ApplicationController
   def show_ingredients
     @chef = Chef.find(params[:id])
 
-    @dish_ingredients = @chef.dishes.flat_map do |dish|
-      DishIngredient.where(dish_id: dish.id)
-    end
+    @dish_ingredients = @chef.dish_ingredients
 
     @ingredients = @dish_ingredients.map do |dish_ing|
       Ingredient.find(dish_ing.dish_id)
