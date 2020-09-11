@@ -27,7 +27,7 @@ When I visit a dish's show page
 - [x] I see the total calorie count for that dish.
 
 ### Story 3 of 3
-- []
+- [x]
 As a visitor
 When I visit a chef's show page
 
@@ -38,7 +38,8 @@ When I click on that link
 - [x] and I can see a unique list of names of all the ingredients that this chef uses
 
 ### Extension
+-[]
 As a visitor
 When I visit a chef's show page
-I see the three most popular ingredients that the chef uses in their dishes
+- [] I see the three most popular ingredients that the chef uses in their dishes
 (Popularity is based off of how many dishes use that ingredient)
