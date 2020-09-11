@@ -5,9 +5,12 @@ RSpec.describe "chef" do
     it 'displays the name and list of ingredients' do
       chef = Chef.create!(name: "Daniel")
       dish = Dish.create!(name: "fruit bowl", description: "A bowl of fruit", chef_id: "#{chef.id}")
-      ingredient = Ingredient.create!(name: "Apple", calories: 50, dish_id: "#{dish.id}")
-      ingredient2 = Ingredient.create!(name: "Orange", calories: 70, dish_id: "#{dish.id}")
       dish2 = Dish.create!(name: "Orangaid", description: "pureed oranges", chef_id: "#{chef.id}")
+      ingredient = Ingredient.create!(name: "Apple", calories: 50)
+      ingredient2 = Ingredient.create!(name: "Orange", calories: 70)
+      DishIngredient.create!(dish_id: "#{dish.id}", ingredient_id: "#{ingredient.id}")
+      DishIngredient.create!(dish_id: "#{dish.id}", ingredient_id: "#{ingredient2.id}")
+      DishIngredient.create!(dish_id: "#{dish2.id}", ingredient_id: "#{ingredient2.id}")
 
       visit "/chef/#{chef.id}"
       expect(page).to have_content(chef.name)
