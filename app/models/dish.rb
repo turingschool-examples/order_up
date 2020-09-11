@@ -5,4 +5,8 @@ class Dish < ApplicationRecord
   has_many :ingredients, through: :ingredients_dish
   validates_presence_of :name, :description
 
+  def total_calories
+    ingredients.sum(:calories)
+  end
+
 end
