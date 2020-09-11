@@ -3,4 +3,7 @@ Rails.application.routes.draw do
 
   # resources :dishes, only: [:show]
   get '/dish/:id', to: 'dishes#show'
+
+  get '/chef/:id', to: 'chefs#show'
+  get '/chef/:id/ingredients', to: 'chefs#show_ingredients'
 end
