@@ -8,7 +8,7 @@ describe "As a visitor" do
 
           george = Chef.create!(name: "George")
 
-          dish_1 = Dish.create!(name: "Camel meatballs", description: "Succulent camel meat in spaghetti sauce", chef_id: george.id)
+          dish_1 = Dish.create!(name: "Camel meatballs", description: "Succulent camel meat in spaghetti sauce", ingredients: "camel meat, spaghetti sauce, parmesean", chef_id: george.id)
           visit "/dishes/#{dish_1.id}"
 
           expect(page).to have_content("#{dish_1.name}")
