@@ -24,6 +24,7 @@ describe 'Dish Show Page' do
 
     expect(page).to have_content(pasta.name)
     expect(page).to have_content(pasta.description)
+    expect(page).to have_content(pasta.calorie_count)
     expect(page).to have_content(tomato_sause.name)
     expect(page).to have_content(meat_balls.name)
     expect(page).to have_content(salt.name)
