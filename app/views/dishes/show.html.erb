@@ -1,0 +1,19 @@
+<header>
+  <%= tag.h1 "#{@dish.name}, by Chef #{@dish.chef.name}" %>
+</header>
+
+<section class="<%= @dish.name.downcase %>-ingredients">
+  <header>
+    <%= tag.h2 "#{@dish.name} Ingredients:" %>
+  </header>
+  <main>
+    <ul>
+      <% @dish.ingredients.each do |ingredient| %>
+      <li><%= ingredient.name %></li>
+      <% end %>
+    </ul>
+  </main>
+  <footer>
+ </footer>
+ <%= tag.p "Total Calories: #{@dish.total_calories}" %>
+</section>
