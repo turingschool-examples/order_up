@@ -1,0 +1,7 @@
+<h1> Chef's Ingredient Index </h1>
+
+<% @chef.dishes.each do |dish| %>
+  <% dish.ingredients.each do |ingredient| %>
+    <%= ingredient.name %>
+  <% end %>
+<% end %>
