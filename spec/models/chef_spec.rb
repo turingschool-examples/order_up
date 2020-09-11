@@ -30,7 +30,7 @@ RSpec.describe Chef, type: :model do
       dish_3 = Dish.create!(name: "Chef Salad", description: "Fancy salad", ingredients: "iceberg lettuce, parmesean, garlic", calories: "300cal", chef_id: george.id)
 
 
-      expected = ["spaghetti sauce", "parmesean", "garlic"]
+      expected = ["parmesean", "garlic", "spaghetti sauce"]
 
       expect(george.most_popular).to eq(expected)
     end
