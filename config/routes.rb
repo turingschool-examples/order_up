@@ -4,5 +4,8 @@ Rails.application.routes.draw do
   resources :dishes
 
   #==== Chefs
-  resources :chefs
+  resources :chefs do
+    resources :dishes
+    resources :ingredients
+  end
 end
