@@ -14,8 +14,10 @@ RSpec.describe "dish show page", type: :feature do
     pizza.ingredients << sauce
     pizza.ingredients << cheese
     pizza.ingredients << pepperoni
-    visit "/pizza"
+    visit "dishes/#{pizza.id}"
+    save_and_open_page
     expect(page).to have_content(pizza.name)
+    expect(page).to have_content(pizza.description)
     expect(page).to have_content(chef.name)
     expect(page).to have_content(dough.name)
     expect(page).to have_content(sauce.name)
