@@ -2,7 +2,7 @@ class DishesController < ApplicationController
 
   def show
     @dish = Dish.find(params[:id])
-    # require "pry"; binding.pry
+    @chef = Chef.find(@dish.chef_id)
   end
 
   private
