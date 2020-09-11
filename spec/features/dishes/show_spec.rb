@@ -32,5 +32,9 @@ RSpec.describe 'As a visitor' do
       expect(page).to have_content("2 Slices Sourdough Bread")
       expect(page).to have_content("Tbs Butter")
     end
+
+    it "I see the chef's name" do
+      expect(page).to have_content("#{@dish.chef.name}")
+    end
   end
 end
