@@ -25,8 +25,8 @@ RSpec.describe 'dish show page', type: :feature do
     expect(page).to have_content(@dish_1.name)
     expect(page).to have_content(@dish_1.description)
     expect(page).to have_content(@dish_1.chef_id)
-    expect(page).to have_content(@ingretient_1)
+    expect(page).to have_content(@ingretient_1.name)
     expect(page).to_not have_content(@dish_2.chef_id)
-    expect(page).to_not have_content(@ingretient_3)
+    expect(page).to_not have_content(@ingretient_3.name)
   end
 end
