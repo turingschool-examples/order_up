@@ -15,12 +15,13 @@ describe "As a visitor" do
             visit "/chefs/#{george.id}"
 
             expect(page).to have_content("#{george.name}")
-            expect(page).to have_link("See all of #{geroge.name}'s ingredients")
-            click_link("See all of #{geroge.name}'s ingredients")
+            expect(page).to have_link("See all of #{george.name}'s ingredients")
+            click_link("See all of #{george.name}'s ingredients")
 
-            expect(current_path).to eq("/chef/#{george.id}/ingredients")
-            expect(page).to have_content("#{dish_1.ingredients}")
-            expect(page).to have_content("#{dish_2.ingredients}")
+            expect(current_path).to eq("/chefs/#{george.id}/ingredients")
+            expect(page).to have_content("camel meat")
+            expect(page).to have_content("spaghetti sauce")
+            expect(page).to have_content("garlic")
             expect(page).to_not have_content("spaghetti sauce").twice
           end
         end
