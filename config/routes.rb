@@ -3,4 +3,8 @@ Rails.application.routes.draw do
   get "dishes/:dish_id", to: "dishes#show"
   get "chefs/:chef_id", to: "chefs#show"
 
+  namespace :chef do
+    get "/ingredients", to: "ingredients#show"
+  end
+
 end

@@ -13,7 +13,13 @@ RSpec.describe 'chef show page' do
       pizza = Dish.create!(name: "pizza", description: "it is pizza...", ingredients: "sauce, cheese, jalapenos", calories: 400, chef_id: chef.id)
 
       visit "/chefs/#{chef.id}"
-      expect(page).to have_content(pizza.ingredients)
+       # save_and_open_page
+      expect(page).to have_link("See All Ingredients")
+      click_on "See All Ingredients"
+      expect(current_path).to eq('/chef/ingredients')
+      expect(page).to have_content("sauce, cheese, jalapenos")
+
+
     end
 
   end
