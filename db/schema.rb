@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_09_11_155809) do
+ActiveRecord::Schema.define(version: 2020_09_11_162244) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -19,6 +19,13 @@ ActiveRecord::Schema.define(version: 2020_09_11_155809) do
     t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "chefs_dishes", id: false, force: :cascade do |t|
+    t.bigint "chef_id"
+    t.bigint "dish_id"
+    t.index ["chef_id"], name: "index_chefs_dishes_on_chef_id"
+    t.index ["dish_id"], name: "index_chefs_dishes_on_dish_id"
   end
 
   create_table "dishes", force: :cascade do |t|
@@ -34,6 +41,8 @@ ActiveRecord::Schema.define(version: 2020_09_11_155809) do
     t.index ["dish_id"], name: "index_dishes_on_dish_id"
   end
 
+  add_foreign_key "chefs_dishes", "chefs"
+  add_foreign_key "chefs_dishes", "dishes"
   add_foreign_key "dishes", "chefs"
   add_foreign_key "dishes", "dishes"
 end
