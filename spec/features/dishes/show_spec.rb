@@ -17,13 +17,13 @@ RSpec.describe "Dishes show page", type: :feature do
       @ingredient_5 = Ingredient.create!(name: "goat cheese", calories: "193")
       @ingredient_6 = Ingredient.create!(name: "cherry tomatoes", calories: "23")
 
-      IngredientsInDishes.create!(ingredient_id: @ingredient_1, dish_id: @dish_1)
-      IngredientsInDishes.create!(ingredient_id: @ingredient_2, dish_id: @dish_1)
-      IngredientsInDishes.create!(ingredient_id: @ingredient_3, dish_id: @dish_1)
+      DishIngredient.create!(ingredient: @ingredient_1.id, dish: @dish_1.id)
+      DishIngredient.create!(ingredient: @ingredient_2.id, dish: @dish_1.id)
+      DishIngredient.create!(ingredient: @ingredient_3.id, dish: @dish_1.id)
 
-      IngredientsInDishes.create!(ingredient_id: @ingredient_4, dish_id: @dish_2)
-      IngredientsInDishes.create!(ingredient_id: @ingredient_5, dish_id: @dish_2)
-      IngredientsInDishes.create!(ingredient_id: @ingredient_6, dish_id: @dish_2)
+      DishIngredient.create!(ingredient: @ingredient_4.id, dish: @dish_2.id)
+      DishIngredient.create!(ingredient: @ingredient_5.id, dish: @dish_2.id)
+      DishIngredient.create!(ingredient: @ingredient_6.id, dish: @dish_2.id)
     end
     it "can see the dish's name, description, ingredients, and chef's name" do
       visit "/dishes/#{@dish_1.id}"
