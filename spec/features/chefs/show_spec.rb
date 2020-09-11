@@ -28,7 +28,7 @@ RSpec.describe "Chefs show page", type: :feature do
     it "can see name of chef, link to ingredients" do
       visit "/chefs/#{@chef_1.id}"
       expect(page).to have_content(@chef_1.name)
-      expect(page).to have_linke("See this Chef's Ingredients")
+      expect(page).to have_link("See this Chef's Ingredients")
       click_link "See this Chef's Ingredients"
       expect(current_path).to eq("/chefs/#{@chef_1.id}/ingredients")
 
