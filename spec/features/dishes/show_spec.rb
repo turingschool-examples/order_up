@@ -47,6 +47,10 @@ RSpec.describe 'dish show page' do
     visit "/dishes/#{dish1.id}"
 
     expect(page).to have_content(dish1.total_calories)
+
+    visit "/dishes/#{dish2.id}"
+
+    expect(page).to have_content(dish2.total_calories)
   end
 
 end
