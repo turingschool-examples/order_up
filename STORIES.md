@@ -21,9 +21,10 @@ When I visit a dish's show page
 - [x] And I see the chef's name
 
 ### Story 2 of 3
+- [x]
 As a visitor
 When I visit a dish's show page
-I see the total calorie count for that dish.
+- [x] I see the total calorie count for that dish.
 
 ### Story 3 of 3
 As a visitor
