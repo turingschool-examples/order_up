@@ -24,6 +24,11 @@ describe "As a visitor" do
             expect(page).to have_content("garlic")
             expect(page).to_not have_content("spaghetti sauce").twice
           end
+          
+          it "I see the three most popular ingredients" do
+            visit "/chefs/#{chef.id}"
+
+            expect(page).to have_content("Most popular ingredients: ")
         end
       end
     end
