@@ -7,7 +7,7 @@ RSpec.describe "Dishes show page", type: :feature do
       @chef_2 = Chef.create!(name: "Amma")
 
       @dish_1 = Dish.create!(name: "Pork and Brussels", description: "Delicious pork loin with cajun dry rub and sauteed brussels", chef_id: @chef_1.id)
-      @dish_1 = Dish.create!(name: "Omelet", description: "Egg white omelet with goat cheese and sliced cherry tomatoes", chef_id: @chef_2.id)
+      @dish_2 = Dish.create!(name: "Omelet", description: "Egg white omelet with goat cheese and sliced cherry tomatoes", chef_id: @chef_2.id)
 
       @ingredient_1 = Ingredient.create!(name: "pork loin", calories: "450")
       @ingredient_2 = Ingredient.create!(name: "marinade", calories: "5")
@@ -17,13 +17,13 @@ RSpec.describe "Dishes show page", type: :feature do
       @ingredient_5 = Ingredient.create!(name: "goat cheese", calories: "193")
       @ingredient_6 = Ingredient.create!(name: "cherry tomatoes", calories: "23")
 
-      DishIngredient.create!(ingredient: @ingredient_1.id, dish: @dish_1.id)
-      DishIngredient.create!(ingredient: @ingredient_2.id, dish: @dish_1.id)
-      DishIngredient.create!(ingredient: @ingredient_3.id, dish: @dish_1.id)
+      DishIngredient.create!(ingredient_id: @ingredient_1.id, dish_id: @dish_1.id)
+      DishIngredient.create!(ingredient_id: @ingredient_2.id, dish_id: @dish_1.id)
+      DishIngredient.create!(ingredient_id: @ingredient_3.id, dish_id: @dish_1.id)
 
-      DishIngredient.create!(ingredient: @ingredient_4.id, dish: @dish_2.id)
-      DishIngredient.create!(ingredient: @ingredient_5.id, dish: @dish_2.id)
-      DishIngredient.create!(ingredient: @ingredient_6.id, dish: @dish_2.id)
+      DishIngredient.create!(ingredient_id: @ingredient_4.id, dish_id: @dish_2.id)
+      DishIngredient.create!(ingredient_id: @ingredient_5.id, dish_id: @dish_2.id)
+      DishIngredient.create!(ingredient_id: @ingredient_6.id, dish_id: @dish_2.id)
     end
     it "can see the dish's name, description, ingredients, and chef's name" do
       visit "/dishes/#{@dish_1.id}"
