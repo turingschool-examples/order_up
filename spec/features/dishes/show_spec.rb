@@ -19,9 +19,8 @@ RSpec.describe "As a visitor", type: :feature do
     it "See the dish name and description " do
 
       visit "/dishes/#{@dish_1.id}"
-
-      expect(page).to have_content("Dish: #{@dish_1.name}")
-      expect(page).to have_content("Dish: #{@dish_1.description}")
+      expect(page).to have_content(@dish_1.name)
+      expect(page).to have_content(@dish_1.description)
 
     end
 
@@ -29,8 +28,8 @@ RSpec.describe "As a visitor", type: :feature do
 
       visit "/dishes/#{@dish_1.id}"
 
-      expect(page).to have_content("Dish: #{@dish_1.name}")
-      expect(page).to have_content("Chef: #{@chef.name}")
+      expect(page).to have_content(@dish_1.name)
+      expect(page).to have_content(@chef.name)
       expect(page).to have_content("#{@ingredient1.name}")
       expect(page).to have_content("#{@ingredient2.name}")
       expect(page).to have_content("#{@ingredient3.name}")
