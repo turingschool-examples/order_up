@@ -4,6 +4,7 @@ Order up is an app that tracks chefs, the dishes that they make, and the ingredi
 
 Two migrations have been made for you. The one to many relationship has been set up. You will need to create migrations for the many to many relationship between ingredients and dishes. You do not need to do model testing for validations, just make sure you test any relationships and model methods that you create.
 
+
 (Note: The plural of dish is dishes. The plural of chef is chefs.)
 
 ## User Stories
@@ -11,11 +12,13 @@ Two migrations have been made for you. The one to many relationship has been set
 User Stories will be released at the start of the challenge.
 
 ### Story 1 of 3
+- [x]
 As a visitor
 When I visit a dish's show page
-I see the dish’s name and description
-And I see a list of ingredients for that dish
-And I see the chef's name
+
+- [x]I see the dish’s name and description
+- [x] And I see a list of ingredients for that dish
+- [x] And I see the chef's name
 
 ### Story 2 of 3
 As a visitor
