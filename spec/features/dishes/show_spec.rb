@@ -9,6 +9,14 @@ describe "As a visitor when I visit a dish's show page" do
       name: 'Test dish',
       description: 'Test description'
     )
+    @dish.ingredients.create!(
+      name: 'Pizza',
+      calories: 500
+    )
+    @dish.ingredients.create!(
+      name: 'Salad',
+      calories: 200
+    )
 
     visit "/dishes/#{@dish.id}"
   end
@@ -20,5 +28,11 @@ describe "As a visitor when I visit a dish's show page" do
 
   it "I see the chef's name" do
     expect(page).to have_content(@dish.chef.name)
+  end
+
+  it 'I see a list of ingredients for that dish' do
+    @dish.ingredients.each do |ingredient|
+      expect(page).to have_content(ingredient.name)
+    end
   end
 end
