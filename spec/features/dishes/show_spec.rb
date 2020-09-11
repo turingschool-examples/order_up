@@ -20,7 +20,7 @@ describe 'Dish Show Page' do
     Recipe.create(dish: lasagna, ingredient: flat_pasta)
     Recipe.create(dish: lasagna, ingredient: salt)
 
-    visit "/dish/#{pasta.id}"
+    visit "/dishes/#{pasta.id}"
 
     expect(page).to have_content(pasta.name)
     expect(page).to have_content(pasta.description)
