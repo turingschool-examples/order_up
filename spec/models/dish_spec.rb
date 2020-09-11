@@ -27,5 +27,11 @@ RSpec.describe Dish, type: :model do
         expect(@dish_1.ingredient_list).to eq([@ingredient_1.name, @ingredient_2.name])
       end
     end
+
+    describe ".calorie_count" do 
+      it "can list total calories in a dish" do 
+        expect(@dish_1.calorie_count).to eq(147)
+      end 
+    end
   end
 end
