@@ -1,0 +1,3 @@
+<% @dishes.each do |dish| %>
+<h3><%= link_to dish.name, "/dishes/#{dish.id}" %></h3>
+<% end %>
