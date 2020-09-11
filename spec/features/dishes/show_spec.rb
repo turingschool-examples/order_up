@@ -11,5 +11,11 @@ RSpec.describe 'Dishes' do
     expect(page).to have_content("Meatballs")
     expect(page).to have_content("Beef in Marinera")
     expect(page).to have_content("Chef: Lasondra")
+
+    expect(page).to have_content('Ingredients:')
+    expect(page).to have_content('Beef')
+    expect(page).to have_content('Marinera')
+
+
   end
 end
