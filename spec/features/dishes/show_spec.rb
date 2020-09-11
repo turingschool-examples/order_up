@@ -6,8 +6,8 @@ RSpec.describe "Dishes show page", type: :feature do
       @chef_1 = Chef.create!(name: "Richard Power")
       @chef_2 = Chef.create!(name: "Amma")
 
-      @dish_1 = Dish.create!(name: "Pork and Brussels", description: "Delicious pork loin with cajun dry rub and sauteed brussels", chef_id: @chef_1)
-      @dish_1 = Dish.create!(name: "Omelet", description: "Egg white omelet with goat cheese and sliced cherry tomatoes", chef_id: @chef_2)
+      @dish_1 = Dish.create!(name: "Pork and Brussels", description: "Delicious pork loin with cajun dry rub and sauteed brussels", chef_id: @chef_1.id)
+      @dish_1 = Dish.create!(name: "Omelet", description: "Egg white omelet with goat cheese and sliced cherry tomatoes", chef_id: @chef_2.id)
 
       @ingredient_1 = Ingredient.create!(name: "pork loin", calories: "450")
       @ingredient_2 = Ingredient.create!(name: "marinade", calories: "5")
@@ -34,6 +34,10 @@ RSpec.describe "Dishes show page", type: :feature do
       expect(page).to have_content(@ingredient_2.name)
       expect(page).to have_content(@ingredient_3.name)
       expect(page).to have_content(@chef_1.name)
+
+      expect(page).to_not have_content(@dish_2.name)
+      expect(page).to_not have_content(@ingredient_4.name)
+      expect(page).to_not have_content(@chef_2.name)
     end
 
   end
