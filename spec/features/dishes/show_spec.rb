@@ -1,17 +1,8 @@
 require 'rails_helper'
 
-RSpec.describe Dish, type: :model do
-  describe "validations" do
-    it {should validate_presence_of :name}
-    it {should validate_presence_of :description}
-  end
-  describe "relationships" do
-    it { should belong_to :chef}
-    it { should have_many :dish_ingredients}
-    it { should have_many(:ingredients).through(:dish_ingredients) }
-  end
+RSpec.describe 'Dish show page' do
 
-  it 'should count calories' do
+  before :each do
     ty = Chef.create(name: "Tyler Fields")
     pizza = ty.dishes.create(name: "Pizza", description: "Yum!")
     bng = ty.dishes.create(name: "Biscuits and Gravy", description: "Yum!")
@@ -22,7 +13,24 @@ RSpec.describe Dish, type: :model do
     saus = bng.ingredients.create(name: "Sausage", calories: 500)
     chik = cbb.ingredients.create(name: "Chicken", calories: 150)
     @dishes = Dish.all
+  end
 
-    expect(pizza.calorie_count).to eq(500)
+  it "displays list of ingredients for dish and displays chef's name" do
+    @dishes.each do |dish|
+      visit dish_path(dish)
+      expect(page).to have_content(dish.chef.name)
+      expect(page).to have_content(dish.name)
+      expect(page).to have_content(dish.description)
+      dish.ingredients.each do |ingredient|
+        expect(page).to have_content(ingredient.name)
+      end
+    end
+  end
+
+  it "displays calorie count for dish" do
+    @dishes.each do |dish|
+      visit dish_path(dish)
+      expect(page).to have_content(dish.calorie_count)
+    end
   end
 end
