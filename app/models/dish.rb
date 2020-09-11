@@ -5,6 +5,6 @@ class Dish <ApplicationRecord
   has_many :ingredients, through: :dish_ingredients
 
   def calorie_count
-    @cals = self.ingredients.calories.sum
+    @cals = self.ingredients.sum(:calories)
   end
 end
