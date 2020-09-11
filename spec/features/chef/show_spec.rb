@@ -24,11 +24,21 @@ describe "As a visitor" do
             expect(page).to have_content("garlic")
             expect(page).to_not have_content("spaghetti sauce").twice
           end
-          
-          it "I see the three most popular ingredients" do
-            visit "/chefs/#{chef.id}"
 
-            expect(page).to have_content("Most popular ingredients: ")
+          it "I see the three most popular ingredients" do
+
+            george = Chef.create!(name: "George")
+
+            dish_1 = Dish.create!(name: "Camel meatballs", description: "Succulent camel meat in spaghetti sauce", ingredients: "camel meat, spaghetti sauce, parmesean", calories: "3,455cal", chef_id: george.id)
+            dish_2 = Dish.create!(name: "Lasangua", description: "Layers of iguana lasangua", ingredients: "iguana, spaghetti sauce, parmesean, garlic", calories: "3,300cal", chef_id: george.id)
+
+            visit "/chefs/#{george.id}"
+
+            expect(page).to have_content("spaghetti sauce")
+            expect(page).to have_content("garlic")
+            expect(page).to have_content("parmesean")
+
+          end
         end
       end
     end
