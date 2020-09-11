@@ -5,7 +5,8 @@ RSpec.describe "As a visitor", type: :feature do
     @chef = Chef.create(name: "Chef")
 
     @dish_1 = @chef.dishes.create(name: "Dish 1", description: "Dish 1 description")
-    @dish_2 = @chef.dishes.create(name: "Dish 1", description: "Dish 1 description")
+    @dish_2 = @chef.dishes.create(name: "Dish 2", description: "Dish 2 description")
+    @dish_3 = @chef.dishes.create(name: "Dish 3", description: "Dish 3 description")
 
     @ingredient1 = Ingredient.create(name: "Ingredient 1", calories: 100)
     @ingredient2 = Ingredient.create(name: "Ingredient 2", calories: 20)
@@ -20,6 +21,9 @@ RSpec.describe "As a visitor", type: :feature do
     DishIngredient.create(dish_id: @dish_2.id, ingredient_id: @ingredient4.id)
     DishIngredient.create(dish_id: @dish_2.id, ingredient_id: @ingredient5.id)
     DishIngredient.create(dish_id: @dish_2.id, ingredient_id: @ingredient6.id)
+    DishIngredient.create(dish_id: @dish_3.id, ingredient_id: @ingredient1.id)
+    DishIngredient.create(dish_id: @dish_3.id, ingredient_id: @ingredient2.id)
+    DishIngredient.create(dish_id: @dish_3.id, ingredient_id: @ingredient3.id)
   end
 
   describe "When I visit a chef's show page" do
@@ -42,6 +46,19 @@ RSpec.describe "As a visitor", type: :feature do
       expect(page).to have_content("#{@ingredient5.name}")
       expect(page).to have_content("#{@ingredient6.name}")
     end
+
+    it "I see the three most popular ingredients that the chef uses in their dishes" do
+
+      visit "/chefs/#{@chef.id}"
+
+      expect(current_path).to eq("/chefs/#{@chef.id}/ingredients")
+
+      expect(page).to have_content("Chef #{@chef.name} Most Popular Ingredients")
+      expect(page).to have_content("#{@ingredient1.name}")
+      expect(page).to have_content("#{@ingredient2.name}")
+      expect(page).to have_content("#{@ingredient3.name}")
+    end
+
   end
 
 end
