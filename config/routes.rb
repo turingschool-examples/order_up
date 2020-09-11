@@ -3,4 +3,11 @@ Rails.application.routes.draw do
 
   get "/dishes/:id", to: 'dishes#show'
 
+  resources :chefs, only: [:show] do
+    resources :ingredients, only: [:index]
+  end
+
+
+
+
 end

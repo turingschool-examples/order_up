@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe 'When I visit a dishs show page' do
-  it 'the dish’s name and description, ingredients, and chefs name' do
+  it 'the dish’s name and description, ingredients, chefs name, and total calories' do
 
     emeril = Chef.create(name: "Emeril Legasse")
 
@@ -16,7 +16,6 @@ RSpec.describe 'When I visit a dishs show page' do
     DishIngredient.create(ingredient_id: ricotta.id, dish_id: lasagna.id)
 
     visit "/dishes/#{lasagna.id}"
-save_and_open_page
     expect(page).to have_content("#{lasagna.name}")
     expect(page).to have_content("#{red_sauce.name}")
     expect(page).to have_content("#{beef.name}")
