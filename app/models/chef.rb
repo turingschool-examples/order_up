@@ -5,9 +5,10 @@ class Chef <ApplicationRecord
 
   def popular_ingredients
     ingredients
+    # .includes(:dishes)
+    .select('ingredients.name','ingredients.id', 'count(ingredients.id) AS total')
     .where('dish_ingredients.ingredient_id = ingredients.id')
     .group('ingredients.id')
-    .select('ingredients.name','ingredients.id', 'count(ingredients.id) AS total')
     .order(total: :desc)
     .limit(3)
   end
