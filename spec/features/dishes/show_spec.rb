@@ -36,7 +36,7 @@ describe 'When I visit a dish show page as a visitor' do
     visit "/dishes/#{chicken_parm.id}"
 
     expect(page).to have_content(chicken_parm.name)
-    expect(page).to have_content(chicken_parm.description)
+    expect(page).to have_content("Description: #{chicken_parm.description}")
     expect(page).to have_content(chicken.name)
     expect(page).to have_content(mozzerella.name)
     expect(page).to have_content(sauce.name)
