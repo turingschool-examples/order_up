@@ -67,13 +67,14 @@ describe 'As a visitor, when I visit a chef show page' do
     )
 
     visit "/chefs/#{julia.id}"
-# save_and_open_page
     expect(page).to have_content(julia.name)
 
     click_link("Julia Child Ingredient List")
 
+  save_and_open_page
     expect(current_path).to eq("/chefs/#{julia.id}/ingredients")
 
+    expect(page).to have_content("Julia Child Ingredient List")
     expect(page).to have_content("Chicken")
     expect(page).to have_content("Mozzerella")
     expect(page).to have_content("Tomato Sauce")
