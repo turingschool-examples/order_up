@@ -34,7 +34,7 @@ describe "As a visitor" do
         ingredient_id: meatballs.id
       )
 
-      visit "/dish/#{dish.id}"
+      visit "/dishes/#{dish.id}"
 
       expect(page).to have_content("Dish: #{dish.name}")
       expect(page).to have_content("#{dish.description}")
