@@ -20,6 +20,7 @@ describe 'As a visitor' do
       DishIngredient.create!({dish_id: @dish_2.id, ingredient_id: @bread.id})
       DishIngredient.create!({dish_id: @dish_2.id, ingredient_id: @cheese.id})
     end
+
     it "I see a list of all unique ingredients the chef uses" do
       visit "/chefs/#{@chef_1.id}/ingredients"
 
