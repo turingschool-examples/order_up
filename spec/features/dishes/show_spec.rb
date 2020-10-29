@@ -33,5 +33,11 @@ describe 'As a Visitor' do
 
       expect(page).to have_content(@chef.name)
     end
+
+    it 'I see a total calorie count for that dish' do
+      visit "/dishes/#{@dish.id}"
+
+      expect(page).to have_content("Total Calories: 300")
+    end
   end
 end
