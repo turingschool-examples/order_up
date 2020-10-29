@@ -35,7 +35,7 @@ describe "As a visitor" do
 
     end
     it "I see the dish's name and description, list of ingredients, and chef's name" do
-      visit "/dish/#{@dish.id}"
+      visit "/dishes/#{@dish.id}"
 
       expect(page).to have_content("#{@dish.name}")
       expect(page).to have_content("#{@dish.description}")
