@@ -29,6 +29,7 @@ describe "As a visitor" do
       click_link("View All Ingredients")
 
       expect(current_path).to eq("/chefs/#{@chef.id}/ingredients")
+      expect(page).to have_content("Ingredients")
       expect(page).to have_content(@cheese.name)
       expect(page).to have_content(@pasta.name)
       expect(page).to have_content(@breadcrumbs.name)
