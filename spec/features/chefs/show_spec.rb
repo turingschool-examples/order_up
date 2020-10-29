@@ -27,5 +27,11 @@ describe 'As a visitor' do
       expect(page).to have_content("Chef Name: #{@chef1.name}")
       expect(page).to have_link("Chef's Ingredients")
     end
+    it "when I click on Chef's ingredients link I'm taken to the chefs ingredients page" do
+      visit "/chefs/#{@chef1.id}"
+      expect(page).to have_content("Chef Name: #{@chef1.name}")
+      click_link("Chef's Ingredients")
+      expect(current_path).to eq("/chefs/#{@chef1.id}/ingredients")
+    end
   end
 end
