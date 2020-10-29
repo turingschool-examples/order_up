@@ -1,6 +1,7 @@
 <section class="dish-details-<%= @dish.id %>">
   <h1><%= @dish.name %></h1>
   <h3><%= @dish.description %></h3>
+  <h3>Total Calories:<%= @dish.total_calories.to_s %></h3>
 </section>
 
 <section class="ingredient-list">
