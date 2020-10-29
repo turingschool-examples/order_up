@@ -24,8 +24,8 @@ describe 'As a visitor' do
     end
     it "I see the chef's name and a link to view all his ingredients" do
       visit "/chefs/#{@chef1.id}"
-      expect(page.to have_content("Chef Name: #{@chef1.name}"))
-      expect(page.to have_link("Chef's Ingredients"))
+      expect(page).to have_content("Chef Name: #{@chef1.name}")
+      expect(page).to have_link("Chef's Ingredients")
     end
   end
 end
