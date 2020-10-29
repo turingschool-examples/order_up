@@ -4,7 +4,7 @@ class Dish <ApplicationRecord
   has_many :dish_ingredients
   has_many :ingredients, through: :dish_ingredients
 
-  def self.calorie_count(dish)
-    dish.ingredients.sum("calories")
+  def calorie_count
+    self.ingredients.sum("calories")
   end
 end

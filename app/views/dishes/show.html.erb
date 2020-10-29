@@ -10,8 +10,8 @@
   <% end %>
 
   <%= content_tag :h3, "Calories" %>
-  <%= Dish.calorie_count(@dish)%><br>
-  
+  <%= @dish.calorie_count%><br>
+
   <%= content_tag :h3, "Chef" %>
   <%= @dish.chef.name %>
 </body>
