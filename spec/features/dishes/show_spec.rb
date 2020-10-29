@@ -30,7 +30,7 @@ describe 'As a visitor' do
     end
   end
   #Story 2 of 3
-  descirbe "When I visit a dish's show page" do
+  describe "When I visit a dish's show page" do
     it "I see the total calorie count for that dish." do
         visit "/dishes/#{@dish.id}"
         expect(page).to have_content(@dish.calorie_count)
