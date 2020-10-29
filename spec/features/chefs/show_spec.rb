@@ -6,7 +6,7 @@ RSpec.describe 'As a visitor', type: :feature do
       @susan = Chef.create(name: 'Susan Daly')
 
       @eggs = Ingredient.create(name: 'Scrambled egg', calories: 100)
-      @noodles = Ingredient.create(name: 'Rice noodles', calories: 200)
+      @noodles = Ingredient.create(name: 'Noodles', calories: 200)
       @rice = Ingredient.create(name: 'Rice', calories: 250)
       @chicken = Ingredient.create(name: 'Chicken', calories: 150)
       @soy_sauce = Ingredient.create(name: 'Soy sauce', calories: 50)
