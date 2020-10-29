@@ -21,4 +21,17 @@ describe "As a visitor" do
       expect(page).to have_link("View All Ingredients")
     end
   end
+
+  describe "When I click on that link to view a list of all ingredients" do
+    it "I'm taken to a chef's ingredient index page and I can see a unique list of names of all the ingredients that this chef uses" do
+      visit "/chefs/#{@chef.id}"
+
+      click_link("View All Ingredients")
+
+      expect(current_path).to eq("/chefs/#{@chef.id}/ingredients")
+      expect(page).to have_content(@cheese.name)
+      expect(page).to have_content(@pasta.name)
+      expect(page).to have_content(@breadcrumbs.name)
+    end
+  end
 end
