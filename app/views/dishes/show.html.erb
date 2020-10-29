@@ -1,2 +1,8 @@
 <%= @dish.name %>
 <%= @dish.description %>
+<ol id="dish-ingredients">
+  <% @dish.ingredients.each do |ingredient| %>
+    <li><%= ingredient.name %></li>
+  <% end %>
+</ol>
+<%= @dish.chef.name %>
