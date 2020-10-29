@@ -1,18 +1,9 @@
 require 'rails_helper'
 
-RSpec.describe Dish, type: :model do
-  describe "validations" do
-    it {should validate_presence_of :name}
-    it {should validate_presence_of :description}
-  end
-  describe "relationships" do
-    it {should belong_to :chef}
-    it {should have_many :ingredient_dishes}
-    it {should have_many(:ingredients).through(:ingredient_dishes)}
-  end
-  
-  describe "instance methods" do 
-    it ".calorie_count" do 
+RSpec.describe "As a visitor," do 
+  describe "when I visit '/dish/:id'" do 
+    it "I see that dishes name and description and a list of 
+        ingredients for that dish and the chef name." do
       @chef_1 = Chef.create!(
         name: "TestChef1")
       @dish_1 = Dish.create!(
@@ -31,7 +22,16 @@ RSpec.describe Dish, type: :model do
       @ingredient_dish_2 = IngredientDish.create!(
         ingredient_id: "#{@ingredient_2.id}",
         dish_id: "#{@dish_1.id}")
-      expect(@dish_1.calorie_count).to eq(600)
+
+      visit "/dish/#{@dish_1.id}"
+
+      expect(page).to have_content("#{@dish_1.name}")
+      expect(page).to have_content("#{@dish_1.description}")
+      expect(page).to have_content("testingredient1")
+      expect(page).to have_content("testingredient2")
+      expect(page).to have_content("#{@dish_1.chef.name}")
+      expect(page).to have_content("#{@dish_1.calorie_count}")
+
+      end
     end
   end
-end
