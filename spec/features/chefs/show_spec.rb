@@ -9,19 +9,19 @@ require 'rails_helper'
 # and I can see a unique list of names of all the ingredients that this chef uses
 
 describe 'As a visitor' do
+  before :each do
+    @chef1 = Chef.create({name: "Ralph"})
+    @dishr = @chef1.dishes.create({name: "pasta w red sauce", description: "noodles and red sauce"})
+    @dishw = @chef1.dishes.create({name: "pasta w white sauce", description: "noodles and white sauce"})
+    @noodles = Ingredient.create({name: "noodles", calories: 100})
+    @wsauce = Ingredient.create({name: "white sauce", calories: 80})
+    @rsauce = Ingredient.create({name: "red sauce", calories: 75})
+    @dishr_noodles = DishIngredient.create({dish_id: @dishr.id, ingredient_id: @noodles.id})
+    @dishr_rsauce = DishIngredient.create({dish_id: @dishr.id, ingredient_id: @rsauce.id})
+    @dishw_noodles = DishIngredient.create({dish_id: @dishw.id, ingredient_id: @noodles.id})
+    @dishw_wsauce = DishIngredient.create({dish_id: @dishw.id, ingredient_id: @wsauce.id})
+  end
   describe "When I visit a chef's show page" do
-    before :each do
-      @chef1 = Chef.create({name: "Ralph"})
-      @dishr = @chef1.dishes.create({name: "pasta w red sauce", description: "noodles and red sauce"})
-      @dishw = @chef1.dishes.create({name: "pasta w white sauce", description: "noodles and white sauce"})
-      @noodles = Ingredient.create({name: "noodles", calories: 100})
-      @wsauce = Ingredient.create({name: "white sauce", calories: 80})
-      @rsauce = Ingredient.create({name: "red sauce", calories: 75})
-      @dishr_noodles = DishIngredient.create({dish_id: @dishr.id, ingredient_id: @noodles.id})
-      @dishr_rsauce = DishIngredient.create({dish_id: @dishr.id, ingredient_id: @rsauce.id})
-      @dishw_noodles = DishIngredient.create({dish_id: @dishw.id, ingredient_id: @noodles.id})
-      @dishw_wsauce = DishIngredient.create({dish_id: @dishw.id, ingredient_id: @wsauce.id})
-    end
     it "I see the chef's name and a link to view all his ingredients" do
       visit "/chefs/#{@chef1.id}"
       expect(page).to have_content("Chef Name: #{@chef1.name}")
@@ -32,6 +32,16 @@ describe 'As a visitor' do
       expect(page).to have_content("Chef Name: #{@chef1.name}")
       click_link("Chef's Ingredients")
       expect(current_path).to eq("/chefs/#{@chef1.id}/chef_ingredients")
+    end
+  end
+  describe "When I visit the chef's ingredients page" do
+    it 'shows a unique list of the chefs ingredients' do
+      visit "/chefs/#{@chef1.id}/chef_ingredients"
+      @chef1.ingredients.each do |ingredient|
+        within ("#ingredient-#{ingredient.id}") do
+          expect(page).to have_content(ingredient.name)
+        end
+      end
     end
   end
 end
