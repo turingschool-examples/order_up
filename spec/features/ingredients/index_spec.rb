@@ -1,8 +1,8 @@
 require 'rails_helper'
 
 describe "As a visitor" do
-  describe "When I visit a chef's show page I see a link to view all the ingredients this chef uses in their dishes" do
-    it "When I click I'm redirected to the chef's ingredients index page" do
+  describe "When I visit chef's ingredients index" do
+    it "I see a list of all ingredient that chef uses" do
       chef = Chef.create!(name: "Bob Newhart")
       dish_1 = Dish.create!(
         name: "Spaghetti",
@@ -10,8 +10,8 @@ describe "As a visitor" do
         chef_id: chef.id
       )
       dish_2 = Dish.create!(
-        name: "Hot Dog",
-        description: "Hot Dog with bun",
+        name: "Hot Dogs Marinara",
+        description: "Hot Dog with bun covered in marinara",
         chef_id: chef.id
       )
       pasta = Ingredient.create!(
@@ -54,14 +54,18 @@ describe "As a visitor" do
         dish_id: dish_2.id,
         ingredient_id: bun.id
       )
+      DishIngredient.create!(
+        dish_id: dish_2.id,
+        ingredient_id: sauce.id
+      )
 
-      visit "/chefs/#{chef.id}"
+      visit "/chefs/#{chef.id}/ingredients"
 
-      expect(page).to have_content(chef.name)
-
-      click_link "See all the ingredients I use!"
-
-      expect(current_path).to eq("/chefs/#{chef.id}/ingredients")
+      expect(page).to have_content(pasta.name)
+      expect(page).to have_content(sauce.name)
+      expect(page).to have_content(meatballs.name)
+      expect(page).to have_content(hot_dog.name)
+      expect(page).to have_content(bun.name)
     end
   end
 end
