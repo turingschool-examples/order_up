@@ -33,8 +33,6 @@ ActiveRecord::Schema.define(version: 2020_10_29_153912) do
   create_table "dishes_ingredients", id: false, force: :cascade do |t|
     t.bigint "dish_id", null: false
     t.bigint "ingredient_id", null: false
-    t.bigint "ingredients_id"
-    t.bigint "dishes_id"
     t.index ["dishes_id"], name: "index_dishes_ingredients_on_dishes_id"
     t.index ["ingredients_id"], name: "index_dishes_ingredients_on_ingredients_id"
   end

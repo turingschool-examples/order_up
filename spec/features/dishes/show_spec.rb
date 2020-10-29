@@ -1,7 +1,10 @@
 #Story 1 of 3
 describe 'As a visitor' do
   before(:each) do
-    @dish = 
+    @chef = Chef.create!(name: "boyardee")
+    @dish = Dish.create!(name: 'cornbread',
+                        description: 'bread',
+                        chef_id: @chef.id)
     visit "/dishes/#{@dish.id}"
   end
   describe "When I visit a dish's show page" do
