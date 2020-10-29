@@ -34,7 +34,11 @@ RSpec.describe Chef, type: :model do
       DishIngredient.create!(dish_id: dish3.id, ingredient_id: cheese.id)
       DishIngredient.create!(dish_id: dish3.id, ingredient_id: mac.id)
 
+<<<<<<< HEAD
       expect(chef.top_three_ingredients[0].name).to eq(cheese.name)
+=======
+      expect(chef.top_three_ingredients).to eq([cheese, mac, hamburger_patty])
+>>>>>>> 71536483dea284c8cd462406e05a4650e53cbd66
     end
   end
 end
