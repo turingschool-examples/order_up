@@ -36,14 +36,14 @@ describe "As a visitor" do
 
       visit "/dishes/#{dish.id}"
 
-      expect(page).to have_content("Dish: #{dish.name}")
+      expect(page).to have_content(dish.name)
       expect(page).to have_content("#{dish.description}")
-      within "#dish_ingredients-#{dish.id}" do
+      within "#dishingredients" do
         expect(page).to have_content("#{pasta.name}")
         expect(page).to have_content("#{sauce.name}")
         expect(page).to have_content("#{meatballs.name}")
       end
-      expect(page).to have_content(chef.name)
+      expect(page).to have_content("Chef: #{chef.name}")
     end
   end
 end
