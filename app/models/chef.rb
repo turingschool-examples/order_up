@@ -3,6 +3,6 @@ class Chef < ApplicationRecord
   has_many :dishes
 
   def all_chef_ingredients
-    Ingredient.joins(:dishes).joins(:dish_ingredients).select("dish_ingredients.*, ingredients.name, dishes.chef_if").where("chef_id = #{self.id}")
+    Dish.joins(:ingredients).select("ingredients.name").where("chef_id = #{self.id}").distinct.order("ingredients.name").pluck("ingredients.name")
   end
 end

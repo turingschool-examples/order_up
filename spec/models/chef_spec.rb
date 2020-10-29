@@ -18,10 +18,14 @@ RSpec.describe Chef, type: :model do
       DishIngredient.create!(dish_id: @dish.id, ingredient_id: @cheese.id)
       DishIngredient.create!(dish_id: @dish.id, ingredient_id: @pasta.id)
       DishIngredient.create!(dish_id: @dish.id, ingredient_id: @breadcrumbs.id)
+      @dish_2 = @chef.dishes.create!(name: "Pizza", description: "Amazing")
+      @dough = Ingredient.create!(name: "Dough", calories: 300)
+      DishIngredient.create!(dish_id: @dish_2.id, ingredient_id: @cheese.id)
+      DishIngredient.create!(dish_id: @dish_2.id, ingredient_id: @dough.id)
     end
 
     it "#all_chef_ingredients" do
-      expect(@chef.all_chef_ingredients).to eq (["Cheese", "Pasta", "Breadcrumbs"])
+      expect(@chef.all_chef_ingredients).to eq (["Breadcrumbs", "Cheese", "Dough", "Pasta"])
     end
   end
 end
