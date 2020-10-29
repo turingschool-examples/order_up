@@ -1,3 +1,13 @@
 <h1><%= @chef.name %></h1>
 
 <%= link_to "Ingredients", chef_ingredients_path(@chef) %>
+
+
+<section class="popular-ingredients">
+  <ol>
+    <%= @chef.popular_ingredients.each do |ingredient| %>
+    <li class="ingredient"><%= ingredient.name %></li>
+    <% end %>
+  </ol>
+
+</section>

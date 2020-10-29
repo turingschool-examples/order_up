@@ -48,5 +48,46 @@ RSpec.describe "As a visitor", type: :feature do
       end
     end
 
+    it "I see the chef's 3 most popular ingredients" do
+      franc = Chef.create!(name: "Francois Francesco")
+      ratatouille = franc.dishes.create!(
+                                          name: "Ratatouille",
+                                          description: "Spicy and delicious!"
+                                        )
+      spaghetti = franc.dishes.create!(
+                                          name: "Spaghetti and Meatballs",
+                                          description: "Mouthwatering and flavourful."
+                                        )
+      egg = Ingredient.create!(name: "eggplant", calories: 100)
+      tomato = Ingredient.create!(name: "tomato", calories: 80)
+      zucc = Ingredient.create!(name: "zucchini", calories: 120)
+      salt = Ingredient.create!(name: "salt", calories: 10)
+      basil = Ingredient.create!(name: "basil", calories: 20)
+      sausage = Ingredient.create!(name: "italian sausage", calories: 200)
+      wine = Ingredient.create!(name: "Cabernet Sauvignon", calories: 150)
+
+      DishIngredient.create!(dish_id: ratatouille.id, ingredient_id: egg.id)
+      DishIngredient.create!(dish_id: ratatouille.id, ingredient_id: basil.id)
+      DishIngredient.create!(dish_id: ratatouille.id, ingredient_id: tomato.id)
+      DishIngredient.create!(dish_id: ratatouille.id, ingredient_id: zucc.id)
+      DishIngredient.create!(dish_id: ratatouille.id, ingredient_id: salt.id)
+
+      DishIngredient.create!(dish_id: spaghetti.id, ingredient_id: sausage.id)
+      DishIngredient.create!(dish_id: spaghetti.id, ingredient_id: tomato.id)
+      DishIngredient.create!(dish_id: spaghetti.id, ingredient_id: wine.id)
+      DishIngredient.create!(dish_id: spaghetti.id, ingredient_id: basil.id)
+      DishIngredient.create!(dish_id: spaghetti.id, ingredient_id: salt.id)
+
+      visit chef_path(franc)
+
+      within ".popular-ingredients" do
+        expect(page).to have_content(basil.name)
+        expect(page).to have_content(tomato.name)
+        expect(page).to have_content(salt.name)
+        expect(page).to have_css(".ingredient", count:3)
+      end
+
+    end
+
   end
 end
