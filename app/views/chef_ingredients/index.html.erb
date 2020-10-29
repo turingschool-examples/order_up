@@ -1,0 +1,5 @@
+<h2>All my Ingredients!</h2>
+
+<% @ingredients.unique_ingredients.each do |ingredient| %>
+  <p><%= ingredient.name%></p>
+<% end %>

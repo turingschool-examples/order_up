@@ -4,4 +4,8 @@ class Ingredient < ApplicationRecord
 
   validates_presence_of :name
   validates_presence_of :calories
+
+  def self.unique_ingredients
+    self.distinct(:name)
+  end
 end

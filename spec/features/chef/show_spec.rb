@@ -1,18 +1,8 @@
 require 'rails_helper'
 
-RSpec.describe Ingredient, type: :model do
-  describe 'relationships' do
-    it { should have_many :dish_ingredients }
-    it { should have_many(:dishes).through(:dish_ingredients) }
-  end
-
-  describe 'validations' do
-    it { should validate_presence_of :name }
-    it { should validate_presence_of :calories }
-  end
-
-  describe 'instance methods' do
-    it '#unique_ingredients' do
+RSpec.describe 'Chef Show Page' do
+  describe 'As a visitor' do
+    before :each do
       @murray = Chef.create!(name: 'Murray McMasterful')
       @spaghetti = @murray.dishes.create!(name: 'Spaghetti', description: 'Delish!')
       @pasta = @spaghetti.ingredients.create!(name: 'Rigitoni', calories: 10)
@@ -24,8 +14,22 @@ RSpec.describe Ingredient, type: :model do
       @mash = @chicken_madiera.ingredients.create!(name: 'Mash', calories: 300)
       @madiera = @chicken_madiera.ingredients.create!(name: 'madiera', calories: 200)
 
-      all_ingredients = [@chicken, @mash, @madiera, @salt, @sauce, @pasta]
-      expect(all_ingredients.unique_ingredients.count).to be(6)
+    end
+    it 'can see the name of the Chef' do
+      visit "/chefs/#{@murray.id}"
+
+      expect(page).to have_content("#{@murray.name}'s Homepage")
+      expect(page).to have_link('All my ingredients')
+      click_link('All my ingredients')
+
+      expect(current_path).to eq("/chefs/#{@murray.id}/ingredients")
+
+      expect(page).to have_content('All my Ingredients!')
+
+      @murray.ingredients.unique_ingredients.each do |ingredient|
+        expect(page).to have_content(ingredient.name)
+      end
+
     end
   end
 end
