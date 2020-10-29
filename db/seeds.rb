@@ -5,3 +5,17 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+
+# chefs
+
+elzar = Chef.create!(
+  name: 'Elzar'
+)
+allen = Chef.create!(
+  name: 'Ted Allen'
+)
+brown = Chef.create!(
+  name: 'Alton Brown'
+)
+
+gumbo = elzar.dishes.create!()
