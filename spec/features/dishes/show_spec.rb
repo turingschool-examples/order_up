@@ -37,6 +37,9 @@ describe "Dish Show page" do
       it "I see the chef's name" do
         expect(page).to have_content("By: Chef #{@elzar.name}")
       end
+      it "I see the total calorie count for that dish" do
+        expect(page).to have_content("Calories: #{@gumbo.total_calories}")
+      end
     end
   end
 end
