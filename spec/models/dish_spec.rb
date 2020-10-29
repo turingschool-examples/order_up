@@ -19,5 +19,19 @@ RSpec.describe Dish, type: :model do
 
       expect(dish.chef_name).to eq('Taylor Phillips')
     end
+
+    it '#total_calories' do
+      chef = Chef.create(name: 'Taylor Phillips')
+      dish = Dish.create(name: 'Steak', description: 'Very good', chef_id: chef.id) 
+      ingredient1 = Ingredient.create(name: 'Filet', calories: 950)
+      ingredient2 = Ingredient.create(name: 'Butter', calories: 400)
+      ingredient3 = Ingredient.create(name: 'Thyme', calories: 15)
+
+      DishIngredient.create(dish_id: dish.id, ingredient_id: ingredient1.id)
+      DishIngredient.create(dish_id: dish.id, ingredient_id: ingredient2.id)
+      DishIngredient.create(dish_id: dish.id, ingredient_id: ingredient3.id)
+
+      expect(dish.total_calories).to eq(1365)
+    end
   end
 end
