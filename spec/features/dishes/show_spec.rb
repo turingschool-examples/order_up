@@ -1,9 +1,3 @@
-# As a visitor
-# When I visit a dish's show page
-# I see the dish’s name and description
-# And I see a list of ingredients for that dish
-# And I see the chef's name
-
 require "rails_helper"
 
 describe "As a visitor" do
@@ -20,7 +14,7 @@ describe "As a visitor" do
     it "the visitor sees dish's name and description, list of ingredients, and chef's name" do
 
       visit "/dishes/#{@dish_1.id}"
-save_and_open_page
+
       expect(page).to have_content(@dish_1.name)
       expect(page).to have_content(@dish_1.description)
 
