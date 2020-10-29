@@ -13,7 +13,12 @@ describe 'as a visitor' do
                                     calories: 180)
       @egg     = Ingredient.create!(name: "Hardboiled Egg",
                                     calories: 90)
-
+  @dish_ing_1  = DishIngredient.create!(dish_id: @dish.id,
+                                        ingredient_id: @avocado.id)
+  @dish_ing_2  = DishIngredient.create!(dish_id: @dish.id,
+                                        ingredient_id: @toast.id)
+  @dish_ing_3  = DishIngredient.create!(dish_id: @dish.id,
+                                        ingredient_id: @egg.id)
     end
 
     it 'has the dishes name, description, list of ingredients and the chefs name' do
