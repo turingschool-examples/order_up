@@ -1,13 +1,7 @@
 require 'rails_helper'
 
-RSpec.describe Chef, type: :model do
-  describe "validations" do
-    it {should validate_presence_of :name}
-  end
-  describe "relationships" do
-    it {should have_many :dishes}
-  end
-  describe "methods" do
+RSpec.describe 'As a visitor', type: :feature do
+  describe "When I visit a chef's show page" do
     before(:each) do
       @chef = Chef.create!(
         name: "SpongeBob"
@@ -15,12 +9,6 @@ RSpec.describe Chef, type: :model do
 
       @burger = Dish.create!(
         name: "Krabby Patty",
-        description: "Delicious undersea burger",
-        chef_id: @chef.id
-      )
-
-      @double = Dish.create!(
-        name: "Double Krabby Patty",
         description: "Delicious undersea burger",
         chef_id: @chef.id
       )
@@ -70,24 +58,28 @@ RSpec.describe Chef, type: :model do
         dish_id: @fries.id,
         ingredient_id: @kelp.id 
       )
+    end 
+    it "I see that chef's name, a link to thier dishes' ingredients 
+        with a link to the chef's ingredient index page" do
+        visit "/chefs/#{@chef.id}"
+        
+        expect(page).to have_content("SpongeBob")
+        expect(page).to have_link("View Chef's Ingredients")
 
-      Recipe.create!(
-        dish_id: @double.id,
-        ingredient_id: @patty.id 
-      )
+        click_link("View Chef's Ingredients")
+        expect(current_path).to eq("/chefs/#{@chef.id}/index")
 
-      Recipe.create!(
-        dish_id: @double.id,
-        ingredient_id: @lettuce.id 
-      )
-
-      Recipe.create!(
-        dish_id: @double.id,
-        ingredient_id: @bun.id 
-      )
+        expect(page).to have_content("Ingredients Used By Chef #{@chef.name}:")
+        expect(page).to have_content("#{@patty.name}")
+        expect(page).to have_content("#{@lettuce.name}")
+        expect(page).to have_content("#{@bun.name}")
+        expect(page).to have_content("#{@kelp.name}")
     end
-    it 'top_3' do
-      expect(@chef.top_3).to eq([@patty, @lettuce, @bun])
+    it "I see that chef's 3 most used ingredients" do
+        visit "/chefs/#{@chef.id}"
+        
+        expect(page).to have_content("Chef's 3 Favorite Ingredients:")
+        expect(page).to have_content("#{@chef.top_3}")
     end
   end 
-end
+end 

@@ -1,13 +1,8 @@
 require 'rails_helper'
 
-RSpec.describe Chef, type: :model do
-  describe "validations" do
-    it {should validate_presence_of :name}
-  end
-  describe "relationships" do
-    it {should have_many :dishes}
-  end
-  describe "methods" do
+RSpec.describe 'As a visitor', type: :feature do
+  describe "When I visit a dish's show page" do
+    
     before(:each) do
       @chef = Chef.create!(
         name: "SpongeBob"
@@ -15,12 +10,6 @@ RSpec.describe Chef, type: :model do
 
       @burger = Dish.create!(
         name: "Krabby Patty",
-        description: "Delicious undersea burger",
-        chef_id: @chef.id
-      )
-
-      @double = Dish.create!(
-        name: "Double Krabby Patty",
         description: "Delicious undersea burger",
         chef_id: @chef.id
       )
@@ -70,24 +59,25 @@ RSpec.describe Chef, type: :model do
         dish_id: @fries.id,
         ingredient_id: @kelp.id 
       )
+    end 
 
-      Recipe.create!(
-        dish_id: @double.id,
-        ingredient_id: @patty.id 
-      )
+    it 'I see a dishes name, description, ingredients, and chefs name' do
+      visit "/dishes/#{@burger.id}"
 
-      Recipe.create!(
-        dish_id: @double.id,
-        ingredient_id: @lettuce.id 
-      )
-
-      Recipe.create!(
-        dish_id: @double.id,
-        ingredient_id: @bun.id 
-      )
+      expect(page).to have_content("Krabby Patty")
+      expect(page).to have_content("Delicious undersea burger")
+      expect(page).to have_content("Ingredients:")
+      expect(page).to have_content("Burger Patty")
+      expect(page).to have_content("Lettuce")
+      expect(page).to have_content("Burger Bun")
+      expect(page).to have_content("Chef: SpongeBob")
     end
-    it 'top_3' do
-      expect(@chef.top_3).to eq([@patty, @lettuce, @bun])
+
+    it 'I see the total calorie count for that dish' do
+      visit "/dishes/#{@burger.id}"
+
+      expect(page).to have_content("Total Calories: #{@burger.total_calories}")
     end
-  end 
+  end
+  
 end
