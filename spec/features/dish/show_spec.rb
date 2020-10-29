@@ -15,12 +15,12 @@ RSpec.describe 'Dish Show Page' do
       expect(page).to have_content("#{@spaghetti.name}'s Homepage")
       expect(page).to have_content("Description: #{@spaghetti.description}")
 
-      expect(page).to have_content("#{@spaghetti.name}'s ingredients: ")
-        @spaghetti.ingredient.each do |ingredient|
-          within "#ingredient-#{@spaghetti.id}" do
+      expect(page).to have_content("#{@spaghetti.name}'s ingredients:")
+      within "#ingredients" do
+        @spaghetti.ingredients.each do |ingredient|
             expect(page).to have_content(ingredient.name)
-          end
         end
+      end
       expect(page).to have_content("Created by: #{@spaghetti.chef.name}")
     end
   end
