@@ -36,7 +36,7 @@ RSpec.describe Chef, type: :model do
     end
 
     it '.chefs_ingredients' do
-      expect(@chef.chefs_ingredients).to eq([@ingredient, @ingredient2])
+      expect(@chef.chefs_ingredients).to eq([@ingredient2.name, @ingredient.name])
     end
   end
 end
