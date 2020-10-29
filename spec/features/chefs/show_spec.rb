@@ -28,6 +28,7 @@ describe "Chef Show Page" do
     @gumbo.ingredients << @canned_gumbo
     @gumbo.ingredients << @slug
     @pasta.ingredients << @noodles
+  end
   describe "As a visitor" do
     describe "When I visit a chef's show page" do
       it "I see the name of that chef" do
