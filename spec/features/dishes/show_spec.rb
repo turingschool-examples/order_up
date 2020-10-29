@@ -2,7 +2,7 @@ require "rails_helper"
 
 describe "As a visitor" do
   describe "When I visit a dish's show page" do
-    it "shows the dish's name and description, a list of ingredients, and the chef's name" do
+    it "shows the dish's name and description, a list of ingredients, the chef's name, and the calorie count" do
       chef = Chef.create(name: "Gordon Ramsay")
       spaghetti = chef.dishes.create(name: "Spaghetti", description: "A light, classical pasta dish with succulent tomato sauce and zesty home-made meatballs")
       pasta = spaghetti.ingredients.create(name: "Pasta", calories: 1200)
