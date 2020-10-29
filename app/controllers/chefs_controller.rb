@@ -6,6 +6,5 @@ class ChefsController < ApplicationController
 
   def ingredients
     @chef = Chef.find(params[:id])
-    binding.pry
   end
 end
