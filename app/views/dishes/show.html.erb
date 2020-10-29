@@ -1,0 +1,17 @@
+<%= content_tag :h1, "#{@dish.name} Dish" %>
+
+<body>
+  <%= content_tag :h3, "Dish's Description" %>
+  <%= @dish.description %><br>
+
+  <%= content_tag :h3, "Dish's Ingredients" %>
+  <% @dish.ingredients.each do |ingredient| %>
+    <%= ingredient.name %><br>
+  <% end %>
+
+  <%= content_tag :h3, "Calories" %>
+  <%= @dish.calorie_count%><br>
+
+  <%= content_tag :h3, "Chef" %>
+  <%= @dish.chef.name %>
+</body>

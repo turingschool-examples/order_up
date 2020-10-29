@@ -1,0 +1,7 @@
+<%= content_tag :h1, "All #{@chef.name} Ingredients" %>
+
+<body>
+  <% @chef.all_ingredients.each do |ingredient| %>
+    <%= ingredient %><br>
+  <% end %>
+</body>
