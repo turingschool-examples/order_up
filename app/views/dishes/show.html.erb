@@ -1,5 +1,6 @@
-<%= @dish.name %>
-<%= @dish.description %>
+<p><%= @dish.name %></p>
+<p><%= @dish.description %></p>
+<p>Total Calories: <%= @dish.total_calories %></p>
 <ol id="dish-ingredients">
   <% @dish.ingredients.each do |ingredient| %>
     <li><%= ingredient.name %></li>
