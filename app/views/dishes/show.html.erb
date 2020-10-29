@@ -1,0 +1,18 @@
+<section class="dish-details-<%= @dish.id %>">
+  <h1><%= @dish.name %></h1>
+  <h3><%= @dish.description %></h3>
+  <h3>Total Calories:<%= @dish.total_calories.to_s %></h3>
+</section>
+
+<section class="ingredient-list">
+  <h2>Ingredients in this dish:</h2>
+  <% @dish.ingredients.each do |ingredient| %>
+    <section id="ride-<%=ingredient.id%>">
+      <li><%= ingredient.name %></li>
+    </section>
+  <% end %>
+</section>
+
+<section class="chef-details-<%= @dish.chef_id %>">
+  <h2>Created By: <%= @dish.chef.name %></h2>
+</section>
