@@ -1,3 +1,12 @@
 <h1><%= @chef.name %></h1>
 
 <%= link_to "#{@chef.name} Ingredient List", "/chefs/#{@chef.id}/ingredients" %>
+
+<section id='most-used'>
+  <h3> <%= "#{@chef}'s Most Used Ingredients:'" %> </h3>
+  <ul>
+    <% @chef.most_used_ingredients.each do |ingredient| %>
+      <li><%= ingredient.name %></li>
+    <% end %>
+  </ul>
+</section>
