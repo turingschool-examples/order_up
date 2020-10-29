@@ -1,0 +1,7 @@
+<h1><%= "#{@chef.name} Ingredient List" %></h1>
+
+<ul>
+  <% @chef.unique_ingredients.each do |ingredient| %>
+    <li><%= ingredient.name %></li>
+  <% end %>
+</ul>
