@@ -30,7 +30,7 @@ describe "as a visitor" do
     DishIngredient.create!(dish_id: @dish.id,
                            ingredient_id: @ingredient_1.id)
 
-    DishIngredient.create!(dish_id: dish.id,
+    DishIngredient.create!(dish_id: @dish.id,
                            ingredient_id: @ingredient_2.id)
 
     DishIngredient.create!(dish_id: @dish.id,
