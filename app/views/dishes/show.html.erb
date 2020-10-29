@@ -1,6 +1,8 @@
 <h1><%= @dish.name %> - <%= @dish.chef.name %></h1>
 
-<h3><%= @dish.description %></h3>
+<h3><%= "Description: #{@dish.description}" %></h3>
+
+<h3> <%= "Total Calories: #{@dish.total_calories}" %> </h3>
 
 <h2>Ingredients:</h2>
 <ul>
