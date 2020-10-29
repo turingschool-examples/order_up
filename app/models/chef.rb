@@ -3,7 +3,7 @@ class Chef <ApplicationRecord
   has_many :dishes
 
 
-  def find_ingredients
+  def ingredients
     dishes.ingredients
   end
 end

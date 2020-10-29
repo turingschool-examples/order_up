@@ -9,7 +9,7 @@ class Dish <ApplicationRecord
   end
 
   def self.ingredients
-    includes(:ingredients).pluck(:name)
+    joins(:ingredients).distinct('ingredients.name').pluck('ingredients.name')
   end
 
 end
