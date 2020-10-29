@@ -1,0 +1,6 @@
+<section id="ingredients">
+  <h2>Ingredients:</h2>
+  <% @chef.unique_ingredients.each do |dish_ingredient| %>
+    <%= dish_ingredient %>
+  <% end %>
+</section>

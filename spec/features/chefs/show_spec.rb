@@ -67,7 +67,7 @@ describe "as a visitor" do
       it "I'm taken to a chef's ingredient index page and I can see a unique list of names of all the ingredients that this chef uses" do
         visit("/chefs/#{@chef.id}")
 
-        click_link("View all ingredients used by chef")
+        find("#ingredients-link").click
 
         expect(current_path).to eq("/chefs/#{@chef.id}/ingredients")
 
