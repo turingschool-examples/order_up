@@ -22,12 +22,13 @@ RSpec.describe 'As a visitor' do
       click_on "Chef's Ingredients"
 
       expect(current_path).to eq("/chefs/#{@chef_1.id}/ingredient_index")
-
+      
       expect(page).to have_content(@dough.name)
       expect(page).to have_content(@sauce.name)
       expect(page).to have_content(@cheese.name)
       expect(page).to have_content(@dough_pasta.name)
       expect(page).to have_content(@sausage.name)
+
     end
   end
 end
