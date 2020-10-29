@@ -4,7 +4,7 @@
 
 <section class="ingredient-list">
   <h2>Ingredients in this dish:</h2>
-  <% @chef.unique_ingredients.each do |ingredient| %>
+  <% @chef.ingredients.each do |ingredient| %>
     <section id="ingredient-<%=ingredient.id%>">
       <li><%= ingredient.name %></li>
     </section>
