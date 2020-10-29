@@ -1,16 +1,8 @@
 require 'rails_helper'
 
-RSpec.describe Chef, type: :model do
-  describe "validations" do
-    it {should validate_presence_of :name}
-  end
-  
-  describe "relationships" do
-    it {should have_many :dishes}
-  end
-
-  describe 'instance methods' do
-    it '#all_ingredients' do
+RSpec.describe 'dishes/show', type: :feature do
+  describe "when I visit a chef's show page" do
+    it 'has chef information' do
       chef = Chef.create(name: 'Taylor Phillips')
       dish = Dish.create(name: 'Steak', description: 'Very good', chef_id: chef.id) 
       ingredient1 = Ingredient.create(name: 'Filet', calories: 950)
@@ -21,7 +13,16 @@ RSpec.describe Chef, type: :model do
       DishIngredient.create(dish_id: dish.id, ingredient_id: ingredient2.id)
       DishIngredient.create(dish_id: dish.id, ingredient_id: ingredient3.id)
 
-      expect(chef.all_ingredients).to eq([ingredient1, ingredient2, ingredient3])
+      visit "/chefs/#{chef.id}"
+
+      expect(page).to have_content(chef.name)
+
+      click_link 'View All Ingredients'
+      save_and_open_page
+      expect(page).to have_current_path("chefs/#{chef.id}/ingredients")
+      expect(page).to have_content(ingredient1.name)
+      expect(page).to have_content(ingredient2.name)
+      expect(page).to have_content(ingredient3.name)
     end
   end
 end

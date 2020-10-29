@@ -13,7 +13,7 @@ RSpec.describe 'dishes/show', type: :feature do
       DishIngredient.create(dish_id: dish.id, ingredient_id: ingredient2.id)
       DishIngredient.create(dish_id: dish.id, ingredient_id: ingredient3.id)
 
-      visit "/dishes/#{chef.id}"
+      visit "/dishes/#{dish.id}"
 
       expect(page).to have_content(dish.name)
       expect(page).to have_content(dish.description)
@@ -34,7 +34,7 @@ RSpec.describe 'dishes/show', type: :feature do
       DishIngredient.create(dish_id: dish.id, ingredient_id: ingredient2.id)
       DishIngredient.create(dish_id: dish.id, ingredient_id: ingredient3.id)
 
-      visit "/dishes/#{chef.id}"
+      visit "/dishes/#{dish.id}"
 
       expect(page).to have_content('1365')
     end
