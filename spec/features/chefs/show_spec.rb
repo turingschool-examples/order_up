@@ -38,6 +38,28 @@ describe 'As a visitor' do
       expect(page).to have_content(@ingredient.name)
       expect(page).to have_content(@ingredient2.name)
     end
+
+    it 'has the three most popular ingredients that chef uses' do
+      ingredient4 = @dish1.ingredients.create(name: "Pickles",
+                                              calories: 10)
+
+      ingredient5 = @dish2.ingredients.create(name: "Pepperoni",
+                                              calories: 21)
+
+      ingredient6 = @dish3.ingredients.create(name: "Marinara",
+                                              calories: 12)
+
+      @dish2 << ingredient5
+      @dish1 << ingredient6
+
+      visit "/chefs/#{@chef.id}"
+
+      expect(page).to have_content(@ingredient2.name)
+      expect(page).to have_content(ingredient5.name)
+      expect(page).to have_content(ingredient6.name)
+      expect(page).to_not have_content(@ingredient.name)
+      expect(page).to_not have_content(ingredient4.name)
+    end
   end
 end
 
