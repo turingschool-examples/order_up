@@ -58,7 +58,7 @@ describe 'as a visitor' do
         within ".ingredient-list" do
           expect(page).to have_content(@avocado.name)
           expect(page).to have_content(@egg.name)
-          expect(page).to have_content(@bread.name)
+          expect(page).to have_content(@bread.name, count: 1)
           expect(page).to have_content(@pb.name)
           expect(page).to have_content(@jelly.name)
         end
