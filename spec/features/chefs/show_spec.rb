@@ -11,6 +11,10 @@ describe "As a visitor" do
     DishIngredient.create!(dish_id: @dish.id, ingredient_id: @cheese.id)
     DishIngredient.create!(dish_id: @dish.id, ingredient_id: @pasta.id)
     DishIngredient.create!(dish_id: @dish.id, ingredient_id: @breadcrumbs.id)
+    @dish_2 = @chef.dishes.create!(name: "Pizza", description: "Amazing")
+    @dough = Ingredient.create!(name: "Dough", calories: 300)
+    DishIngredient.create!(dish_id: @dish_2.id, ingredient_id: @cheese.id)
+    DishIngredient.create!(dish_id: @dish_2.id, ingredient_id: @dough.id)
   end
 
   describe "When I visit a chef's show page" do
@@ -33,6 +37,7 @@ describe "As a visitor" do
       expect(page).to have_content(@cheese.name)
       expect(page).to have_content(@pasta.name)
       expect(page).to have_content(@breadcrumbs.name)
+      expect(page).to have_content(@dough.name)
     end
   end
 end
