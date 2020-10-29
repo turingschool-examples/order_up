@@ -8,6 +8,9 @@ class Chef <ApplicationRecord
   end
 
   def popular_ingredients
-    ingredients.group(:id).order('COUNT(ingredients.id) DESC').limit(3)
+    ingredients.joins(:dishes).group(:id).order('COUNT(dishes.id) DESC').limit(3)
+
+    # By number of times an ingredient appears, not how many dishes have that ingredient.
+    # ingredients.group(:id).order('COUNT(ingredients.id) DESC').limit(3)
   end
 end

@@ -47,7 +47,7 @@ RSpec.describe 'chef show page', type: :feature do
 
     it "I see the three most popular ingredients" do
       visit "chefs/#{@chef.id}"
-      save_and_open_page
+
       within '.popular-ingredients' do
         expect(page.all('li')[0]).to have_content(@potatoes.name)
         expect(page.all('li')[1]).to have_content(@lentils.name)
