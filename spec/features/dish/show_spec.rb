@@ -29,7 +29,7 @@ RSpec.describe 'Dish Show Page' do
 
       expect(page).to have_content("#{@spaghetti.name}'s Homepage")
 
-      within 'total-calories' do
+      within '#total-calories' do
         expect(page).to have_content("Total calories: #{@spaghetti.total_calories}")
       end
     end
