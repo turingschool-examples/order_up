@@ -1,3 +1,10 @@
+<section id="most-popular-ingredients">
+  <h2>Three Most Popular Ingredients:</h2>
+  <% @chef.most_popular_ingredients.each do |ingredient| %>
+    <%= ingredient.name %>
+  <% end %>
+</section>
+
 <section id="ingredients">
   <h2>Ingredients:</h2>
   <% @chef.unique_ingredients.each do |dish_ingredient| %>

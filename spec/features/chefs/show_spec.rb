@@ -2,11 +2,8 @@ require 'rails_helper'
 
 # As a visitor
 # When I visit a chef's show page
-# I see the name of that chef
-# And I see a link to view a list of all ingredients that this chef uses in their dishes
-# When I click on that link
-# I'm taken to a chef's ingredient index page
-# and I can see a unique list of names of all the ingredients that this chef uses
+# I see the three most popular ingredients that the chef uses in their dishes
+# (Popularity is based off of how many dishes use that ingredient)
 
 describe "as a visitor" do
   before :each do
@@ -18,6 +15,10 @@ describe "as a visitor" do
 
     @dish_2 = Dish.create!(name: "Falafel",
                         description: "Falafel is a deep-fried ball or patty made from ground chickpeas, fava beans, or both.",
+                        chef_id: @chef.id)
+
+    @dish_3 = Dish.create!(name: "Dish",
+                        description: "Yummy dish.",
                         chef_id: @chef.id)
 
     @ingredient_1 = Ingredient.create!(name: "Beet",
@@ -38,6 +39,12 @@ describe "as a visitor" do
     @ingredient_6 = Ingredient.create!(name: "Carrot",
                                       calories: 25)
 
+    @ingredient_7 = Ingredient.create!(name: "Onion",
+                                      calories: 44)
+
+    @ingredient_8 = Ingredient.create!(name: "Beet",
+                                      calories: 59)
+
     DishIngredient.create!(dish_id: @dish_1.id,
                            ingredient_id: @ingredient_1.id)
 
@@ -55,6 +62,12 @@ describe "as a visitor" do
 
     DishIngredient.create!(dish_id: @dish_2.id,
                            ingredient_id: @ingredient_6.id)
+
+    DishIngredient.create!(dish_id: @dish_3.id,
+                           ingredient_id: @ingredient_7.id)
+
+    DishIngredient.create!(dish_id: @dish_3.id,
+                           ingredient_id: @ingredient_8.id)
   end
   describe "when I visit a chef's show page" do
     it "I see the name of that chef and I see a link to view a list of all ingredients that this chef uses in their dishes" do
@@ -79,6 +92,16 @@ describe "as a visitor" do
           expect(page).to have_content("#{@ingredient_4.name}")
           expect(page).to have_content("#{@ingredient_5.name}")
         end
+      end
+    end
+    it "I see the three most popular ingredients that the chef uses in their dishes" do
+      visit("/chefs/#{@chef.id}/ingredients")
+
+      within("#most-popular-ingredients") do
+        expect(page).to have_content("Three Most Popular Ingredients:")
+        expect(page).to have_content("Beet")
+        expect(page).to have_content("Onion")
+        expect(page).to have_content("Carrot")
       end
     end
   end
