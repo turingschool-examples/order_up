@@ -23,5 +23,15 @@ RSpec.describe 'Dish Show Page' do
       end
       expect(page).to have_content("Created by: #{@spaghetti.chef.name}")
     end
+
+    it 'can see the total calories for the dish' do
+      visit "/dishes/#{@spaghetti.id}"
+
+      expect(page).to have_content("#{@spaghetti.name}'s Homepage")
+
+      within 'total-calories' do
+        expect(page).to have_content("Total calories: #{@spaghetti.total_calories}")
+      end
+    end
   end
 end
