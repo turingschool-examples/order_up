@@ -8,9 +8,21 @@ RSpec.describe 'As a visitor' do
       it "And I see a list of ingredients for that dish And I see the chef's name" do
         chef = Chef.create!(name: 'Cheif')
 
+        mac = Ingredient.create!(name: "mac", calories: 200)
+        cheese = Ingredient.create!(name: "cheese", calories: 200)
+
         dish = Dish.create!(name: 'mac and cheese', description: 'cheesy', chef_id: chef.id)
 
+        DishIngredient.create!(dish_id: dish.id, ingredient_id: mac.id)
+        DishIngredient.create!(dish_id: dish.id, ingredient_id: cheese.id)
+
         visit "dishes/#{dish.id}"
+
+        expect(page).to have_content(dish.name)
+        expect(page).to have_content(dish.description)
+        expect(page).to have_content(mac.name)
+        expect(page).to have_content(cheese.name)
+        expect(page).to have_content(ched.name)
       end
     end
   end
