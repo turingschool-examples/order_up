@@ -31,7 +31,7 @@ describe 'As a visitor' do
       visit "/chefs/#{@chef1.id}"
       expect(page).to have_content("Chef Name: #{@chef1.name}")
       click_link("Chef's Ingredients")
-      expect(current_path).to eq("/chefs/#{@chef1.id}/ingredients")
+      expect(current_path).to eq("/chefs/#{@chef1.id}/chef_ingredients")
     end
   end
 end

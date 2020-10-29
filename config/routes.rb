@@ -4,6 +4,6 @@ Rails.application.routes.draw do
 resources :dishes, only: [:show]
 
 resources :chefs, only: [:show]
-get "/chefs/:id/ingredients", to: "chefs#ingredients"
+get "/chefs/:id/chef_ingredients", to: "chefs#chef_ingredients"
 
 end
