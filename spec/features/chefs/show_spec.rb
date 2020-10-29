@@ -38,9 +38,7 @@ describe 'As a visitor' do
     it 'shows a unique list of the chefs ingredients' do
       visit "/chefs/#{@chef1.id}/chef_ingredients"
       @chef1.ingredients.each do |ingredient|
-        within ("#ingredient-#{ingredient.id}") do
-          expect(page).to have_content(ingredient.name)
-        end
+        expect(page).to have_content(ingredient.name)
       end
     end
   end
