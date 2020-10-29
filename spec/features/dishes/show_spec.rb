@@ -17,7 +17,7 @@ describe 'as a visitor' do
     end
 
     it 'has the dishes name, description, list of ingredients and the chefs name' do
-      visit "/dish/#{@dish.id}"
+      visit "/dishes/#{@dish.id}"
 
       within ".dish-details-#{@dish.id}" do
         expect(page).to have_content(@dish.name)
