@@ -71,16 +71,14 @@ describe 'As a visitor, when I visit a chef show page' do
 
     click_link("Julia Child Ingredient List")
 
-  save_and_open_page
     expect(current_path).to eq("/chefs/#{julia.id}/ingredients")
 
     expect(page).to have_content("Julia Child Ingredient List")
-    expect(page).to have_content("Chicken")
-    expect(page).to have_content("Mozzerella")
-    expect(page).to have_content("Tomato Sauce")
-    expect(page).to have_content("Egg")
-    expect(page).to have_content("Bread")
-    expect(page).to have_content("Maple Syrup")
-    # test unique?
+    expect(page).to have_content("Chicken", count: 1)
+    expect(page).to have_content("Mozzerella", count: 1)
+    expect(page).to have_content("Tomato Sauce", count: 1)
+    expect(page).to have_content("Egg", count: 1)
+    expect(page).to have_content("Bread", count: 1)
+    expect(page).to have_content("Maple Syrup", count: 1)
   end
 end
