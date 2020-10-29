@@ -30,6 +30,5 @@ describe 'As a visitor' do
       expect(page).to have_content("#{@cheese.name}")
       expect(page).to have_content("#{@bread.name}")
     end
-
   end
 end
