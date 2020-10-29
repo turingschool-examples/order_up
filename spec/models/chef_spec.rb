@@ -67,6 +67,7 @@ RSpec.describe Chef, type: :model do
       )
 
       expect(chef.unique_ingredients).to eq([pasta, sauce, meatballs, hot_dog, bun])
+      expect(chef.unique_ingredients).to_not eq(chef.ingredients)
     end
   end
 end
