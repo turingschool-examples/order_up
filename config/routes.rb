@@ -4,4 +4,8 @@ Rails.application.routes.draw do
   resources :dishes, only: [:show]
 
   resources :chefs, only: [:show]
+
+  namespace :chef do
+    resources :ingredients, only: [:show]
+  end
 end

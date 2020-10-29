@@ -20,7 +20,7 @@ describe 'Chef show page' do
     end
 
     it 'can click ingredient link and are taken to chefs ingredient index page' do
-
-    end 
+      click_link('See all ingredients')
+    end
   end
 end
