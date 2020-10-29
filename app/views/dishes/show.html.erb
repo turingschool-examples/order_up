@@ -1,4 +1,5 @@
 <% @chef.dishes.each do |dish| %>
+<h3> Dish Total Calories: <%= dish.total_calories %> </h3>
   <%= dish.name %>
   <%= dish.description %>
   <% dish.ingredients.each do |ingredient| %>
