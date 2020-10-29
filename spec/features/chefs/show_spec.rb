@@ -1,8 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe 'As a visitor', type: :feature do
-  describe "When I visit a dish's show page" do
-    
+  describe "When I visit a chef's show page" do
     before(:each) do
       @chef = Chef.create!(
         name: "SpongeBob"
@@ -60,24 +59,21 @@ RSpec.describe 'As a visitor', type: :feature do
         ingredient_id: @kelp.id 
       )
     end 
+    it "I see that chef's name, a link to thier dishes' ingredients 
+        with a link to the chef's ingredient index page" do
+        visit "/chefs/#{@chef.id}"
+        
+        expect(page).to have_content("SpongeBob")
+        expect(page).to have_link("View Chef's Ingredients")
 
-    it 'I see a dishes name, description, ingredients, and chefs name' do
-      visit "/dishes/#{@burger.id}"
+        click_link("View Chef's Ingredients")
+        expect(current_path).to eq("/chefs/#{@chef.id}/index")
 
-      expect(page).to have_content("Krabby Patty")
-      expect(page).to have_content("Delicious undersea burger")
-      expect(page).to have_content("Ingredients:")
-      expect(page).to have_content("Burger Patty")
-      expect(page).to have_content("Lettuce")
-      expect(page).to have_content("Burger Bun")
-      expect(page).to have_content("Chef: SpongeBob")
+        expect(page).to have_content("Ingredients Used By Chef #{@chef.name}:")
+        expect(page).to have_content("#{@patty.name}")
+        expect(page).to have_content("#{@lettuce.name}")
+        expect(page).to have_content("#{@bun.name}")
+        expect(page).to have_content("#{@kelp.name}")
     end
-
-    it 'I see the total calorie count for that dish' do
-      visit "/dishes/#{@burger.id}"
-
-      expect(page).to have_content("Total Calories: #{@burger.total_calories}")
-    end
-  end
-  
-end
+  end 
+end 
