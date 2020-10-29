@@ -26,7 +26,7 @@ RSpec.describe 'Chef Show Page' do
 
       expect(page).to have_content('All my Ingredients!')
 
-      @murray.ingredients.unique_ingredients.each do |ingredient|
+      @ingredients.each do |ingredient|
         expect(page).to have_content(ingredient.name)
       end
 
