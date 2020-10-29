@@ -1,18 +1,8 @@
-require 'rails_helper'
+require "rails_helper"
 
-RSpec.describe Dish, type: :model do
-  describe "validations" do
-    it {should validate_presence_of :name}
-    it {should validate_presence_of :description}
-  end
-  describe "relationships" do
-    it {should belong_to :chef}
-    it {should have_many :dish_ingredients}
-    it {should have_many(:ingredients).through(:dish_ingredients)}
-  end
-
-  describe "Instance Methods" do
-    it "Calorie Count Method" do
+describe "As a visitor" do
+  describe "When I visit a chef's show page" do
+    it "I see the name of that chef, And I see a link to view a list of all ingredients that this chef uses in their dishes" do
       bob = Chef.create!(name: "Bob")
       pasta = Dish.create!(name: "Pasta", description: "Noodle Dish", chef_id: bob.id)
       noodles = Ingredient.create!(name: "Noodles", calories: 50)
@@ -23,7 +13,10 @@ RSpec.describe Dish, type: :model do
       DishIngredient.create!(dish_id: pasta.id, ingredient_id: sause.id)
       DishIngredient.create!(dish_id: pasta.id, ingredient_id: meatballs.id)
 
-      expect(pasta.calorie_count).to eq(300)
+      visit "/chefs/#{bob.id}"
+
+      expect(page).to have_content(bob.name)
+      expect(page).to have_link("All Ingredients")
     end
   end
 end
