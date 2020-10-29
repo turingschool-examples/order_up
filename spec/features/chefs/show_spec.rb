@@ -49,8 +49,8 @@ describe 'As a visitor' do
       ingredient6 = @dish3.ingredients.create(name: "Marinara",
                                               calories: 12)
 
-      @dish2 << ingredient5
-      @dish1 << ingredient6
+      @dish2.ingredients << ingredient5
+      @dish1.ingredients << ingredient6
 
       visit "/chefs/#{@chef.id}"
 

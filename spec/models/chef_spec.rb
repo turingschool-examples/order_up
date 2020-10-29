@@ -38,5 +38,21 @@ RSpec.describe Chef, type: :model do
     it '.chefs_ingredients' do
       expect(@chef.chefs_ingredients).to eq([@ingredient2.name, @ingredient.name])
     end
+
+    it '.popular_ingredients' do
+      @dish1.ingredients.create(name: "Pickles",
+                                calories: 10)
+
+      ingredient5 = @dish2.ingredients.create(name: "Pepperoni",
+                                              calories: 21)
+
+      ingredient6 = @dish3.ingredients.create(name: "Marinara",
+                                              calories: 12)
+
+      @dish2.ingredients << ingredient5
+      @dish1.ingredients << ingredient6
+
+      expect(@chef.popular_ingredients).to eq([@ingredient2.name, ingredient5.name, ingredient6.name])
+    end
   end
 end
