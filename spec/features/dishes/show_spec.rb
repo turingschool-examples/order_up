@@ -62,7 +62,7 @@ RSpec.describe 'As a visitor', type: :feature do
       )
     end 
     it 'I see a dishes name, description, ingredients, and chefs name' do
-      visit "/dish/#{@burger.id}"
+      visit "/dishes/#{@burger.id}"
 
       expect(page).to have_content("Krabby Patty")
       expect(page).to have_content("Delicious undersea burger")
