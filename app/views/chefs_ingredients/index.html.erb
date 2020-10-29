@@ -1,0 +1,13 @@
+
+<h1>Ingredient Index for: <%= @chef.name %></h1>
+
+<figure>
+  <figcaption>All Ingredients: </figcaption>
+    <ol>
+      <% @chef.dishes.each do |dish| %>
+        <% dish.ingredients.each do |ingredient| %>
+          <li><%= ingredient.name %></li>
+        <% end %>
+      <% end %>
+    </ol>
+<figure>
