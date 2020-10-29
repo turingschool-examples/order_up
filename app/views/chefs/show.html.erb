@@ -1,7 +1,3 @@
 <h1>Chef</h1>
-
-<% @chef_1.dishes.each do |dish| %>
-  <% dish.ingredients.each do |ingredient| %>
-    <%= ingredient.name %><br>
-  <% end %>
-<% end %>
+<h2><%= @chef_1.name %></h2>
+<%= link_to "Chef's Ingredients", "/chefs/#{@chef_1.id}/ingredient_index" %>
