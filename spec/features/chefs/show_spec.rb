@@ -163,7 +163,9 @@ describe 'As a visitor, when I visit a chef show page' do
       dish: maple_scramble,
       ingredient: syrup
     )
+    
     visit "/chefs/#{julia.id}"
+    save_and_open_page
 
     expect(page).to have_content("Julia Child's Most Used Ingredients:")
 
