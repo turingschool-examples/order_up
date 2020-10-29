@@ -75,5 +75,11 @@ RSpec.describe 'As a visitor', type: :feature do
         expect(page).to have_content("#{@bun.name}")
         expect(page).to have_content("#{@kelp.name}")
     end
+    it "I see that chef's 3 most used ingredients" do
+        visit "/chefs/#{@chef.id}"
+        
+        expect(page).to have_content("Chef's 3 Favorite Ingredients:")
+        expect(page).to have_content("#{@chef.top_3}")
+    end
   end 
 end 
