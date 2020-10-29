@@ -1,15 +1,8 @@
 require 'rails_helper'
 
-RSpec.describe Chef, type: :model do
-  describe "validations" do
-    it {should validate_presence_of :name}
-  end
-  describe "relationships" do
-    it {should have_many :dishes}
-    it { should have_many(:ingredients).through(:dishes) }
-  end
-  describe "intance methods" do
-    it "#unique_ingredients" do
+describe "As a visitor" do
+  describe "When I visit chef's ingredients index" do
+    it "I see a list of all ingredient that chef uses" do
       chef = Chef.create!(name: "Bob Newhart")
       dish_1 = Dish.create!(
         name: "Spaghetti",
@@ -66,8 +59,13 @@ RSpec.describe Chef, type: :model do
         ingredient_id: sauce.id
       )
 
-      expect(chef.unique_ingredients).to eq([pasta, sauce, meatballs, hot_dog, bun])
-      expect(chef.unique_ingredients).to_not eq(chef.ingredients)
+      visit "/chefs/#{chef.id}/ingredients"
+
+      expect(page).to have_content(pasta.name)
+      expect(page).to have_content(sauce.name)
+      expect(page).to have_content(meatballs.name)
+      expect(page).to have_content(hot_dog.name)
+      expect(page).to have_content(bun.name)
     end
   end
 end
