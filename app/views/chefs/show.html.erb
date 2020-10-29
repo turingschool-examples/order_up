@@ -1,0 +1,6 @@
+<header>
+  <%= content_tag :h1, "Chef: #{@chef.name}" %>
+</header>
+<main>
+  <%= link_to "Ingredients", "/chefs/#{@chef.id}/ingredients" %>
+</main>

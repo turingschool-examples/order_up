@@ -1,15 +1,8 @@
-require 'rails_helper'
+require "rails_helper"
 
-RSpec.describe Chef, type: :model do
-  describe "validations" do
-    it {should validate_presence_of :name}
-  end
-  describe "relationships" do
-    it {should have_many :dishes}
-  end
-
-  describe "instance methods" do
-    it "#ingredients" do
+describe "As a visitor" do
+  describe "when I visit a chefs show page" do
+    before :each do
       @chef = Chef.create!(name: "Chef")
 
       @ravioli = @chef.dishes.create!(name: "Ravioli", description: "Spinach Ravioli")
@@ -25,7 +18,22 @@ RSpec.describe Chef, type: :model do
       @coffee_ingredients = [@water, @coffe_bean]
       @coffee.ingredients << @coffee_ingredients
 
-      expect(@chef.ingredients).to eq(["Cheese", "Folgers", "Pasta", "Spinach", "Water"])
+      visit chef_path(@chef)
+    end
+
+    it "There is the name of that chef and a link to their ingredients which takes me to chef's ingredient index page" do
+      expect(page).to have_content("Chef: #{@chef.name}")
+      expect(page).to have_link("Ingredients")
+
+      click_link "Ingredients"
+
+      expect(current_path).to eq(chef_ingredients_path(@chef))
+      expect(page).to have_content("Ingredients used by #{@chef.name}")
+      expect(page).to have_content("#{@pasta.name}")
+      expect(page).to have_content("#{@cheese.name}")
+      expect(page).to have_content("#{@spinach.name}")
+      expect(page).to have_content("#{@water.name}")
+      expect(page).to have_content("#{@coffe_bean.name}")
     end
   end
 end
