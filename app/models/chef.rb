@@ -7,6 +7,6 @@ class Chef <ApplicationRecord
   end
 
   def popular_ingredients
-    dishes.joins(:ingredients).select('ingredients.name, count(*)').group('ingredients.name').order('count(*)').limit(3)
+    dishes.joins(:ingredients).select('ingredients.name, count(*)').group('ingredients.name').order('count(*) desc').limit(3)
   end
 end
