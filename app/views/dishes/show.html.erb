@@ -2,7 +2,11 @@
 <br>
 <p>Description: <%= @dish.description %></p>
 <br>
-<p>Ingredients:</p>
+<p>Ingredients:</p><br>
+<ul>
 <% @dish.ingredients.each do |ing| %>
-  <%= ing.name %>
+  <li><%= ing.name %></li>
 <% end %>
+</ul>
+<br>
+<p>Total calories: <%= @dish.total_calories %></p>
