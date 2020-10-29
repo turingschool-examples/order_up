@@ -20,7 +20,7 @@ describe "As a visitor" do
     it "the visitor sees dish's name and description, list of ingredients, and chef's name" do
 
       visit "/dishes/#{@dish_1.id}"
-
+save_and_open_page
       expect(page).to have_content(@dish_1.name)
       expect(page).to have_content(@dish_1.description)
 
