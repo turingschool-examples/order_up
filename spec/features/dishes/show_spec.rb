@@ -19,11 +19,13 @@ describe "As a visitor" do
       DishIngredient.create!(dish: sushi, ingredient: salmon)
       DishIngredient.create!(dish: sushi, ingredient: rice)
       DishIngredient.create!(dish: sushi, ingredient: wasabi)
-      visit dish_path(sushi.id)
+      visit "/dishes/#{sushi.id}"
 
       expect(page).to have_content(sushi.name)
       expect(page).to have_content(sushi.description)
-      expect(page).to have_content(sushi.ingredients)
+      expect(page).to have_content(salmon.name)
+      expect(page).to have_content(rice.name)
+      expect(page).to have_content(wasabi.name)
       expect(page).to have_content(tanaka.name)
     end
   end
