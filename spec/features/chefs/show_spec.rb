@@ -44,11 +44,11 @@ RSpec.describe 'As a visitor', type: :feature do
 
       click_link 'Ingredients Used'
       expect(current_path).to eq(chef_ingredients_path(@susan))
-      expect(page).to have_content(@eggs.name)
-      expect(page).to have_content(@noodles.name)
-      expect(page).to have_content(@rice.name)
-      expect(page).to have_content(@chicken.name)
-      expect(page).to have_content(@soy_sauce.name)
+      expect(page).to have_content(@eggs.name, count: 1)
+      expect(page).to have_content(@noodles.name, count: 1)
+      expect(page).to have_content(@rice.name, count: 1)
+      expect(page).to have_content(@chicken.name, count: 1)
+      expect(page).to have_content(@soy_sauce.name, count: 1)
     end
   end
 end
