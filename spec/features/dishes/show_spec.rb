@@ -11,15 +11,20 @@ describe "As a visitor" do
       tanaka = Chef.create!(name: "Chef Tanaka")
       sushi = tanaka.dishes.create!(name: "Sushi",
                                     description: "Awesome",
-                                    ingredients: "fish, rice, wasabi",
-                                    chef: "Chef Tanaka"
                                    )
-      visit "/dishes/#{sushi.id}"
+      salmon = sushi.ingredients.create!(name: "Salmon")
+      rice = sushi.ingredients.create!(name: "Rice")
+      wasabi = sushi.ingredients.create!(name: "Wasabi")
+
+      DishIngredient.create!(dish: sushi, ingredient: salmon)
+      DishIngredient.create!(dish: sushi, ingredient: rice)
+      DishIngredient.create!(dish: sushi, ingredient: wasabi)
+      visit dish_path(sushi.id)
 
       expect(page).to have_content(sushi.name)
       expect(page).to have_content(sushi.description)
       expect(page).to have_content(sushi.ingredients)
-      expect(page).to have_content(sushi.chef)
+      expect(page).to have_content(tanaka.name)
     end
   end
 end
