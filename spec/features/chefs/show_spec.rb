@@ -21,6 +21,9 @@ describe 'Chef show page' do
 
     it 'can click ingredient link and are taken to chefs ingredient index page' do
       click_link('See all ingredients')
+      expect(page).to have_content("All the ingredients this chef works with:")
+      expect(page).to have_content(ingredient1.name)
+      expect(page).to have_content(ingredient2.name)
     end
   end
 end
