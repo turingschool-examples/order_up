@@ -23,7 +23,7 @@ describe 'As a visitor' do
 
       expect(page).to have_content("Dish Name: #{@dish1.name}")
       expect(page).to have_content("Dish Description: #{@dish1.description}")
-      expect(page).to have_content("Chef Name: #{@dish1.chef_name}")
+      expect(page).to have_content("Chef Name: #{@dish1.chef.name}")
 
       @dish1.ingredients.each do |ingredient|
         within("#ingredient-#{ingredient.id}") do
