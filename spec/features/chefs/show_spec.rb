@@ -42,7 +42,7 @@ describe "As a visitor" do
 
       visit "/chefs/#{chef_steve.id}"
       click_link "All Ingredients Used"
-save_and_open_page
+
       expect(current_path).to eq("/chefs/#{chef_steve.id}/ingredients")
       expect(page).to have_content("PeanutButter")
       expect(page).to have_content("Jelly")
