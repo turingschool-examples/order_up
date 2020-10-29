@@ -22,7 +22,7 @@ RSpec.describe 'As a visitor' do
         expect(page).to have_content(dish.description)
         expect(page).to have_content(mac.name)
         expect(page).to have_content(cheese.name)
-        expect(page).to have_content(ched.name)
+        expect(page).to have_content(chef.name)
       end
     end
   end
