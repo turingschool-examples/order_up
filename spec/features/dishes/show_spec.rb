@@ -31,5 +31,8 @@ describe 'As a visitor' do
         end
       end
     end
+    it 'displays the total calorie count for the dish' do
+      expect(page.to have_content("Dish Calories: #{@dish1.calories}"))
+    end
   end
 end
