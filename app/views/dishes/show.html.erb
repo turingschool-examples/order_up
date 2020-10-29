@@ -1,0 +1,11 @@
+<%= content_tag :h1, @dish.name %>
+<%= content_tag :h3, "By: Chef #{@dish.chef.name}" %>
+<%= content_tag :p, "Description: #{@dish.description}" %>
+<%= content_tag :p, "Calories: #{@dish.total_calories}" %>
+<ul id='ingredients'>
+  <% @dish.ingredients.each do |ingredient| %>
+  <li>
+    <%= ingredient.name %>
+  </li>
+  <% end %>
+</ul>
