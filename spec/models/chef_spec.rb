@@ -21,7 +21,7 @@ RSpec.describe Chef, type: :model do
       @dishw_noodles = DishIngredient.create({dish_id: @dishw.id, ingredient_id: @noodles.id})
       @dishw_wsauce = DishIngredient.create({dish_id: @dishw.id, ingredient_id: @wsauce.id})
 
-      expect(@chef1.ingredients).to eq(["noodles", "red sauce", "white sauce"])
+      expect(@chef1.ingredients.pluck("ingredients.name")).to eq(["noodles", "red sauce", "white sauce"])
     end
   end
 end

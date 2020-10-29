@@ -3,7 +3,7 @@ class Chef <ApplicationRecord
   has_many :dishes
 
   def ingredients
-    dishes.joins(:ingredients).select("ingredients.name").distinct.pluck("ingredients.name")
+    dishes.joins(:ingredients).select("ingredients.name").distinct
   end
 
 end
