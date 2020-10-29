@@ -8,6 +8,12 @@ describe 'As a Visitor' do
       @dish = Dish.create!(name: "Spaghetti and Meatballs",
                            description: "I mean it's in the name yo",
                            chef_id: @chef.id)
+
+      @ingredient1 = @dish.ingredients.create!(name: "Spaghetti",
+                                               calories: 100)
+
+      @ingredient2 = @dish.ingredients.create!(name: "Meatballs",
+                                               calories: 200)
     end
 
     it 'I see the dish name and description' do
@@ -15,6 +21,17 @@ describe 'As a Visitor' do
 
       expect(page).to have_content(@dish.name)
       expect(page).to have_content(@dish.description)
+    end
+
+    it 'I see a lit of ingredients for that dish and the chefs name' do
+      visit "/dishes/#{@dish.id}"
+
+      within("#dish-ingredients") do
+        expect(page).to have_content(@ingredient1.name)
+        expect(page).to have_content(@ingredient2.name)
+      end
+
+      expect(page).to have_content(@chef.name)
     end
   end
 end
