@@ -39,5 +39,9 @@ RSpec.describe Chef, type: :model do
     it "#unique_ingredients" do
       expect(@chef.unique_ingredients).to eq([@lentils, @potatoes, @bun, @patty, @tomato])
     end
+
+    it "#popular_ingredients" do
+      expect(@chef.popular_ingredients).to eq([@potatoes, @lentils, @tomato])
+    end
   end
 end

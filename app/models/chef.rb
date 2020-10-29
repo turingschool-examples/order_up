@@ -6,4 +6,8 @@ class Chef <ApplicationRecord
   def unique_ingredients
     ingredients.distinct
   end
+
+  def popular_ingredients
+    ingredients.group(:id).order('COUNT(ingredients.id) DESC').limit(3)
+  end
 end

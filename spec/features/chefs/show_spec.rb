@@ -36,13 +36,22 @@ RSpec.describe 'chef show page', type: :feature do
       click_link("View all ingredients")
 
       expect(current_path).to eq("/chefs/#{@chef.id}/ingredients")
-      save_and_open_page
       within '.ingredients' do
         expect(page.all('li')[0]).to have_content(@lentils.name)
         expect(page.all('li')[1]).to have_content(@potatoes.name)
         expect(page.all('li')[2]).to have_content(@bun.name)
         expect(page.all('li')[3]).to have_content(@patty.name)
         expect(page.all('li')[4]).to have_content(@tomato.name)
+      end
+    end
+
+    it "I see the three most popular ingredients" do
+      visit "chefs/#{@chef.id}"
+      save_and_open_page
+      within '.popular-ingredients' do
+        expect(page.all('li')[0]).to have_content(@potatoes.name)
+        expect(page.all('li')[1]).to have_content(@lentils.name)
+        expect(page.all('li')[2]).to have_content(@tomato.name)
       end
     end
   end
