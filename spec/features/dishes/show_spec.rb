@@ -1,15 +1,5 @@
 require 'rails_helper'
 
-# As a visitor
-# When I visit a dish's show page
-# I see the dish’s name and description
-# And I see a list of ingredients for that dish
-# And I see the chef's name
-
-# As a visitor
-# When I visit a dish's show page
-# I see the total calorie count for that dish.
-
 describe "as a visitor" do
   before :each do
     @chef = Chef.create!(name: "Yevhen Klopotenko")
