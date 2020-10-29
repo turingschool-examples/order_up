@@ -71,7 +71,7 @@ RSpec.describe Chef, type: :model do
       DishIngredient.create!(dish_id: spaghetti.id, ingredient_id: basil.id)
       DishIngredient.create!(dish_id: spaghetti.id, ingredient_id: salt.id)
 
-      ingredients = [tomato, basil, salt]
+      ingredients = [tomato, salt, basil]
 
       expect(franc.popular_ingredients).to eq(ingredients)
     end

@@ -7,8 +7,7 @@ class Chef <ApplicationRecord
   end
 
   def popular_ingredients
-    require "pry"; binding.pry
-    Ingredient.joins(:dishes).where('dishes.chef_id = self').select('ingredients.name, count(*)').group(:id)
+    Ingredient.joins(:dishes).where('dishes.chef_id = ?', self).select('ingredients.*, count(*)').group(:id).order(count: :desc).limit(3)
   end
 
 end
