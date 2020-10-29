@@ -12,7 +12,7 @@ RSpec.describe 'Dish Show Page' do
     it 'can see the name and description of the dish' do
       visit "/dishes/#{@spaghetti.id}"
 
-      expect(page).to have_content("Name: #{@spaghetti.name}")
+      expect(page).to have_content("#{@spaghetti.name}'s Homepage")
       expect(page).to have_content("Description: #{@spaghetti.description}")
 
       expect(page).to have_content("#{@spaghetti.name}'s ingredients: ")
