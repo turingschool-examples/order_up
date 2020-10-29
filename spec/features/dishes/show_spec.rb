@@ -22,5 +22,21 @@ RSpec.describe 'dishes/show', type: :feature do
       expect(page).to have_content(ingredient3.name)
       expect(page).to have_content(chef.name)
     end
+
+    it 'has total calorie count' do
+      chef = Chef.create(name: 'Taylor Phillips')
+      dish = Dish.create(name: 'Steak', description: 'Very good', chef_id: chef.id) 
+      ingredient1 = Ingredient.create(name: 'Filet', calories: 950)
+      ingredient2 = Ingredient.create(name: 'Butter', calories: 400)
+      ingredient3 = Ingredient.create(name: 'Thyme', calories: 15)
+
+      DishIngredient.create(dish_id: dish.id, ingredient_id: ingredient1.id)
+      DishIngredient.create(dish_id: dish.id, ingredient_id: ingredient2.id)
+      DishIngredient.create(dish_id: dish.id, ingredient_id: ingredient3.id)
+
+      visit "/dishes/#{chef.id}"
+
+      expect(page).to have_content('1365')
+    end
   end
 end
