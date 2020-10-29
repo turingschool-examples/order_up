@@ -50,5 +50,16 @@ RSpec.describe 'As a visitor', type: :feature do
       expect(page).to have_content(@chicken.name, count: 1)
       expect(page).to have_content(@soy_sauce.name, count: 1)
     end
+
+    it "I see the top three used ingredients" do
+      visit chef_path(@susan)
+
+      within('.top-ingredients') do
+        expect(page).to have_content(@soy_sauce.name)
+        expect(page).to have_content(@chicken.name)
+        expect(page).to have_content(@eggs.name)
+        expect(page).to_not have_content(@carrots.name)
+      end
+    end
   end
 end
