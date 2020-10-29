@@ -14,8 +14,8 @@ describe "As a visitor" do
         })
 
       @ingredient_1 = Ingredient.create!({
-        name: 'Meatball',
-        calories: 90
+        name: 'Meatballs',
+        calories: 360
         })
 
       @ingredient_2 = Ingredient.create!({
@@ -34,6 +34,7 @@ describe "As a visitor" do
         })
 
     end
+
     it "I see the dish's name and description, list of ingredients, and chef's name" do
       visit "/dishes/#{@dish.id}"
 
@@ -42,6 +43,12 @@ describe "As a visitor" do
       expect(page).to have_content("#{@ingredient_1.name}")
       expect(page).to have_content("#{@ingredient_2.name}")
       expect(page).to have_content("Created by #{@chef.name}")
+    end
+
+    it "I see the total calorie count for that dish" do
+      visit "/dishes/#{@dish.id}"
+
+      expect(page).to have_content("Total calories: 390")
     end
   end
 end
