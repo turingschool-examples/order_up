@@ -61,6 +61,7 @@ RSpec.describe 'As a visitor', type: :feature do
         ingredient_id: @kelp.id 
       )
     end 
+
     it 'I see a dishes name, description, ingredients, and chefs name' do
       visit "/dishes/#{@burger.id}"
 
@@ -71,6 +72,12 @@ RSpec.describe 'As a visitor', type: :feature do
       expect(page).to have_content("Lettuce")
       expect(page).to have_content("Burger Bun")
       expect(page).to have_content("Chef: SpongeBob")
+    end
+
+    it 'I see the total calorie count for that dish' do
+      visit "/dishes/#{@burger.id}"
+
+      expect(page).to have_content("Total Calories: #{@burger.total_calories}")
     end
   end
   
