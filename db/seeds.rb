@@ -17,5 +17,3 @@ allen = Chef.create!(
 brown = Chef.create!(
   name: 'Alton Brown'
 )
-
-gumbo = elzar.dishes.create!()
