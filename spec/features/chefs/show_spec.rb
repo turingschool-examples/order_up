@@ -16,7 +16,7 @@ describe "As a visitor" do
   describe "When I visit a chef's show page" do
     it "I see the name of that chef" do
       visit "/chefs/#{@chef.id}"
-      expect(page).to have_content(@chef.id)
+      expect(page).to have_content(@chef.name)
     end
     it "And I see a link to view a list of all ingredients that this chef uses in their dishes" do
       visit "/chefs/#{@chef.id}"
@@ -28,10 +28,10 @@ describe "As a visitor" do
     it "I'm taken to a chef's ingredient index page" do
       visit "/chefs/#{@chef.id}"
       click_on("Ingredients")
-      expect(current_path).to eq("/chefs/#{chef.id}/ingredients")
+      expect(current_path).to eq("/chefs/#{@chef.id}/ingredients")
     end
     it "and I can see a unique list of names of all the ingredients that this chef uses" do
-      visit "/chefs/#{chef.id}/ingredients"
+      visit "/chefs/#{@chef.id}/ingredients"
       expect(page).to have_content(@ingredient1.name)
       expect(page).to have_content(@ingredient2.name)
     end
