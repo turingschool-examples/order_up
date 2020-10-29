@@ -1,5 +1,5 @@
 class IngredientsController < ApplicationController
-  def show
+  def index
     @chef = Chef.find(params[:id])
     @ingredients = []
     @chef.dishes.each do |dish|
