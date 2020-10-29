@@ -3,4 +3,8 @@ class Dish <ApplicationRecord
   belongs_to :chef
   has_many :meals
   has_many :ingredients, through: :meals
+
+  def calorie_total
+    ingredients.sum(:calories)
+  end
 end
