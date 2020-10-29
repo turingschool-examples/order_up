@@ -27,5 +27,11 @@ describe "as a visitor" do
       end
       expect(page).to have_content("#{@ravioli.name}, by Chef #{@chef.name}")
     end
+
+    it "Will display a dishes total calorie count" do
+      within ".#{@ravioli.name}-ingredients" do
+        expect(page).to have_content("Total Calories: #{@ravioli.total_calories}")
+      end
+    end
   end
 end
