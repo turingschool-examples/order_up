@@ -1,17 +1,9 @@
 require 'rails_helper'
 
-RSpec.describe Chef, type: :model do
-  describe "validations" do
-    it {should validate_presence_of :name}
-  end
-  describe "relationships" do
-    it {should have_many :dishes}
-  end
-
-  describe "instance methods" do
-    it "distinct_ingredients" do
+RSpec.describe "As a visitor", type: :feature do
+  describe "when I visit a chef's show page" do
+    it "I can click a link to see the chef's ingredient index with a unique list of ingredient names" do
       franc = Chef.create!(name: "Francois Francesco")
-
       ratatouille = franc.dishes.create!(
                                           name: "Ratatouille",
                                           description: "Spicy and delicious!"
@@ -20,9 +12,6 @@ RSpec.describe Chef, type: :model do
                                           name: "Spaghetti and Meatballs",
                                           description: "Mouthwatering and flavourful."
                                         )
-
-
-
       egg = Ingredient.create!(name: "eggplant", calories: 100)
       tomato = Ingredient.create!(name: "tomato", calories: 80)
       zucc = Ingredient.create!(name: "zucchini", calories: 120)
@@ -40,16 +29,27 @@ RSpec.describe Chef, type: :model do
       DishIngredient.create!(dish_id: spaghetti.id, ingredient_id: wine.id)
       DishIngredient.create!(dish_id: spaghetti.id, ingredient_id: basil.id)
 
+      visit chef_path(franc)
 
-      ingredients = [egg.name, tomato.name, zucc.name, basil.name, sausage.name, wine.name].sort
+      expect(page).to have_content(franc.name)
 
-      expect(franc.distinct_ingredients).to eq(ingredients)
+      click_link("Ingredients")
+
+      expect(current_path).to eq(chef_ingredients_path(franc))
+
+      within ".ingredients" do
+        expect(page).to have_content(egg.name)
+        expect(page).to have_content(basil.name)
+        expect(page).to have_content(tomato.name)
+        expect(page).to have_content(zucc.name)
+        expect(page).to have_content(sausage.name)
+        expect(page).to have_content(wine.name)
+        expect(page).to have_css(".ingredient", count:6)
+      end
     end
 
-    it 'popular_ingredients' do
+    it "I see the chef's 3 most popular ingredients" do
       franc = Chef.create!(name: "Francois Francesco")
-      daniel = Chef.create!(name: "Daniel de la Torre")
-
       ratatouille = franc.dishes.create!(
                                           name: "Ratatouille",
                                           description: "Spicy and delicious!"
@@ -58,11 +58,6 @@ RSpec.describe Chef, type: :model do
                                           name: "Spaghetti and Meatballs",
                                           description: "Mouthwatering and flavourful."
                                         )
-
-      steak = daniel.dishes.create!(
-                                    name: "Steak",
-                                    description: "So rare, but so good."
-                                  )
       egg = Ingredient.create!(name: "eggplant", calories: 100)
       tomato = Ingredient.create!(name: "tomato", calories: 80)
       zucc = Ingredient.create!(name: "zucchini", calories: 120)
@@ -70,8 +65,7 @@ RSpec.describe Chef, type: :model do
       basil = Ingredient.create!(name: "basil", calories: 20)
       sausage = Ingredient.create!(name: "italian sausage", calories: 200)
       wine = Ingredient.create!(name: "Cabernet Sauvignon", calories: 150)
-      cow = Ingredient.create!(name: "rare NY steak", calories: 350)
-      
+
       DishIngredient.create!(dish_id: ratatouille.id, ingredient_id: egg.id)
       DishIngredient.create!(dish_id: ratatouille.id, ingredient_id: basil.id)
       DishIngredient.create!(dish_id: ratatouille.id, ingredient_id: tomato.id)
@@ -84,12 +78,16 @@ RSpec.describe Chef, type: :model do
       DishIngredient.create!(dish_id: spaghetti.id, ingredient_id: basil.id)
       DishIngredient.create!(dish_id: spaghetti.id, ingredient_id: salt.id)
 
-      DishIngredient.create!(dish_id: steak.id, ingredient_id: cow.id)
-      DishIngredient.create!(dish_id: steak.id, ingredient_id: salt.id)
+      visit chef_path(franc)
 
-      ingredients = [tomato, salt, basil]
+      within ".popular-ingredients" do
+        expect(page).to have_content(basil.name)
+        expect(page).to have_content(tomato.name)
+        expect(page).to have_content(salt.name)
+        expect(page).to have_css(".ingredient", count:3)
+      end
 
-      expect(franc.popular_ingredients).to eq(ingredients)
     end
+
   end
 end
