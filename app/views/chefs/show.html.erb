@@ -2,3 +2,10 @@
   <h1><%= @chef.name %></h1>
   <p><%= link_to 'Ingredients Used', chef_ingredients_path(@chef) %></p>
 </section>
+<section class="top-ingredients">
+  <ul>
+    <% @chef.top_ingredients.each do |ingredient| %>
+      <li><%= ingredient.name %></li>
+    <% end %>
+  </ul>
+</section>
