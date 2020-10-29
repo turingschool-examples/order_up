@@ -46,4 +46,8 @@ RSpec.describe Dish, type: :model do
   it "total calories can be counted" do
     expect(@dish.total_calories).to eq(390)
   end
+
+  it "can list all ingredient names" do
+    expect(@dish.ingredient_list).to eq(['Meatballs', 'Marinara sauce'])
+  end
 end
