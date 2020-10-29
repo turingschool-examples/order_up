@@ -1,0 +1,9 @@
+<h1>All Ingredients</h1>
+
+<div>
+  <% @ingredients.each do |ingredient| %>
+    <section>
+      <p><%= ingredient.name %></p>
+    </section>
+  <% end %>
+</div>
