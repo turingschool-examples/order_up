@@ -1,0 +1,488 @@
+{
+  "RSpec": {
+    "coverage": {
+      "/Users/cydkyd/turing/2mod/independent_challenges/order_up/config/environment.rb": {
+        "lines": [
+          null,
+          1,
+          null,
+          null,
+          1
+        ]
+      },
+      "/Users/cydkyd/turing/2mod/independent_challenges/order_up/config/application.rb": {
+        "lines": [
+          1,
+          null,
+          1,
+          null,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          null,
+          null,
+          null,
+          null,
+          1,
+          null,
+          1,
+          1,
+          null,
+          1,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          1,
+          null,
+          null
+        ]
+      },
+      "/Users/cydkyd/turing/2mod/independent_challenges/order_up/config/boot.rb": {
+        "lines": [
+          1,
+          null,
+          1,
+          1
+        ]
+      },
+      "/Users/cydkyd/turing/2mod/independent_challenges/order_up/config/environments/test.rb": {
+        "lines": [
+          1,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          1,
+          null,
+          null,
+          null,
+          null,
+          1,
+          null,
+          null,
+          1,
+          1,
+          null,
+          null,
+          null,
+          null,
+          1,
+          1,
+          null,
+          null,
+          1,
+          null,
+          null,
+          1,
+          null,
+          null,
+          1,
+          null,
+          1,
+          null,
+          null,
+          null,
+          null,
+          1,
+          null,
+          null,
+          1,
+          null,
+          null,
+          null,
+          null
+        ]
+      },
+      "/Users/cydkyd/turing/2mod/independent_challenges/order_up/config/initializers/application_controller_renderer.rb": {
+        "lines": [
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ]
+      },
+      "/Users/cydkyd/turing/2mod/independent_challenges/order_up/config/initializers/assets.rb": {
+        "lines": [
+          null,
+          null,
+          null,
+          1,
+          null,
+          null,
+          null,
+          null,
+          1,
+          null,
+          null,
+          null,
+          null,
+          null
+        ]
+      },
+      "/Users/cydkyd/turing/2mod/independent_challenges/order_up/config/initializers/backtrace_silencers.rb": {
+        "lines": [
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ]
+      },
+      "/Users/cydkyd/turing/2mod/independent_challenges/order_up/config/initializers/content_security_policy.rb": {
+        "lines": [
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ]
+      },
+      "/Users/cydkyd/turing/2mod/independent_challenges/order_up/config/initializers/cookies_serializer.rb": {
+        "lines": [
+          null,
+          null,
+          null,
+          null,
+          1
+        ]
+      },
+      "/Users/cydkyd/turing/2mod/independent_challenges/order_up/config/initializers/filter_parameter_logging.rb": {
+        "lines": [
+          null,
+          null,
+          null,
+          1
+        ]
+      },
+      "/Users/cydkyd/turing/2mod/independent_challenges/order_up/config/initializers/inflections.rb": {
+        "lines": [
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ]
+      },
+      "/Users/cydkyd/turing/2mod/independent_challenges/order_up/config/initializers/mime_types.rb": {
+        "lines": [
+          null,
+          null,
+          null,
+          null
+        ]
+      },
+      "/Users/cydkyd/turing/2mod/independent_challenges/order_up/config/initializers/wrap_parameters.rb": {
+        "lines": [
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          1,
+          2,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ]
+      },
+      "/Users/cydkyd/turing/2mod/independent_challenges/order_up/config/routes.rb": {
+        "lines": [
+          1,
+          null,
+          1,
+          1,
+          1,
+          null,
+          null
+        ]
+      },
+      "/Users/cydkyd/turing/2mod/independent_challenges/order_up/app/helpers/application_helper.rb": {
+        "lines": [
+          1,
+          null
+        ]
+      },
+      "/Users/cydkyd/turing/2mod/independent_challenges/order_up/spec/features/dishes/show_spec.rb": {
+        "lines": [
+          1,
+          null,
+          1,
+          1,
+          1,
+          null,
+          2,
+          2,
+          null,
+          2,
+          2,
+          null,
+          2,
+          2,
+          2,
+          2,
+          null,
+          2,
+          2,
+          2,
+          2,
+          null,
+          null,
+          1,
+          1,
+          null,
+          1,
+          1,
+          null,
+          null,
+          1,
+          1,
+          null,
+          1,
+          null,
+          null,
+          null
+        ]
+      },
+      "/Users/cydkyd/turing/2mod/independent_challenges/order_up/spec/models/chef_spec.rb": {
+        "lines": [
+          1,
+          null,
+          1,
+          1,
+          null,
+          2,
+          2,
+          null,
+          2,
+          2,
+          null,
+          2,
+          2,
+          2,
+          2,
+          null,
+          2,
+          2,
+          2,
+          2,
+          null,
+          null,
+          1,
+          2,
+          null,
+          null,
+          1,
+          1,
+          null,
+          null
+        ]
+      },
+      "/Users/cydkyd/turing/2mod/independent_challenges/order_up/app/models/chef.rb": {
+        "lines": [
+          1,
+          1,
+          1,
+          null,
+          1,
+          2,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ]
+      },
+      "/Users/cydkyd/turing/2mod/independent_challenges/order_up/app/models/application_record.rb": {
+        "lines": [
+          1,
+          1,
+          null
+        ]
+      },
+      "/Users/cydkyd/turing/2mod/independent_challenges/order_up/spec/models/dish_ingredient_spec.rb": {
+        "lines": [
+          1,
+          null,
+          1,
+          1,
+          2,
+          2,
+          null,
+          null,
+          1,
+          null,
+          null
+        ]
+      },
+      "/Users/cydkyd/turing/2mod/independent_challenges/order_up/app/models/dish_ingredient.rb": {
+        "lines": [
+          1,
+          1,
+          1,
+          null
+        ]
+      },
+      "/Users/cydkyd/turing/2mod/independent_challenges/order_up/spec/models/dish_spec.rb": {
+        "lines": [
+          1,
+          null,
+          1,
+          1,
+          null,
+          4,
+          4,
+          null,
+          4,
+          4,
+          null,
+          4,
+          4,
+          4,
+          4,
+          null,
+          4,
+          4,
+          4,
+          4,
+          null,
+          null,
+          1,
+          2,
+          2,
+          2,
+          null,
+          null,
+          1,
+          1,
+          null,
+          null
+        ]
+      },
+      "/Users/cydkyd/turing/2mod/independent_challenges/order_up/app/models/dish.rb": {
+        "lines": [
+          1,
+          1,
+          1,
+          1,
+          1,
+          null,
+          1,
+          4,
+          null,
+          null
+        ]
+      },
+      "/Users/cydkyd/turing/2mod/independent_challenges/order_up/spec/models/ingredient_spec.rb": {
+        "lines": [
+          1,
+          null,
+          1,
+          1,
+          2,
+          2,
+          null,
+          null
+        ]
+      },
+      "/Users/cydkyd/turing/2mod/independent_challenges/order_up/app/models/ingredient.rb": {
+        "lines": [
+          1,
+          1,
+          1,
+          null
+        ]
+      },
+      "/Users/cydkyd/turing/2mod/independent_challenges/order_up/app/controllers/chefs_controller.rb": {
+        "lines": [
+          1,
+          1,
+          1,
+          null,
+          null
+        ]
+      },
+      "/Users/cydkyd/turing/2mod/independent_challenges/order_up/app/controllers/application_controller.rb": {
+        "lines": [
+          1,
+          null
+        ]
+      },
+      "/Users/cydkyd/turing/2mod/independent_challenges/order_up/app/controllers/dish_ingredients_controller.rb": {
+        "lines": [
+          1,
+          1,
+          1,
+          1,
+          null,
+          null
+        ]
+      },
+      "/Users/cydkyd/turing/2mod/independent_challenges/order_up/app/controllers/dishes_controller.rb": {
+        "lines": [
+          1,
+          1,
+          2,
+          null,
+          null
+        ]
+      }
+    },
+    "timestamp": 1610131621
+  }
+}
