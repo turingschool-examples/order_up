@@ -15,13 +15,10 @@ describe "As a visitor" do
       @ingredient_4 = Ingredient.create!(name: "D", calories: 50)
       
       Recipe.create!(dish: @dish_1, ingredient: @ingredient_1, ingredient_quantity: 2)
-      Recipe.create!(dish: @dish_1, ingredient: @ingredient_2, ingredient_quantity: 1)
       Recipe.create!(dish: @dish_1, ingredient: @ingredient_3, ingredient_quantity: 3)
       
       Recipe.create!(dish: @dish_2, ingredient: @ingredient_1, ingredient_quantity: 2)
-      Recipe.create!(dish: @dish_2, ingredient: @ingredient_2, ingredient_quantity: 1)
       
-      Recipe.create!(dish: @dish_3, ingredient: @ingredient_1, ingredient_quantity: 1)
       Recipe.create!(dish: @dish_3, ingredient: @ingredient_2, ingredient_quantity: 1)
       Recipe.create!(dish: @dish_3, ingredient: @ingredient_3, ingredient_quantity: 1)
       Recipe.create!(dish: @dish_3, ingredient: @ingredient_3, ingredient_quantity: 1)
@@ -32,6 +29,16 @@ describe "As a visitor" do
       within("#chef") do 
         expect(page).to have_content(@bob.name)
         expect(page).to have_link("#{@bob.name}'s Ingredients")
+      end
+    end
+
+    it 'shows the chefs most popular ingredients' do
+      visit chef_path(@bob.id)
+
+      within("#top-ingredients") do
+        expect(page).to have_content("Top 3 Ingredients")
+        expect(@ingredient_3.name).to appear_before(@ingredient_1.name) 
+        expect(@ingredient_1.name).to appear_before(@ingredient_2.name) 
       end
     end
   end

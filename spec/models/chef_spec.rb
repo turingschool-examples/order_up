@@ -23,16 +23,15 @@ RSpec.describe Chef, type: :model do
     @ingredient_4 = Ingredient.create!(name: "D", calories: 50)
     
     Recipe.create!(dish: @dish_1, ingredient: @ingredient_1, ingredient_quantity: 2)
-    Recipe.create!(dish: @dish_1, ingredient: @ingredient_2, ingredient_quantity: 1)
-    Recipe.create!(dish: @dish_1, ingredient: @ingredient_3, ingredient_quantity: 3)
-    
-    Recipe.create!(dish: @dish_2, ingredient: @ingredient_1, ingredient_quantity: 2)
-    Recipe.create!(dish: @dish_2, ingredient: @ingredient_2, ingredient_quantity: 1)
+    Recipe.create!(dish: @dish_1, ingredient: @ingredient_2, ingredient_quantity: 1)   
+    Recipe.create!(dish: @dish_1, ingredient: @ingredient_3, ingredient_quantity: 3) 
+              
+    Recipe.create!(dish: @dish_2, ingredient: @ingredient_1, ingredient_quantity: 2)   
     
     Recipe.create!(dish: @dish_3, ingredient: @ingredient_1, ingredient_quantity: 1)
     Recipe.create!(dish: @dish_3, ingredient: @ingredient_2, ingredient_quantity: 1)
     Recipe.create!(dish: @dish_3, ingredient: @ingredient_3, ingredient_quantity: 1)
-    Recipe.create!(dish: @dish_3, ingredient: @ingredient_3, ingredient_quantity: 1)
+    Recipe.create!(dish: @dish_3, ingredient: @ingredient_3, ingredient_quantity: 2)
   end
   
   describe 'instance methods' do
@@ -40,5 +39,11 @@ RSpec.describe Chef, type: :model do
       expect(@bob.uniq_ingredients).to eq([@ingredient_1, @ingredient_2, @ingredient_3])
     end
     
+    it 'top_3_ingredients' do
+      @dish_4 = @bob.dishes.create!(name: "Dish 4", description: "massive delicious")
+      Recipe.create!(dish: @dish_4, ingredient: @ingredient_1, ingredient_quantity: 2)
+
+      expect(@bob.top_3_ingredients).to eq([@ingredient_1, @ingredient_3, @ingredient_2])
+    end
   end
 end
