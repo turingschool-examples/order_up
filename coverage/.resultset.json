@@ -242,6 +242,7 @@
         "lines": [
           1,
           null,
+          1,
           null
         ]
       },
@@ -267,42 +268,6 @@
           null
         ]
       },
-      "/Users/cydkyd/turing/2mod/independent_challenges/order_up/spec/models/dish_ingredient_spec.rb": {
-        "lines": [
-          1,
-          null,
-          1,
-          1,
-          2,
-          2,
-          null,
-          null,
-          1,
-          null,
-          null
-        ]
-      },
-      "/Users/cydkyd/turing/2mod/independent_challenges/order_up/app/models/dish_ingredient.rb": {
-        "lines": [
-          1,
-          1,
-          1,
-          null
-        ]
-      },
-      "/Users/cydkyd/turing/2mod/independent_challenges/order_up/spec/models/dish_spec.rb": {
-        "lines": [
-          1,
-          null,
-          1,
-          1,
-          2,
-          2,
-          2,
-          null,
-          null
-        ]
-      },
       "/Users/cydkyd/turing/2mod/independent_challenges/order_up/app/models/dish.rb": {
         "lines": [
           1,
@@ -310,17 +275,9 @@
           1,
           1,
           1,
-          null
-        ]
-      },
-      "/Users/cydkyd/turing/2mod/independent_challenges/order_up/spec/models/ingredient_spec.rb": {
-        "lines": [
-          1,
           null,
           1,
-          1,
-          2,
-          2,
+          3,
           null,
           null
         ]
@@ -332,8 +289,31 @@
           1,
           null
         ]
+      },
+      "/Users/cydkyd/turing/2mod/independent_challenges/order_up/app/models/dish_ingredient.rb": {
+        "lines": [
+          1,
+          1,
+          1,
+          null
+        ]
+      },
+      "/Users/cydkyd/turing/2mod/independent_challenges/order_up/app/controllers/dishes_controller.rb": {
+        "lines": [
+          1,
+          1,
+          2,
+          null,
+          null
+        ]
+      },
+      "/Users/cydkyd/turing/2mod/independent_challenges/order_up/app/controllers/application_controller.rb": {
+        "lines": [
+          1,
+          null
+        ]
       }
     },
-    "timestamp": 1610124131
+    "timestamp": 1610125563
   }
 }
