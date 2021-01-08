@@ -23,14 +23,15 @@ describe 'As a visitor' do
     it 'Shows me the dish name and description, list of ingredients and chefs name' do
       visit dish_path(@dish_1)
 
-      within('#dish') do
       expect(page).to have_content(@dish_1.name)
       expect(page).to_not have_content(@dish_2.name)
       expect(page).to have_content(@dish_1.description)
-      expect(page).to have_content(@ingredient_1.name)
-      expect(page).to have_content(@ingredient_2.name)
-      expect(page).to have_content(@ingredient_3.name)
-      expect(page).to have_content(@chef_1.name)
+
+      within(".dish_ingredients") do
+      expect(page).to have_link(@ingredient_1.name)
+      expect(page).to have_link(@ingredient_2.name)
+      expect(page).to have_link(@ingredient_3.name)
+      expect(page).to have_link(@chef_1.name)
       end
     end
   end
