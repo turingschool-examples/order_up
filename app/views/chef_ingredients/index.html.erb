@@ -1,5 +1,5 @@
 <h1><%= @chef.name %>'s Ingredients</h1>
 
-<% @chef.ingredients.uniq.each do |ingredient| %>
+<% @chef.uniq_ingredients.each do |ingredient| %>
   <h2><%= ingredient.name %></h2>
 <% end %>
