@@ -1,4 +1,7 @@
 <h1> <%= @chef.name %> </h1>
 
 <p> <%= link_to "Chef's ingredients", "/chefs/#{@chef.id}/ingredients" %> <p>
+
+Most Popular Ingredients
+<%= @chef.ingredients.top_three %>
 <%# <p> <%= link_to "Chef's Ingredients", ingredients_path %>
