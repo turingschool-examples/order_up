@@ -1,15 +1,8 @@
 require 'rails_helper'
 
-RSpec.describe Chef, type: :model do
-  describe "validations" do
-    it {should validate_presence_of :name}
-  end
-  describe "relationships" do
-    it {should have_many :dishes}
-  end
-
-  describe 'instance methods' do
-    it 'returns all ingredients a chef uses' do
+RSpec.describe 'the ingredients index page for a chef' do
+  describe 'when I visit a chef ingredients index page' do
+    it 'shows all the ingredients used in all of their recipes' do
       @chef = Chef.create!(name: "Gordon Ramsey")
 
       @dish = Dish.create!(name: "Beef Wellington", description: "A delightful beef lightly coated", chef_id: @chef.id)
@@ -26,7 +19,12 @@ RSpec.describe Chef, type: :model do
       DishIngredient.create!(dish: @dish2, ingredient: @pasta)
       DishIngredient.create!(dish: @dish2, ingredient: @flour)
 
-      expect(@chef.all_ingredients).to eq([@beef, @flour, @cream, @pasta])
+      visit "/chef/#{@chef.id}/ingredients"
+
+      expect(page).to have_content(@beef.name)
+      expect(page).to have_content(@flour.name)
+      expect(page).to have_content(@cream.name)
+      expect(page).to have_content(@pasta.name)
     end
   end
 end
