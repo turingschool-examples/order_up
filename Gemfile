@@ -43,6 +43,7 @@ group :development, :test do
   gem 'simplecov'
   gem 'shoulda-matchers'
   gem 'orderly'
+  gem 'awesome_print'
 end
 
 group :development do
