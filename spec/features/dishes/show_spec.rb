@@ -19,6 +19,7 @@ describe "dish show page" do
     within("#dish-info") do
       expect(page).to have_content(@dish.name)
       expect(page).to have_content(@dish.description)
+      expect(page).to have_content(@dish.calorie_count)
     end
   end
 
@@ -36,9 +37,4 @@ describe "dish show page" do
     end
   end
 
-  it "has the dish's calorie count" do
-    within("#calorie-count") do
-      expect(page).to have_content(@dish.calorie_count)
-    end
-  end
 end
