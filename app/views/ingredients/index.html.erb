@@ -1,10 +1,5 @@
 <h1><%= @chef.name %></h1>
 
-<section class="list-ingredients">
-  <h3>List of Ingredients</h3>
-  <ul>
-  <% @chef.unique_ingredients_list.each do |ingredient| %>
-    <li class="ingredient"><%= ingredient.name %> - <%= ingredient.calories %> calories</li>
-  <% end %>
-  </ul>
-</section>
+<%= render partial: 'ingredient_list', locals: {
+  collection: @chef.unique_ingredients_list
+} %>

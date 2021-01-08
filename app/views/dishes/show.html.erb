@@ -10,11 +10,7 @@
   <p>Total Calories: <%= @dish.total_calories %></p>
 </section>
 
-<section class="list-ingredients">
-  <h3>List of Ingredients</h3>
-  <ul>
-  <% @dish.ingredients.each do |ingredient| %>
-    <li class="ingredient"><%= ingredient.name %> - <%= ingredient.calories %> calories</li>
-  <% end %>
-  </ul>
-</section>
+
+<%= render partial: 'ingredient_list', locals: {
+  collection: @dish.ingredients
+} %>
