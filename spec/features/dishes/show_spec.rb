@@ -27,12 +27,12 @@ describe 'As a visitor' do
       expect(page).to_not have_content(@dish_2.name)
       expect(page).to have_content(@dish_1.description)
       expect(page).to have_link(@dish_1.chef.name)
-      save_and_open_page
+      expect(page).to have_link(@chef_1.name)
+
       within(".dish_ingredients") do
       expect(page).to have_link(@ingredient_1.name)
       expect(page).to have_link(@ingredient_2.name)
       expect(page).to have_link(@ingredient_3.name)
-      expect(page).to have_link(@chef_1.name)
       end
     end
     it 'Shows the dish total calories' do
