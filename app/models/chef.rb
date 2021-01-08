@@ -3,6 +3,6 @@ class Chef <ApplicationRecord
   has_many :dishes
 
   def all_ingredients
-    Dish.where(:chef_)
+    Ingredient.joins(:dishes).where(dishes: {chef_id: id}).pluck(:name)
   end
 end

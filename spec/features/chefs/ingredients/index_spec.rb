@@ -11,7 +11,10 @@ RSpec.describe "As a visitor" do
       @pecan_salad = @chef.dishes.create!(name: "Salad", description: "It's green!")
       @lettuce = @pecan_salad.ingredients.create!(name: "lettuce", calories: 20)
       @pecan = @pecan_salad.ingredients.create!(name: "pecans", calories: 120)
+
+      @salmon_fillet = Ingredient.create!(name: "salmon_fillet", calories: 650)
     end
+    
     it "lists all the ingredients in all their dishes" do
       visit "/chefs/#{@chef.id}/ingredients"
 
@@ -19,6 +22,8 @@ RSpec.describe "As a visitor" do
       expect(page).to have_content(@alfredo_sauce.name)
       expect(page).to have_content(@lettuce.name)
       expect(page).to have_content(@pecan.name)
+
+      expect(page).not_to have_content(@salmon_fillet)
     end
   end
 end
