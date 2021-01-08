@@ -1,4 +1,4 @@
 class DishIngredient < ApplicationRecord
-  has_many :dishes
-  has_many :ingredients
+  belongs_to :dish
+  belongs_to :ingredient
 end
