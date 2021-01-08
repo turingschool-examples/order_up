@@ -9,7 +9,7 @@ RSpec.describe Chef, type: :model do
     it {should have_many(:ingredients).through(:dishes)}
   end
 
-  describe "instance methods" do
+  describe "delegate methods" do
     let(:chef) {Chef.create!(name: "Martha Stewart")}
     let!(:ingredient_1) {Ingredient.create(name: "macaroni", calories: 390)}
     let!(:ingredient_2) {Ingredient.create(name: "cheese", calories: 531)}
@@ -20,9 +20,10 @@ RSpec.describe Chef, type: :model do
     let!(:dish_1) {chef.dishes.create!(name: "Macaroni and Cheese", description: "cheese and pasta", ingredients: [ingredient_1, ingredient_2, ingredient_3])}
     let!(:dish_2) {chef.dishes.create!(name: "Eggplant Casserole", description: "cheesy eggplant casserole", ingredients: [ingredient_2, ingredient_3, ingredient_4, ingredient_5])}
     let!(:dish_3) {chef.dishes.create!(name: "Tomato Soup", description: "creamy tomato soup", ingredients: [ingredient_3, ingredient_5])}
+    let!(:dish_4) {chef.dishes.create!(name: "Cheese Steak", description: "cheesy steak", ingredients: [ingredient_2, ingredient_6])}
 
-    it '#top_ingredients' do
-      expect(chef.top_ingredients).to eq([ingredient_2, ingredient_3, ingredeint_5])
+    it 'top_ingredients' do
+      expect(chef.top_ingredients).to eq([ingredient_2, ingredient_3, ingredient_5])
     end
   end
 end
