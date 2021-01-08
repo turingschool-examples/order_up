@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe 'Dish show page' do
+RSpec.describe 'Chef show page' do
   before :each do
     @gusteau = Chef.create!(name: "Gusteau")
 
@@ -16,32 +16,18 @@ RSpec.describe 'Dish show page' do
     IngredientsList.create!(dish_id: @soupy.id, ingredient_id: @cream.id)
     IngredientsList.create!(dish_id: @pbsquid.id, ingredient_id: @potato.id)
     IngredientsList.create!(dish_id: @pbsquid.id, ingredient_id: @cream.id)
+
+    visit "/chefs/#{@gusteau.id}"
   end
 
-  it 'shows the name and description of each dish' do
-    visit "/dishes/#{@soupy.id}"
+  it "displays the name of the chef" do
 
-    expect(page).to have_content(@soupy.name)
-    expect(page).to have_content(@soupy.description)
+    expect(page).to have_content(@gusteau.name)
   end
 
-  it 'shows the ingredients used in the dish' do
-    visit "/dishes/#{@soupy.id}"
+  it "contains a link that takes you to the chef ingredient index page" do
+    click_link("My Ingredients")
 
-    ingredients = all('.ingredient-name')
-    expect(ingredients[0].text).to eq(@potato.name)
-    expect(ingredients[1].text).to eq(@cream.name)
-  end
-
-  it 'shows the name of the chef who created the dish' do
-    visit "/dishes/#{@soupy.id}"
-
-    expect(page).to have_content(@soupy.creator)
-  end
-
-  it 'shows the total calories used in the dish' do
-    visit "/dishes/#{@soupy.id}"
-
-    expect(page).to have_content("Total Calories: #{@soupy.total_calories}")
+    expect(current_path).to eq("/chefs/#{@gusteau.id}/ingredients/index")
   end
 end
