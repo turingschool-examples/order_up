@@ -30,4 +30,8 @@ describe 'Dishes Show Page' do
   it 'should display the chefs name' do
     expect(page).to have_content(@c1.name)
   end
+
+  it 'should display the total calories of dish' do
+    expect(page).to have_content("Total Calories: #{@d1.calorie_count}")
+  end
 end
