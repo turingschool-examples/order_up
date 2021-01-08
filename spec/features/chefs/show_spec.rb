@@ -24,6 +24,16 @@ RSpec.describe 'chef show page' do
       within "#headlines" do
         expect(page).to have_content("The Spectacular Chef #{@chef.name}!")
       end
+
+      within ".my_dishes" do
+        within "#dish-#{@curry.id}" do
+          expect(page).to have_content("#{@curry.name}")
+        end
+        within "#dish-#{@pudding.id}" do
+          expect(page).to have_content("#{@pudding.name}")
+        end
+      end
+
       within "#top_3" do
         within "#ingredient-#{@in3.id}" do
           expect(page).to have_content("#{@in3.name}")

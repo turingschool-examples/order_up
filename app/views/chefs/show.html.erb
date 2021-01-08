@@ -6,7 +6,18 @@
   <h3>The Spectacular Chef <%= @chef.name %>!</h3>
 </section>
 
+<section class="my_dishes">
+  <h3> My dishes(dont mind the obscure names) </h3>
+  <% @chef.dishes.each do |dish| %>
+    <section id="dish-<%= dish.id %>">
+      <p><%= link_to dish.name, chef_dish_path(@chef, dish) %></p>
+    </section>
+  <% end %>
+</section>
+
 <section id="top_3">
+  <h3>My Top 3 Ingredients!(again with the dune references)</h3>
+
   <% @chef.top_3_ingredients.each do |ingredient| %>
     <div id="ingredient-<%= ingredient.id %>">
       <%= ingredient.name %>

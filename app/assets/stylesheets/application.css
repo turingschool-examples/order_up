@@ -41,13 +41,6 @@
  padding: 2px;
  }
 
- .home {
-   color: black;
-   float: none;
-   word-spacing: 0px;
-   width: 150px;
- }
-
  li a:hover {
  background-color: red;
  }
