@@ -11,7 +11,7 @@ RSpec.describe "Ingredients Index" do
   let!(:dish_1) {chef.dishes.create!(name: "Macaroni and Cheese", description: "cheese and pasta", ingredients: [ingredient_1, ingredient_2, ingredient_3])}
   let!(:dish_2) {chef.dishes.create!(name: "Eggplant Casserole", description: "cheesy eggplant casserole", ingredients: [ingredient_2, ingredient_3, ingredient_4, ingredient_5])}
 
-  before(:each) {visit chef_path(chef)}
+  before(:each) {visit chef_ingredients_path(chef)}
 
   describe 'displays' do
     it 'a unique list of ingredients used by the chef' do
