@@ -7,5 +7,7 @@ RSpec.describe Dish, type: :model do
   end
   describe "relationships" do
     it {should belong_to :chef}
+    it {should have_many :ingredients_lists}
+    it {should have_many(:ingredients).through(:ingredients_lists)}
   end
 end
