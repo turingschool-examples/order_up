@@ -13,7 +13,6 @@ RSpec.describe 'dish show page', type: :feature do
 
     it 'i see the dish name, description, list of ingredients, and chefs name' do
       visit dish_path(@dish_1)
-      save_and_open_page
 
       expect(page).to have_content(@dish_1.name)
       expect(page).to have_content(@dish_1.description)
