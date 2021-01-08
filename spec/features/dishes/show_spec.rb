@@ -21,11 +21,12 @@ describe "dish show page" do
       expect(page).to have_content(@dish_1.description)
     end
 
-    within("#ingredients") do
+    within("#ingredients-info") do
       expect(page).to have_content(@ingr_1.name)
       expect(page).to have_content(@ingr_2.name)
       expect(page).to have_content(@ingr_3.name)
       expect(page).to have_content(@ingr_4.name)
+      expect(page).to have_content(@dish_1.ingredients.calorie_total)
     end
 
     within("#chef") do
