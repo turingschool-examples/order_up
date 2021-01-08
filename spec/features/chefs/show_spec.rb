@@ -24,5 +24,6 @@ RSpec.describe "Chef show page" do
     chef.popular_ingredients(3).each do | ingredient |
       expect(page).to have_content(ingredient)
     end
+    expect(page).not_to have_content(ice.name)
   end
 end
