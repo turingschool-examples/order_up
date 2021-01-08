@@ -20,7 +20,7 @@ RSpec.describe Ingredient do
     let!(:dish_4) {chef.dishes.create!(name: "Milk Steak", description: "milk steak", ingredients: [ingredient_3, ingredient_6])}
 
     it 'top_ingredients' do
-      expect(Ingredient.top_ingredients).to eq([ingredient_3, ingredient_2, ingredient_5])
+      expect(Ingredient.top_ingredients.to_set).to eq([ingredient_3, ingredient_2, ingredient_5].to_set)
     end
 
     it '.total_calories' do
