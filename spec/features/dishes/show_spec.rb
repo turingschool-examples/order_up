@@ -31,7 +31,7 @@ RSpec.describe 'Show Page' do
     end
     it 'can display total calories of all its ingredients' do
       within('section.dish-breakdown') do
-        expect(page).to have_content(@dish_1.total_calories)
+        expect(page).to have_content("Total Calories: #{@dish_1.total_calories}")
       end
     end
   end
