@@ -39,10 +39,41 @@ RSpec.describe 'Chef show page' do
   end
 
   it "displays the top 3 ingredients used by a chef" do
-    expect(page).to have_content(@ingredient2.name)
-    expect(page).to have_content(@ingredient3.name)
-    expect(page).to have_content(@ingredient5.name)
-    expect(page).to_not have_content(@ingredient1.name)
+    within ("#top_3") do
+      expect(page).to have_content(@ingredient2.name)
+      expect(page).to have_content(@ingredient3.name)
+      expect(page).to have_content(@ingredient5.name)
+      expect(page).to_not have_content(@ingredient1.name)
+    end
+  end
+
+  it "lists the chef dishes with ingredients beneath" do
+    save_and_open_page
+    within ("#dish-#{@dish1.id}") do
+      expect(page).to have_content(@ingredient1.name)
+      expect(page).to have_content(@ingredient2.name)
+      expect(page).to_not have_content(@ingredient5.name)
+    end
+    within ("#dish-#{@dish2.id}") do
+      expect(page).to have_content(@ingredient2.name)
+      expect(page).to have_content(@ingredient3.name)
+      expect(page).to_not have_content(@ingredient5.name)
+    end
+    within ("#dish-#{@dish3.id}") do
+      expect(page).to have_content(@ingredient4.name)
+      expect(page).to have_content(@ingredient5.name)
+      expect(page).to_not have_content(@ingredient6.name)
+    end
+    within ("#dish-#{@dish4.id}") do
+      expect(page).to have_content(@ingredient5.name)
+      expect(page).to have_content(@ingredient6.name)
+      expect(page).to_not have_content(@ingredient2.name)
+    end
+    within ("#dish-#{@dish5.id}") do
+      expect(page).to have_content(@ingredient7.name)
+      expect(page).to have_content(@ingredient3.name)
+      expect(page).to_not have_content(@ingredient2.name)
+    end
   end
 
 end
