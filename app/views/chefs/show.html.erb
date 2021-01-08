@@ -1,0 +1,5 @@
+<h3>
+  <%= "Chef: #{@chef.name}"%>
+  <%= link_to "Ingredients", chef_ingredients_path(@chef)%>
+  <%= render "pop_ingredients" %>
+</h3>
