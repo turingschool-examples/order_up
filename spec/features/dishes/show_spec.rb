@@ -12,10 +12,10 @@ RSpec.describe 'Dish show page' do
     @squid = Ingredient.create!(name: "A Whole Squid", calories: 103)
     @pb = Ingredient.create!(name: "Smooth Peanut Butter", calories: 16)
 
-    IngredientList.create!(dish_id: @soupy.id, ingredient_id: @potato.id)
-    IngredientList.create!(dish_id: @soupy.id, ingredient_id: @cream.id)
-    IngredientList.create!(dish_id: @pbsquid.id, ingredient_id: @potato.id)
-    IngredientList.create!(dish_id: @pbsquid.id, ingredient_id: @cream.id)
+    IngredientsList.create!(dish_id: @soupy.id, ingredient_id: @potato.id)
+    IngredientsList.create!(dish_id: @soupy.id, ingredient_id: @cream.id)
+    IngredientsList.create!(dish_id: @pbsquid.id, ingredient_id: @potato.id)
+    IngredientsList.create!(dish_id: @pbsquid.id, ingredient_id: @cream.id)
   end
 
   it 'shows the name and description of each dish' do
