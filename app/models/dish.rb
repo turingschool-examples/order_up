@@ -5,6 +5,6 @@ class Dish <ApplicationRecord
   has_many :ingredients, through: :recipes
 
   def calories
-    ingredients.map{ |i| i.calories}.sum
+    ingredients.pluck(:calories).sum
   end
 end
