@@ -1,5 +1,5 @@
 class DishesController < ApplicationController
-  before_action :set_dish
+  before_action :set_dish, only: [:show]
 
   def show
   end
