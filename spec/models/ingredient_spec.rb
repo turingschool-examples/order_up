@@ -17,14 +17,18 @@ RSpec.describe Ingredient do
     let!(:dish_1) {chef.dishes.create!(name: "Macaroni and Cheese", description: "cheese and pasta", ingredients: [ingredient_1, ingredient_2, ingredient_3])}
     let!(:dish_2) {chef.dishes.create!(name: "Eggplant Casserole", description: "cheesy eggplant casserole", ingredients: [ingredient_2, ingredient_3, ingredient_4, ingredient_5])}
     let!(:dish_3) {chef.dishes.create!(name: "Tomato Soup", description: "creamy tomato soup", ingredients: [ingredient_3, ingredient_5])}
-    let!(:dish_4) {chef.dishes.create!(name: "Milk Steak", description: "milk steak", ingredients: [ingredient_3, ingredient_6])}
+    let!(:dish_5) {chef.dishes.create!(name: "Creamy Cheese", description: "creamy cheese", ingredients: [ingredient_2, ingredient_3])}
 
     it 'top_ingredients' do
-      expect(Ingredient.top_ingredients.to_set).to eq([ingredient_3, ingredient_2, ingredient_5].to_set)
+      expect(Ingredient.top_ingredients).to eq([ingredient_3, ingredient_2, ingredient_5])
     end
 
     it '.total_calories' do
       expect(Ingredient.total_calories).to eq(1296)
+    end
+
+    it '.unique_ingredients' do
+      expect(Ingredient.unique_ingredients.to_set).to eq(Ingredient.all.to_set)
     end
   end
 end

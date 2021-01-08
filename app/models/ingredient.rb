@@ -7,6 +7,10 @@ class Ingredient < ApplicationRecord
   end
 
   def self.top_ingredients
-    unscope(:select).joins(:dish_ingredients).select("ingredients.*, count(*)").group(:id).order(count: :desc).limit(3)
+    select("ingredients.*, count(*)").joins(:dish_ingredients).group(:id).order(count: :desc).limit(3)
+  end
+
+  def self.unique_ingredients
+    distinct
   end
 end
