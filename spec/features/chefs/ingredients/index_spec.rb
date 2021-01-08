@@ -8,7 +8,7 @@ describe "chef show page" do
     @ingredient2 = Ingredient.create(name: "Chicken broth", calories: 20)
     @ingredient3 = Ingredient.create(name: "Chicken", calories: 55)
 
-    @dish = @chef.dishes.create(name: "Mac & Cheese", description: "its mac and cheese but theres also chicken")
+    @dish2 = @chef.dishes.create(name: "Mac & Cheese", description: "its mac and cheese but theres also chicken")
     @ingredient4 = Ingredient.create(name: "Macaroni", calories: 50)
     @ingredient5 = Ingredient.create(name: "Cheese", calories: 20)
     @ingredient6 = Ingredient.create(name: "Chicken", calories: 55)
@@ -16,6 +16,10 @@ describe "chef show page" do
     IngredientDish.create(ingredient: @ingredient1, dish: @dish, amount: 1)
     IngredientDish.create(ingredient: @ingredient2, dish: @dish, amount: 2)
     IngredientDish.create(ingredient: @ingredient3, dish: @dish, amount: 3)
+
+    IngredientDish.create(ingredient: @ingredient4, dish: @dish2, amount: 1)
+    IngredientDish.create(ingredient: @ingredient5, dish: @dish2, amount: 2)
+    IngredientDish.create(ingredient: @ingredient6, dish: @dish2, amount: 3)
 
     visit "/chefs/#{@chef.id}/ingredients"
   end
