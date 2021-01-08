@@ -34,7 +34,7 @@ RSpec.describe 'Dishes show page' do
   end
 
   it "displays the total calorie count for the dish" do
-    expect(page).to have_content(@dish.calorie_count)
+    expect(page).to have_content(@dish1.calorie_count)
   end
 
 end
