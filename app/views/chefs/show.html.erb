@@ -1,1 +1,3 @@
 <h1>Chef <%= @chef.name %>'s Page!</h1>
+
+<%= link_to 'View all ingredients they use', "/chefs/#{@chef.id}/ingredients", method: :get %>
