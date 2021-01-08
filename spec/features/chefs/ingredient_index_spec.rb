@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-describe "when I visit a chef's show page" do
+describe "a chef's ingredient index page" do
   before :each do
     @chef_1 = Chef.create!(name: "Bob")
 
@@ -13,6 +13,7 @@ describe "when I visit a chef's show page" do
     @ingr_4 = Ingredient.create!(name: "bun", calories: 200)
     @ingr_5 = Ingredient.create!(name: "shallots", calories: 50)
     @ingr_6 = Ingredient.create!(name: "chedder", calories: 250)
+    @ingr_7 = Ingredient.create!(name: "strawberries", calories: 75)
 
     @dish_1.ingredients << @ingr_1
     @dish_1.ingredients << @ingr_2
@@ -24,16 +25,15 @@ describe "when I visit a chef's show page" do
     @dish_2.ingredients << @ingr_5
     @dish_2.ingredients << @ingr_6
   end
-  it "can see the name of that chef" do
-    visit "/chefs/#{@chef_1.id}"
+  it "can see a unique list of all ingredients they use" do
+    visit "/chefs/#{@chef_1.id}/ingredients"
 
-    expect(page).to have_content(@chef_1.name)
-  end
-  it "can click a link to get to a chef's ingredient index page" do
-    visit "/chefs/#{@chef_1.id}"
-
-    click_link "View all ingredients they use"
-
-    expect(current_path).to eq("/chefs/#{@chef_1.id}/ingredients")
+    expect(page).to have_content(@ingr_1.name, count: 1)
+    expect(page).to have_content(@ingr_2.name, count: 1)
+    expect(page).to have_content(@ingr_3.name, count: 1)
+    expect(page).to have_content(@ingr_4.name, count: 1)
+    expect(page).to have_content(@ingr_5.name, count: 1)
+    expect(page).to have_content(@ingr_6.name, count: 1)
+    expect(page).to_not have_content(@ingr_7.name)
   end
 end
