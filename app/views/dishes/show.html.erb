@@ -1,0 +1,14 @@
+<h2><%= @dish.chef.name %>'s Delicious Dish!</h2>
+
+<section id="dish-<%= @dish.id %>">
+  <p>Name: <%= @dish.name %></p>
+  <p>Total Calories: <%= @dish.total_calories %></p>
+  <p>About this dish: <%= @dish.description %></p>
+</section>
+
+<% @dish.ingredients.each do |ingredient| %>
+  <section id="ingredient-<%= ingredient.id %>">
+    <p>Name: <%= ingredient.name %></p>
+    <p>Calories: <%= ingredient.calories %></p>
+  </section>
+<% end %>

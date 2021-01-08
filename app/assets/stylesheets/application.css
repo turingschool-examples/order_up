@@ -13,3 +13,30 @@
  *= require_tree .
  *= require_self
  */
+
+ .navbar {
+ list-style-type: none;
+ color:black;
+ margin: 0;
+ padding: 0;
+ overflow: hidden;
+ }
+ li {
+ font-size: 1.0em;
+ word-spacing: 0px;
+ padding: 5px;
+ }
+
+ li a {
+ color: black;
+ padding: 2px;
+ }
+
+ li a:hover {
+ background-color: red;
+ }
+
+ body {
+   background-image: url("https://www.tvovermind.com/wp-content/uploads/2017/10/Ratatouilleconcept.jpg");
+   background-size: fit;
+ }

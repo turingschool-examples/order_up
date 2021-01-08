@@ -1,0 +1,7 @@
+<ol>
+  <% @chefs.each do |chef| %>
+    <section id="chef-<%= chef.id %>">
+      <li class="chefs"><%= link_to chef.name, chef_path(chef) %></li>
+    </section
+  <% end %>
+</ol>
