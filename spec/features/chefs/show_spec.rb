@@ -23,8 +23,6 @@ describe "chef show page" do
 
     IngredientDish.create(ingredient: @ingredient1, dish: @dish3, amount: 1)
     IngredientDish.create(ingredient: @ingredient2, dish: @dish3, amount: 2)
-
-
     visit "/chefs/#{@chef.id}"
   end
 

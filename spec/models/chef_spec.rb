@@ -34,5 +34,9 @@ RSpec.describe Chef, type: :model do
     it "top_ingredients" do
       expect(@chef.top_ingredients.to_a).to eq([@ingredient1, @ingredient2, @ingredient3])
     end
+
+    it "unique_ingredients" do
+      expect(@chef.unique_ingredients.to_a).to eq([@ingredient1.name,@ingredient2.name,@ingredient3.name,@ingredient4.name,@ingredient5.name])
+    end
   end
 end
