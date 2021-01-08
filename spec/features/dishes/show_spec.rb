@@ -1,10 +1,9 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the rails db:seed command (or created alongside the database with db:setup).
-#
-# Examples:
-#
-#   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
-#   Character.create(name: 'Luke', movie: movies.first)
+require 'rails_helper'
+
+RSpec.describe 'As a visitor', type: :feature do
+  describe 'When I visit a dishes show page' do
+
+    it 'I see the dishs name, description, ingredient list and chef' do
 
       boyardee = Chef.create!(name: 'le chef')
       meatball = Dish.create!(name: 'Meatball', description: 'Thats a soo spicy', chef_id: boyardee.id)
@@ -15,3 +14,16 @@
       DishIngredient.create!(dish_id: meatball.id, ingredient_id: beef.id)
       DishIngredient.create!(dish_id: meatball.id, ingredient_id: bread.id)
       DishIngredient.create!(dish_id: meatball.id, ingredient_id: sauce.id)
+
+      visit "/dishes/#{meatball.id}"
+      
+
+      expect(page).to have_content(meatball.name)
+      expect(page).to have_content(meatball.description)
+      expect(page).to have_content(beef.name)
+      expect(page).to have_content(bread.name)
+      expect(page).to have_content(sauce.name)
+      expect(page).to have_content(boyardee.name)
+    end
+  end
+end
