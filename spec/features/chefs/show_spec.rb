@@ -32,11 +32,10 @@ describe "chef show page" do
   end
 
   it "displays the chef's top 3 ingredients" do
-    within("top-ingredients") do
-      expect(page).to have_content(@ingredient1.name)
-      expect(page).to have_content(@ingredient2.name)
-      expect(page).to have_content(@ingredient3.name)
-    end
+
+    expect(page).to have_content(@ingredient1.name)
+    expect(page).to have_content(@ingredient2.name)
+    expect(page).to have_content(@ingredient3.name)
   end
 
 end
