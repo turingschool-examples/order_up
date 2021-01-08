@@ -42,8 +42,11 @@ group :development, :test do
   gem 'factory_bot_rails'
   gem 'faker'
   gem 'pry'
+  gem "orderly"
   gem 'simplecov'
   gem 'shoulda-matchers'
+  gem "awesome_print", :require => "ap"
+  gem "hirb"
 end
 
 group :development do
