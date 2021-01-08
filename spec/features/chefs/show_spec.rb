@@ -23,7 +23,7 @@ RSpec.describe 'Show Page' do
     it 'can click on ingredients and be redirected to the chef ingredient index page' do
       click_on "List of Ingredients #{@chef.name} Uses"
 
-      expect(current_path).to eq("chefs/#{@chef.id}/ingredients")
+      expect(current_path).to eq(chef_ingredients_path(@chef.id))
     end
   end
 end

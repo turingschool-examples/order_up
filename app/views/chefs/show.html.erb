@@ -1,0 +1,10 @@
+<h1><%= @chef.name %></h1>
+<%= link_to "List of Ingredients #{@chef.name} Uses", chef_ingredients_path(@chef.id) %>
+<section class="list-ingredients">
+  <h3>List of Ingredients</h3>
+  <ul>
+  <% @chef.ingredients.each do |ingredient| %>
+    <li class="ingredient"><%= ingredient.name %> - <%= ingredient.calories %> calories</li>
+  <% end %>
+  </ul>
+</section>
