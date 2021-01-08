@@ -2,6 +2,6 @@
 <%= link_to "See Used Ingredients", "/chefs/#{@chef.id}/ingredients" %>
 <ul id="top-ingredients">
   <% @chef.top_ingredients.each do |ingredient| %>
-    <li><%= ingredient.name %></li>
+    <li><%= ingredient %></li>
   <% end %>
 </ul>
