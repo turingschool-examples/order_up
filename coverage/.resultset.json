@@ -242,6 +242,8 @@
         "lines": [
           1,
           null,
+          1,
+          null,
           null
         ]
       },
@@ -267,15 +269,13 @@
           null
         ]
       },
-      "/Users/pmac/_turing/2mod/challenges/order_up/spec/models/dish_ingredient_spec.rb": {
+      "/Users/pmac/_turing/2mod/challenges/order_up/app/models/dish.rb": {
         "lines": [
           1,
-          null,
           1,
           1,
-          2,
-          2,
-          null,
+          1,
+          1,
           null
         ]
       },
@@ -287,45 +287,6 @@
           null
         ]
       },
-      "/Users/pmac/_turing/2mod/challenges/order_up/spec/models/dish_spec.rb": {
-        "lines": [
-          1,
-          null,
-          1,
-          1,
-          2,
-          2,
-          null,
-          1,
-          2,
-          2,
-          2,
-          null,
-          null
-        ]
-      },
-      "/Users/pmac/_turing/2mod/challenges/order_up/app/models/dish.rb": {
-        "lines": [
-          1,
-          1,
-          1,
-          1,
-          1,
-          null
-        ]
-      },
-      "/Users/pmac/_turing/2mod/challenges/order_up/spec/models/ingredient_spec.rb": {
-        "lines": [
-          1,
-          null,
-          1,
-          1,
-          2,
-          2,
-          null,
-          null
-        ]
-      },
       "/Users/pmac/_turing/2mod/challenges/order_up/app/models/ingredient.rb": {
         "lines": [
           1,
@@ -333,8 +294,23 @@
           1,
           null
         ]
+      },
+      "/Users/pmac/_turing/2mod/challenges/order_up/app/controllers/dishes_controller.rb": {
+        "lines": [
+          1,
+          1,
+          1,
+          null,
+          null
+        ]
+      },
+      "/Users/pmac/_turing/2mod/challenges/order_up/app/controllers/application_controller.rb": {
+        "lines": [
+          1,
+          null
+        ]
       }
     },
-    "timestamp": 1610123484
+    "timestamp": 1610124389
   }
 }
