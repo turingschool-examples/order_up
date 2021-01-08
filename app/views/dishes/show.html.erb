@@ -2,3 +2,13 @@
 
 <%= @dish.name %>
 <%= @dish.description %>
+
+<section>Ingredients
+  <% @dish.ingredients.each do |ingredient| %>
+    <%= ingredient.name %>
+  <% end %>
+</section>
+
+<section>Chef
+  <%= @dish.chef.name %>
+</section>
