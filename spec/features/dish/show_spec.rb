@@ -32,7 +32,7 @@ describe 'As a visitor' do
     end
 
     it 'I see the total calorie count for that dish' do
-      expect(page).to have_content("Total Dish Calories: #{@dish.calorie_count}")
+      expect(page).to have_content("Total Dish Calories: #{@pizza.calorie_count}")
     end
   end
 end

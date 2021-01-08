@@ -3,6 +3,7 @@
 <p>Name: <%= @dish.name %></p>
 <p>Description: <%= @dish.description %></p>
 <p>Chef Name: <%= @dish.chef.name %></p>
+<p>Total Dish Calories: <%= @dish.calorie_count %></p>
 <h2>Dish Ingredients</h2>
 <ul class='dish-ingredients'>
   <% @dish.ingredients.each do |ingredient| %>
