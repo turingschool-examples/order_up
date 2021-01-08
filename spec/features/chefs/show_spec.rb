@@ -2,6 +2,18 @@ require 'rails_helper'
 
 RSpec.describe 'chef show page' do
   describe 'when I visit the show page' do
+    before :each do
+      @chef = Chef.create!(name: "Gordon Ramsey")
+      @dish = Dish.create!(name: "Beef Wellington", description: "A delightful beef lightly coated", chef_id: @chef.id)
+
+
+      @beef = Ingredient.create!(name: 'beef tenderloin', calories: 125)
+      @flour = Ingredient.create!(name: 'flour', calories: 15)
+
+      DishIngredient.create!(dish: @dish, ingredient: @beef)
+      DishIngredient.create!(dish: @dish, ingredient: @flour)
+    end
+
     it 'shows the name of the chef' do
 
       visit "/chef/#{@chef.id}"
@@ -18,6 +30,7 @@ RSpec.describe 'chef show page' do
       visit "/chef/#{@chef.id}"
       click_link("Chef's Cupboard")
 
-      expect(current_path).to eq("/chef/#{chef.id}/ingredients")
+      expect(current_path).to eq("/chef/#{@chef.id}/ingredients")
     end
   end
+end
