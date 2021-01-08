@@ -33,7 +33,7 @@ describe "As a visitor" do
       within("#dish") do
         expect(page).to have_content(@dish_1.name)
         expect(page).to have_content("Chef: #{@dish_1.chefs_name}")
-        expect(page).to have_content("Calories: #{Dish.total_calories(@dish_1)}")
+        expect(page).to have_content("Calories: #{@dish_1.total_calories}")
         within("#ingredients") do
           expect(page).to have_content("Ingredients:")
           expect(page).to have_content(@ingredient_1.name) 
