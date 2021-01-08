@@ -1,0 +1,18 @@
+require 'rails_helper'
+
+RSpec.describe Recipe, type: :model do
+  describe 'validations' do
+  end
+
+  describe 'relationships' do
+    it {should belong_to :dish }
+    it {should belong_to :ingredient }
+  end
+
+  describe 'instance methods' do
+  end
+
+  describe 'class methods' do 
+  end
+  
+end
