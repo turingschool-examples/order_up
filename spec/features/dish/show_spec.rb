@@ -4,6 +4,22 @@ RSpec.describe "As a visitor when I visit '/dish/:id'", type: :feature do
   it "can see the name and description of a dish and I see a lisy of ingredients and the chef's name" do 
     ramsey = Chef.create!(name: "Gordon Ramsey")
     remy = Chef.create!(name: "Remy Gusteau")
+    pizza = Dish.create!(name: "Supreme", description: "great food", chef_id: ramsey.id )
+    ingredient1 = pizza.ingredients.create!(name: "tomato sauce", calories: 45)
+  
+
+    visit "/dishes/#{pizza.id}"
+
+    within "#dish-#{pizza.id}" do 
+    expect(page).to have_content("#{pizza.name}")
+    expect(page).to have_content("#{pizza.description}")
+    expect(page).to have_content("#{pizza.ingredients.name}")
+    expect(page).to have_content("#{pizza.chef.name}")
+    end
+  end 
+  it "can see total calorie count for that dish " do 
+    ramsey = Chef.create!(name: "Gordon Ramsey")
+    remy = Chef.create!(name: "Remy Gusteau")
     linguini = Chef.create!(name: "Alfredo Linguini")
 
     pizza = Dish.create!(name: "Supreme", description: "great food", chef_id: ramsey.id )
@@ -19,14 +35,16 @@ RSpec.describe "As a visitor when I visit '/dish/:id'", type: :feature do
 
     visit "/dishes/#{pizza.id}"
 
-    within "dish-#{pizza.id}" do 
-    expect(page).to have_content("#{pizza.name}")
-    expect(page).to have_content("#{pizza.description}")
-    expect(page).to have_content("#{ingredient1.id}")
-    expect(page).to have_content("#{ramsey.id}")
+    within "#dish-calories-#{pizza.id}" do 
+    expect(page).to have_content("#{pizza.calories_count} Calories")
     end
-  end 
+
+    visit "/dishes/#{tamales.id}"
+
+    within "#dish-calories-#{tamales.id}" do 
+    expect(page).to have_content("#{tamales.calories_count} Calories")
+    end
+
+  end
 end
 
-# And I see a list of ingredients for that dish
-# And I see the chef's name
