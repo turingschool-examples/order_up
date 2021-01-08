@@ -39,4 +39,12 @@ RSpec.describe 'Ingredients index page' do
     expect(page).to have_content(@ingredient6.name, count: 1)
     expect(page).to_not have_content(@ingredient7.name)
   end
+
+  xit "can display dishes by recipe" do
+    fill_in "Ingredient", with: "Cheese"
+    click_button "Search for recipes"
+
+    expect(page).to have_content(@dish1.name)
+    expect(page).to have_content(@dish2.name)
+  end
 end

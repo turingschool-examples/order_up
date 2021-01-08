@@ -48,7 +48,6 @@ RSpec.describe 'Chef show page' do
   end
 
   it "lists the chef dishes with ingredients beneath" do
-    save_and_open_page
     within ("#dish-#{@dish1.id}") do
       expect(page).to have_content(@ingredient1.name)
       expect(page).to have_content(@ingredient2.name)
