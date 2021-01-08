@@ -25,7 +25,7 @@ RSpec.describe Chef, type: :model do
       Component.create(dish_id: dish2.id, ingredient_id: lemon.id, amount: 1)
       Component.create(dish_id: dish2.id, ingredient_id: ice.id, amount: 4)
 
-      expect(chef.popular_ingredients.to_set).to eq([h.name,o.name,lemon.name].to_set)
+      expect(chef.popular_ingredients(3).to_set).to eq([h.name,o.name,lemon.name].to_set)
     end
   end
 end
