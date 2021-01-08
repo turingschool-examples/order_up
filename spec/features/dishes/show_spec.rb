@@ -22,5 +22,6 @@ RSpec.describe "Dish show page" do
       end
     end
     expect(page).to have_content("Chef: #{dish.chef.name}")
+    expect(page).to have_content("Total Calories: #{dish.total_calories}")
   end
 end
