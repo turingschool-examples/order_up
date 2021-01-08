@@ -7,4 +7,8 @@ class Ingredient < ApplicationRecord
   def self.calorie_count
     sum(:calories)
   end
+
+  def self.unique_names
+    distinct.pluck(:name)
+  end
 end

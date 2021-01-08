@@ -19,5 +19,15 @@ RSpec.describe Ingredient, type: :model do
 
     expect(Ingredient.calorie_count).to eq(500)
     end
+
+    it 'Shows a list of unique ingredients' do
+    beef = Ingredient.create!(name: 'beef', calories: 350)
+    bread = Ingredient.create!(name: 'bread', calories: 100)
+    sauce = Ingredient.create!(name: 'tomato paste', calories: 50)
+    sauce = Ingredient.create!(name: 'tomato paste', calories: 50)
+    sauce = Ingredient.create!(name: 'tomato paste', calories: 50)
+
+    expect(Ingredient.unique_names).to eq([bread.name,sauce.name,beef.name])
+    end
   end
 end

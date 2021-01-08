@@ -26,7 +26,7 @@ RSpec.describe 'As a visitor', type: :feature do
       
       click_on "Ingredients"
 
-      expect(current_path).to eq("chefs/#{boyardee.id}/ingredients")
+      expect(current_path).to eq("/chefs/#{boyardee.id}/ingredients")
       expect(page).to have_content(beef.name)
       expect(page).to have_content(bread.name)
       expect(page).to have_content(sauce.name)
