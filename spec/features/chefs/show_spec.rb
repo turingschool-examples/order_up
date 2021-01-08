@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe 'As a visitor', type: :feature do
-  describe 'When I visit a dishs show page' do
+  describe 'When I visit a chefs show page' do
     before(:each) do
       # Chefs: 
       @chef1     = Chef.create!(name: "Henry Dapasta")
@@ -20,18 +20,19 @@ RSpec.describe 'As a visitor', type: :feature do
       @spaghetti1 = DishIngredient.create!(dish_id: @dish1.id, ingredient_id: @noodle.id)
       @spaghetti2 = DishIngredient.create!(dish_id: @dish1.id, ingredient_id: @sauce.id)
     end
-    # User Story 1
-    it 'I see the dishs name and description' do
-      visit dish_path(@dish1.id)
+    # User Story 3
+    it 'I see the chefs name, & link to chefs ingredient index page where I see all ingredients used in dishes' do
+      visit chef_path(@chef1.id)
 
-      expect(page).to have_content(@dish1.name)
-      expect(page).to have_content(@dish1.description)
-    end
-    # User Story 2
-    it 'I see the total calorie count for that dish' do
-      visit dish_path(@dish1.id)
+      expect(page).to have_content(@chef1.name)
+      expect(page).to have_link('Ingredients Used')
 
-      expect(page).to have_content("Total Calories: #{@dish1.total_calories}")
+      click_link('Ingredients Used')
+
+      expect(current_path).to eq(chef_ingredients_path(@chef1.id))
+      expect(page).to have_content("Ingredient Name: #{@noodle.name}")
+      expect(page).to have_content("Ingredient Name: #{@sauce.name}")
+      save_and_open_page
     end
   end
 end
