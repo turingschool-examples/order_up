@@ -35,4 +35,10 @@ describe "dish show page" do
       expect(page).to have_content(@chef.name)
     end
   end
+
+  it "has the dish's calorie count" do
+    within("#calorie-count") do
+      expect(page).to have_content(@dish.calorie_count)
+    end
+  end
 end
