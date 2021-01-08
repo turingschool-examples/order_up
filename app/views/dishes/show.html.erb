@@ -12,8 +12,8 @@
 <section class="list-ingredients">
   <h3>List of Ingredients</h3>
   <ul>
-  <% @dish.ingredients do |ingredient| %>
-    <li class="ingredient"><%= ingredient.name %> - <%= ingredient.calories %></li>
+  <% @dish.ingredients.each do |ingredient| %>
+    <li class="ingredient"><%= ingredient.name %> - <%= ingredient.calories %> calories</li>
   <% end %>
   </ul>
 </section>

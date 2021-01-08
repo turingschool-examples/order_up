@@ -29,5 +29,7 @@ RSpec.describe 'Show Page' do
         expect(page).to have_content("Created by Chef #{@chef.name}")
       end
     end
+    it 'can display total calories 'do
+  end
   end
 end
