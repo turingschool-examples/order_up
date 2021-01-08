@@ -6,7 +6,7 @@ describe "dish show page" do
     @dish = @chef.dishes.create(name: "Soup", description: "its soup")
     @ingredient1 = Ingredient.create(name: "Noodles", calories: 50)
     @ingredient2 = Ingredient.create(name: "Chicken broth", calories: 20)
-    @ingredient2 = Ingredient.create(name: "Chicken ", calories: 55)
+    @ingredient3 = Ingredient.create(name: "Chicken", calories: 55)
 
     IngredientDish.create(ingredient: @ingredient1, dish: @dish, amount: 1)
     IngredientDish.create(ingredient: @ingredient2, dish: @dish, amount: 2)
