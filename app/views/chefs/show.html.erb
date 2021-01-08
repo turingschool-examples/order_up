@@ -1,0 +1,13 @@
+<h2>Chef <%= @chef.name %></h2>
+
+<h4><%= link_to "View Ingredients #{@chef.name} Uses", chef_ingredients_path(@chef) %></h4>
+
+<h4>Chef <%= @chef.name %>'s Top 3 Ingredients</h4>
+
+<section id="top-3-ingredients">
+  <ol>
+    <% @chef.top_three_ingredients.each do |ingredient| %>
+      <li><%= ingredient.name %> - <%= ingredient.ingred_usage %> dishes use it</li>
+    <% end %>
+  </ol>
+</section>

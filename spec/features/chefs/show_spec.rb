@@ -1,17 +1,9 @@
 require 'rails_helper'
 
-RSpec.describe Chef, type: :model do
-  describe "validations" do
-    it { should validate_presence_of :name }
-  end
-  describe "relationships" do
-    it { should have_many :dishes }
-    it { should have_many(:ingredients).through(:dishes) }
-  end
-
-  describe "instance methods" do
+RSpec.describe 'chef show page', type: :feature do
+  describe 'as a visitor' do
     before(:each) do
-            @chef = Chef.create!(name: "Claire Saffitz")
+      @chef = Chef.create!(name: "Claire Saffitz")
 
       @flour = Ingredient.create!(name: "Flour", calories: 500)
       @yeast = Ingredient.create!(name: "Yeast", calories: 0)
@@ -37,9 +29,26 @@ RSpec.describe Chef, type: :model do
       DishIngredient.create!(dish: @dish_3, ingredient: @yeast)
       DishIngredient.create!(dish: @dish_3, ingredient: @salt)
     end
-    it '#top_three_ingredients' do
-      expected_top_3 = [@flour, @salt, @yeast]
-      expect(@chef.top_three_ingredients).to eq(expected_top_3)
+
+    it 'i see the chef name and a link to view list of ingredients they use that takes me to ingredient index page' do
+      visit chef_path(@chef)
+
+      expect(page).to have_content(@chef.name)
+      expect(page).to have_link("View Ingredients #{@chef.name} Uses", href: chef_ingredients_path(@chef))
+
+      click_on "View Ingredients #{@chef.name} Uses"
+
+      expect(current_path).to eq(chef_ingredients_path(@chef))
+    end
+
+    it 'i see the three most popular ingredients that the chef uses in their dishes' do
+      visit chef_path(@chef)
+
+      within("#top-3-ingredients") do
+        expect(page).to have_content(@flour.name)
+        expect(page).to have_content(@yeast.name)
+        expect(page).to have_content(@salt.name)
+      end
     end
   end
 end
