@@ -20,7 +20,6 @@
  margin: 0;
  padding: 0;
  overflow: hidden;
- background-color: #618685;
  }
  li {
  font-size: 1.0em;
@@ -38,5 +37,6 @@
  }
 
  body {
-   background-color: #618685;
+   background-image: url("https://www.tvovermind.com/wp-content/uploads/2017/10/Ratatouilleconcept.jpg");
+   background-size: fit;
  }
