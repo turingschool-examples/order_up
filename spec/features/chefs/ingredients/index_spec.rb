@@ -30,6 +30,7 @@ RSpec.describe 'Index Page' do
         within all('.ingredient')[2] do
           expect(page).to have_content("#{@ingredient_3.name} - #{@ingredient_3.calories} calories")
         end
+        expect(all('.ingredient')[3]).to eq(nil)
       end
     end
   end
