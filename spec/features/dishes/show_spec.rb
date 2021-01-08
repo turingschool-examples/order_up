@@ -24,6 +24,7 @@ RSpec.describe 'dish show page', type: :feature do
         expect(page).to have_content(@yeast.name)
         expect(page).to have_content(@salt.name)
         expect(page).to have_content(@evoo.name)
+        expect(page).to have_content(@dish_1.total_calories)
       end
     end
   end
