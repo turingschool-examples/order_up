@@ -1,0 +1,6 @@
+<h1><%= @chef.name %></h1>
+<%= link_to "List of Ingredients #{@chef.name} Uses", chef_ingredients_path(@chef.id) %>
+
+<%= render partial: 'ingredient_list', locals: {
+  collection: @chef.ingredients
+} %>

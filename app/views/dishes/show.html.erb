@@ -1,0 +1,16 @@
+<h1><%= @dish.name %></h1>
+
+<section class="chef-name">
+  <h2>Created by Chef <%= @dish.chef_name %></h2>
+</section>
+
+<section class="dish-breakdown">
+  <h3>Description</h3>
+  <p><%= @dish.description %></p>
+  <p>Total Calories: <%= @dish.total_calories %></p>
+</section>
+
+
+<%= render partial: 'ingredient_list', locals: {
+  collection: @dish.ingredients
+} %>

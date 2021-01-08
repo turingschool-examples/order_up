@@ -1,0 +1,5 @@
+<h1><%= @chef.name %></h1>
+
+<%= render partial: 'ingredient_list', locals: {
+  collection: @chef.unique_ingredients_list
+} %>
