@@ -1,0 +1,8 @@
+<h1><%= @chef.name %></h1>
+<%= link_to "Ingredients", chef_ingredients_path(@chef) %>
+<section id='top_ingredients'>
+  <p>Most Popular Ingredients:</p>
+  <ol><% @chef.top_ingredients.each do |ingredient| %>
+    <li><%= ingredient.name %></li>
+  <% end %></ul>
+</section>

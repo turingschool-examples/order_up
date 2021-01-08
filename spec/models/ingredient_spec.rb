@@ -1,15 +1,12 @@
 require 'rails_helper'
 
-RSpec.describe Chef, type: :model do
-  describe "validations" do
-    it {should validate_presence_of :name}
-  end
-  describe "relationships" do
+RSpec.describe Ingredient do
+  describe 'relationships' do
     it {should have_many :dishes}
-    it {should have_many(:ingredients).through(:dishes)}
+    it {should have_many(:dishes).through(:dish_ingredients)}
   end
 
-  describe "delegate methods" do
+  describe 'class methods' do
     let(:chef) {Chef.create!(name: "Martha Stewart")}
     let!(:ingredient_1) {Ingredient.create(name: "macaroni", calories: 390)}
     let!(:ingredient_2) {Ingredient.create(name: "cheese", calories: 531)}
@@ -22,13 +19,16 @@ RSpec.describe Chef, type: :model do
     let!(:dish_3) {chef.dishes.create!(name: "Tomato Soup", description: "creamy tomato soup", ingredients: [ingredient_3, ingredient_5])}
     let!(:dish_5) {chef.dishes.create!(name: "Creamy Cheese", description: "creamy cheese", ingredients: [ingredient_2, ingredient_3])}
 
-
     it 'top_ingredients' do
-      expect(chef.top_ingredients).to eq([ingredient_3, ingredient_2, ingredient_5])
+      expect(Ingredient.top_ingredients).to eq([ingredient_3, ingredient_2, ingredient_5])
     end
 
-    it 'unique_ingredients' do
-      expect(chef.unique_ingredients.to_set).to eq([ingredient_1, ingredient_2, ingredient_3, ingredient_4, ingredient_5].to_set)
+    it '.total_calories' do
+      expect(Ingredient.total_calories).to eq(1296)
+    end
+
+    it '.unique_ingredients' do
+      expect(Ingredient.unique_ingredients.to_set).to eq(Ingredient.all.to_set)
     end
   end
 end
