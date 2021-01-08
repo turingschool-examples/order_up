@@ -21,5 +21,8 @@ RSpec.describe "Chef show page" do
 
     expect(page).to have_content("Chef: #{chef.name}")
     expect(page).to have_link("Ingredients", href: chef_ingredients_path(chef))
+    chef.popular_ingredients(3).each do | ingredient |
+      expect(page).to have_content(ingredient)
+    end
   end
 end
