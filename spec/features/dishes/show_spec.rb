@@ -13,20 +13,20 @@ RSpec.describe 'Show Page' do
   end
   describe 'Attributes' do
     it 'can display a dish and its attributes along with list of ingredients and chef name' do
+      expect(page).to have_content(@dish_1.name)
       within('section.dish-breakdown') do
-        expect(page).to have_content(@dish_1.name)
         expect(page).to have_content(@dish_1.description)
       end
       within('section.list-ingredients') do
         within all('.ingredient')[0] do
           expect(page).to have_content("#{@ingredient_1.name} - #{@ingredient_1.calories} calories")
         end
-        within all(".ingredient")[1] do
+        within all('.ingredient')[1] do
           expect(page).to have_content("#{@ingredient_2.name} - #{@ingredient_2.calories} calories")
         end
       end
       within('section.chef-name') do
-        expect(page).to have_content("Chef: #{@chef.name}")
+        expect(page).to have_content("Created by Chef #{@chef.name}")
       end
     end
   end
