@@ -23,12 +23,9 @@ describe 'As a visitor' do
       visit chef_path(@chef_1)
 
       expect(page).to have_content(@chef_1.name)
-      expect(page).to have_link(@ingredient_1.name)
-      expect(page).to have_link(@ingredient_2.name)
-      expect(page).to have_link(@ingredient_3.name)
-      expect(page).to have_link(@ingredient_4.name)
-      expect(page).to have_link(@ingredient_5.name)
-      expect(page).to have_link(@ingredient_6.name)
+      expect(page).to have_link("Ingredients")
+      click_on("Ingredients")
+      expect(current_page).to eq(chef_ingredients(@chef_1))
     end
   end
 end
