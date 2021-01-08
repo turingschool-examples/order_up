@@ -11,20 +11,11 @@ describe 'As a visitor' do
       DishIngredient.create!(dish_id: @dish_1.id, ingredient_id: @ingredient_1.id)
       DishIngredient.create!(dish_id: @dish_1.id, ingredient_id: @ingredient_2.id)
       DishIngredient.create!(dish_id: @dish_1.id, ingredient_id: @ingredient_3.id)
-      @chef_2 = Chef.create(name: 'Rachel Ray')
-      @dish_2 = @chef_2.dishes.create!(name: 'Lemon Risotto', description: 'Cheesy and zasty')
-      @ingredient_4 = Ingredient.create(name: 'Arborio Rice', calories: 100)
-      @ingredient_5 = Ingredient.create(name: 'Parmesan Cheese', calories: 200)
-      @ingredient_6 = Ingredient.create(name: 'Lemon', calories: 10)
-      DishIngredient.create!(dish_id: @dish_2.id, ingredient_id: @ingredient_4.id)
-      DishIngredient.create!(dish_id: @dish_2.id, ingredient_id: @ingredient_5.id)
-      DishIngredient.create!(dish_id: @dish_2.id, ingredient_id: @ingredient_6.id)
     end
     it 'Shows me the dish name and description, list of ingredients and chefs name' do
       visit dish_path(@dish_1)
 
       expect(page).to have_content(@dish_1.name)
-      expect(page).to_not have_content(@dish_2.name)
       expect(page).to have_content(@dish_1.description)
       expect(page).to have_link(@dish_1.chef.name)
       expect(page).to have_link(@chef_1.name)
