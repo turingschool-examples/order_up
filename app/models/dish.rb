@@ -13,5 +13,4 @@ class Dish <ApplicationRecord
       ingredient.calories
     end
   end
-
 end
