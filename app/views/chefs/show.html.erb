@@ -1,2 +1,8 @@
 <h1><%= @chef.name %></h1>
+
+<h2>Top 3 Ingredients <%= @chef.name %> Uses</h2>
+  <% @chef.top_three.each do |i| %>
+    <li><%= i.name %>
+  <% end %>
+
 <h3><%= link_to "See All Ingredients #{@chef.name} Uses", chef_ingredient_path(@chef) %></h3>
