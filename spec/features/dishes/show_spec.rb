@@ -4,7 +4,7 @@ describe 'Dishes Show Page' do
   before :each do
     @c1 = Chef.create(name: 'Isabelle')
     @d1 = @c1.dishes.create(name: 'Ramen', description: 'Yum Yum Noods')
-    
+
     @i1 = Ingredient.create!(name: 'Noodles', calories: 100)
     @i2 = Ingredient.create!(name: 'Egg', calories: 30)
     @i3 = Ingredient.create!(name: 'Green Onions', calories: 8)
@@ -23,6 +23,11 @@ describe 'Dishes Show Page' do
   end
 
   it 'should display a list of ingredients for dish' do
-    expect(page).to have_content("Ingredients: #{@d1.ingredients}")
+    expect(page).to have_content('Ingredients:')
+    expect(page).to have_content(@d1.ingredients.name)
+  end
+
+  it 'should display the chefs name' do
+    expect(page).to have_content(@c1.name)
   end
 end
