@@ -25,14 +25,4 @@ describe "chef show page" do
     expect(current_path).to eq("/chefs/#{@chef.id}/ingredients")
   end
 
-  it "has a list of all ingredients the chef has used"  do
-    within("#ingredients-list") do
-      expect(page).to have_content(@ingredient1.name)
-      expect(page).to have_content(@ingredient2.name)
-      expect(page).to have_content(@ingredient3.name)
-      expect(page).to have_content(@ingredient4.name)
-      expect(page).to have_content(@ingredient5.name)
-    end
-  end
-
 end
