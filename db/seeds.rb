@@ -12,3 +12,10 @@ Ingredient.destroy_all
 
 @chef = Chef.create!(name: "Gordon Ramsey")
 @dish = Dish.create!(name: "Beef Wellington", description: "A delightful beef lightly coated", chef_id: @chef.id)
+
+
+@beef = Ingredient.create!(name: 'beef tenderloin', calories: 125)
+@flour = Ingredient.create!(name: 'flour', calories: 15)
+
+DishIngredient.create!(dish: @dish, ingredient: @beef)
+DishIngredient.create!(dish: @dish, ingredient: @flour)
