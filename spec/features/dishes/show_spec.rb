@@ -16,11 +16,15 @@ RSpec.describe "Dish Show" do
     end
 
     it "the dish's ingredients" do
+      dish.ingredients = [ingredient_1, ingredient_2, ingredient_3]
+
       visit dish_path(dish)
 
-      expect(page).to have_content(ingredient_1.name)
-      expect(page).to have_content(ingredient_2.name)
-      expect(page).to have_content(ingredient_3.name)
+      within("#ingredients") do
+        expect(page).to have_content(ingredient_1.name)
+        expect(page).to have_content(ingredient_2.name)
+        expect(page).to have_content(ingredient_3.name)
+      end
     end
 
     it "the dish's chef" do
