@@ -252,6 +252,20 @@
           null
         ]
       },
+      "/Users/cydkyd/turing/2mod/independent_challenges/order_up/spec/models/chef_spec.rb": {
+        "lines": [
+          1,
+          null,
+          1,
+          1,
+          2,
+          null,
+          1,
+          2,
+          null,
+          null
+        ]
+      },
       "/Users/cydkyd/turing/2mod/independent_challenges/order_up/app/models/chef.rb": {
         "lines": [
           1,
@@ -268,6 +282,65 @@
           null
         ]
       },
+      "/Users/cydkyd/turing/2mod/independent_challenges/order_up/spec/models/dish_ingredient_spec.rb": {
+        "lines": [
+          1,
+          null,
+          1,
+          1,
+          2,
+          2,
+          null,
+          null,
+          1,
+          null,
+          null
+        ]
+      },
+      "/Users/cydkyd/turing/2mod/independent_challenges/order_up/app/models/dish_ingredient.rb": {
+        "lines": [
+          1,
+          1,
+          1,
+          null
+        ]
+      },
+      "/Users/cydkyd/turing/2mod/independent_challenges/order_up/spec/models/dish_spec.rb": {
+        "lines": [
+          1,
+          null,
+          1,
+          1,
+          null,
+          4,
+          4,
+          null,
+          4,
+          4,
+          null,
+          4,
+          4,
+          4,
+          4,
+          null,
+          4,
+          4,
+          4,
+          4,
+          null,
+          null,
+          1,
+          2,
+          2,
+          2,
+          null,
+          null,
+          1,
+          1,
+          null,
+          null
+        ]
+      },
       "/Users/cydkyd/turing/2mod/independent_challenges/order_up/app/models/dish.rb": {
         "lines": [
           1,
@@ -277,20 +350,24 @@
           1,
           null,
           1,
-          3,
+          4,
+          null,
+          null
+        ]
+      },
+      "/Users/cydkyd/turing/2mod/independent_challenges/order_up/spec/models/ingredient_spec.rb": {
+        "lines": [
+          1,
+          null,
+          1,
+          1,
+          2,
+          2,
           null,
           null
         ]
       },
       "/Users/cydkyd/turing/2mod/independent_challenges/order_up/app/models/ingredient.rb": {
-        "lines": [
-          1,
-          1,
-          1,
-          null
-        ]
-      },
-      "/Users/cydkyd/turing/2mod/independent_challenges/order_up/app/models/dish_ingredient.rb": {
         "lines": [
           1,
           1,
@@ -314,6 +391,6 @@
         ]
       }
     },
-    "timestamp": 1610125563
+    "timestamp": 1610125784
   }
 }
