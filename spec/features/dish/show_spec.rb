@@ -44,7 +44,6 @@ RSpec.describe "As a visitor when I visit '/dish/:id'", type: :feature do
     within "#dish-calories-#{tamales.id}" do 
     expect(page).to have_content("#{tamales.calories_count} Calories")
     end
-
   end
 end
 
