@@ -1,0 +1,11 @@
+<h1>Ingredients Used By: <%= @chef.name %></h1>
+
+<% @ingredients.each do |ingredient| %>
+  <%= ingredient %>
+  <% end  %>
+
+  <%= form_tag(chef_path(@chef), method: :patch) do %>
+      <%= label_tag :Ingredient %>
+      <%= text_field_tag :Ingredient %>
+      <%= submit_tag 'Search for recipes'%>
+  <% end %>
