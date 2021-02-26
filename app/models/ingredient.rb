@@ -1,2 +1,3 @@
 class Ingredient < ApplicationRecord
-end 
+  has_many :dish_ingredients
+end
