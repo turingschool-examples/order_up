@@ -18,7 +18,7 @@ RSpec.describe "When I visit  a chef's show page" do
   end
 
   it 'I see the name of that chef' do
-    visit chef_path(@chef)
+    visit chef_path(@ina)
 
     expect(page).to have_content("#{@ina.name}")
   end
