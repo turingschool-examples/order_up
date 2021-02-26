@@ -8,7 +8,7 @@ RSpec.describe "When I visit  a dish's show page" do
     @spaghetti_pasta = @spaghetti.ingredients.create!(name: "Spaghetti Pasta", calories: 450)
     @italian_herbs = @spaghetti.ingredients.create!(name: "Italian Herbs", calories: 5)
     @salt = @spaghetti.ingredients.create!(name: "Salt", calories: 5)
-    @parmesan = @spaghetti.ingredients.create!(name: "parmesan", calories: 100)
+    @parmesan = @spaghetti.ingredients.create!(name: "Parmesan", calories: 100)
     @apple = Ingredient.create!(name: "Apple", calories: 85)
   end
 
@@ -21,13 +21,15 @@ RSpec.describe "When I visit  a dish's show page" do
 
   it 'I see a list of ingredients for that dish' do
     visit chef_dish_path(@ina, @spaghetti)
+    spaghetti_tomatoes = @tomatoes.dish_ingredients.first
+    s_spaghetti_pasta = @spaghetti_pasta.dish_ingredients.first
 
     within ".ingredients" do
       expect(page.all('li', count:5))
-      within "#ingredient-#{@tomatoes.id}" do
+      within "#dish_ingredient-#{spaghetti_tomatoes.id}" do
         expect(page).to have_content("#{@tomatoes.name}")
       end
-      within "#ingredient-#{@spaghetti_pasta.id}" do
+      within "#dish_ingredient-#{s_spaghetti_pasta.id}" do
         expect(page).to have_content("#{@spaghetti_pasta.name}")
       end
     end
@@ -50,9 +52,10 @@ RSpec.describe "When I visit  a dish's show page" do
 
   it "next to each ingredient there is a button to remove that ingredient" do
     visit chef_dish_path(@ina, @spaghetti)
+    spaghetti_tomatoes = @tomatoes.dish_ingredients.first
 
     within ".ingredients" do
-      within "#ingredient-#{@tomatoes.id}" do
+      within "#dish_ingredient-#{spaghetti_tomatoes.id}" do
         expect(page).to have_button("Remove Ingredient")
       end
     end
@@ -60,9 +63,11 @@ RSpec.describe "When I visit  a dish's show page" do
 
   it "when I click 'Remove Ingredient' I am brought back to dish show page and no longer see that ingredient" do
     visit chef_dish_path(@ina, @spaghetti)
+    spaghetti_parm = @parmesan.dish_ingredients.first
+    save_and_open_page
 
     within ".ingredients" do
-      within "#ingredient-#{@parmesan.id}" do
+      within "#dish_ingredient-#{spaghetti_parm.id}" do
         click_button("Remove Ingredient")
       end
     end
