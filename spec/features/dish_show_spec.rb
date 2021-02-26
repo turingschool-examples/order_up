@@ -31,16 +31,21 @@ RSpec.describe 'As a user, when I visit a dishes show page', type: :feature do
   end
   it 'I see the dish’s name and description' do
 
+    # require "pry"; binding.pry
     visit dish_path(@dish_1)
-
-    within('#dish_info') do
+save_and_open_page
+    # within('#dish_info') do
       expect(page).to have_content(@dish_1.name)
       expect(page).to have_content(@dish_1.description)
-      expect(page).to have_content(@dish_1.ingredients)
-      require "pry"; binding.pry
-      # expect(page).to have_content(#chefs name)
-      # expect(page).to have_content(#calorie count)
-    end
+      expect(page).to have_content(@dish_1.ingredient_names)
+      expect(page).to have_content(@ingredient_1.name)
+      expect(page).to have_content(@ingredient_4.name)
+      expect(page).to have_content(@ingredient_6.name)
+      # expect(page).to have_content(@chef_1.name)
+      # expect(page).to have_content(@ingredient_1.calories.count)
+      # expect(page).to have_content(@ingredient_4.calories.count)
+      # expect(page).to have_content(@ingredient_6.calories.count)
+    # end
   end
 end
 #
