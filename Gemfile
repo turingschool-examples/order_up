@@ -36,12 +36,17 @@ gem 'bootsnap', '>= 1.1.0', require: false
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
-  gem 'rspec-rails'
-  gem 'capybara'
-  gem 'launchy'
-  gem 'pry'
-  gem 'simplecov'
-  gem 'shoulda-matchers'
+  gem "rspec-rails"
+  gem "capybara"
+  gem "launchy"
+  gem "simplecov"
+  gem "pry"
+  gem "nyan-cat-formatter"
+  gem "shoulda-matchers"
+  gem "orderly"
+  gem "rails-erd"
+  gem "awesome_print", :require => "ap"
+  gem "hirb"
 end
 
 group :development do

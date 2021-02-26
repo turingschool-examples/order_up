@@ -3,9 +3,9 @@ require "rails_helper"
 RSpec.describe "As a visitor", type: :feature do
   describe "When I visit a dish's show page" do
     before(:each) do
-      chef = Chef.create(name: "Brisa")
+      chef1 = Chef.create(name: "Brisa")
 
-      @dish_1 = @chef.dishes.create!(name: "Dish 1", description: "Umami")
+      @dish_1 = @chef1.dishes.create!(name: "Dish 1", description: "Umami")
       # @dish_2 = Dish.create!(name: "Dish 2", description: "Sweet")
       # @dish_3 = Dish.create!(name: "Dish 3", description: "Spicy")
 
@@ -38,16 +38,23 @@ RSpec.describe "As a visitor", type: :feature do
     end
 
     it "list ingredients for that dish" do
-      expect(page).to have_content(@dish_1.ingredients)
-
+      within ("#ingredients - #{@dish_1.name}") do
+        expect(page).to have_content(@ingredient_1.name)
+        expect(page).to have_content(@ingredient_2.name)
+        expect(page).to have_content(@ingredient_5.name)
+      end
     end
 
     it "And I see the chef's name" do
-      expect(page).to have_content(@dish_1.chefs_name)
-
+      within ("#dish- #{@dish_1.name}") do
+        expect(page).to have_content(@dish_1.chefs_name)
+      end
     end
 
     it "And I see the total calorie count for that dish." do
-      expect(page).to have_content(@dish_1.total_calories)
-
+      within ("#dish - #{@dish_1.name}") do
+        expect(page).to have_content(@dish_1.total_calories)
+      end
     end
+  end
+end
