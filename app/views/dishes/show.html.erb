@@ -13,6 +13,11 @@
     <section id="ingredient-<%= ingredient.id %>">
       <li><%= ingredient.name %></li>
       <li><%= ingredient.calories %></li>
+      <%= form_with url: "/dishes/#{@dish.id}/ingredients/#{ingredient.id}", method: :delete, local: true do |form| %>
+      <%= form.hidden_field :ingredient_id, value: ingredient.id%>
+      <%= form.hidden_field :dish_id, value: @dish.id%>
+      <%= form.submit 'remove ingredient' %>
+      <% end %>
     </section>
   <% end  %>
 </ul>

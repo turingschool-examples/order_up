@@ -33,6 +33,7 @@ RSpec.describe 'As a visitor' do
           expect(page).to have_button("remove ingredient")
           expect(page).to have_content(@broth.name)
         end
+        save_and_open_page
       end
     it "when i click the button I am redirected back to the dish's show page" do
         visit "/dishes/#{@dish_1.id}"
