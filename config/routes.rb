@@ -5,4 +5,7 @@ Rails.application.routes.draw do
   resources :chefs, only: :show do
     resources :ingredients, only: :index
   end
+
+  delete '/recipe/:dish_id/:ingredient_id', to: 'recipes#destroy', as: 'recipe'
+
 end

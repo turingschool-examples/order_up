@@ -15,6 +15,7 @@ RSpec.describe "Dish Show Page" do
     @mac_cheese.ingredients << [@mac, @cheese]
     @pizza.ingredients << [@dough, @cheese, @sauce]
   end
+  
   describe "As a visitor" do
     it "shows the dish's name and description" do
       visit dish_path(@mac_cheese)
@@ -50,6 +51,32 @@ RSpec.describe "Dish Show Page" do
         expect(page).to have_content(@mac_cheese.calorie_count)
       end
     end
-  end
+    
+    it "has a button next to the ingredients to remove it from the dish" do 
+      visit dish_path(@mac_cheese)
+      
+      within("#ingredient-#{@mac.id}") do
+        expect(page).to have_button("Remove Ingredient")
+      end
+      
+      within("#ingredient-#{@cheese.id}") do
+        expect(page).to have_button("Remove Ingredient")
+      end
+    end
+    
+    describe "when I click the button" do
+      it "returns to the dish's show page without the ingredient" do
+        visit dish_path(@mac_cheese)
+        
+        within("#ingredient-#{@mac.id}") do
+          click_button("Remove Ingredient")
+          expect(current_path).to eq(dish_path(@mac_cheese))
+        end
 
+        within("#ingredients-list") do
+          expect(page).to_not have_content(@mac.name)
+        end
+      end
+    end
+  end
 end
