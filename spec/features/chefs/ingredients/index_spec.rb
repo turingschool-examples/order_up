@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe 'Chef show page' do
+RSpec.describe 'Chef ingredients index page' do
   before :each do
     Ingredient.destroy_all
     Dish.destroy_all
@@ -20,21 +20,21 @@ RSpec.describe 'Chef show page' do
 
   describe 'As a visitor' do
     describe "When I visit a chef's show page" do
-      it "I see the name of the chef" do
-        visit chef_path(@chef)
-
-        expect(current_path).to eq ("/chefs/#{@chef.id}")
-        expect(page).to have_content(@chef.name)
-      end
       describe "And I see a link to view a list of all ingredients that this chef uses in their dishes" do
-        it "When I click on that link, I'm taken to a chef's ingredient index page" do
-          visit chef_path(@chef)
+        describe "When I click on that link, I'm taken to a chef's ingredient index page" do
+          it "and I can see a unique list of names of all the ingredients that this chef uses" do
+            visit chef_path(@chef)
 
-          expect(page).to have_link("All Ingredients")
+            expect(page).to have_link("All Ingredients")
 
-          click_link("All Ingredients")
+            click_link("All Ingredients")
 
-          expect(current_path).to eq(chef_ingredients_path(@chef))
+            expect(current_path).to eq(chef_ingredients_path(@chef))
+
+            expect(page).to have_content(@ingredient1.name)
+            expect(page).to have_content(@ingredient2.name)
+            expect(page).to have_content(@ingredient3.name)
+          end
         end
       end
     end
