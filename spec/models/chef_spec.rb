@@ -15,7 +15,7 @@ RSpec.describe Chef, type: :model do
   describe "instance methods" do
     describe "#all_ingredients_used" do
       it "lists the names of all ingredients use in the chef's dishes" do
-        answer = [@asparage.name, @snap_peas.name, @noodles.name, @beef.name]
+        answer = [@asparagus.name, @beef.name, @noodles.name, @snap_peas.name]
 
         expect(@chef_a.all_ingredients_used).to eq(answer)
       end

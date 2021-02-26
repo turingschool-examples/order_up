@@ -4,6 +4,6 @@ class Chef <ApplicationRecord
   has_many :ingredients, through: :dishes
 
   def all_ingredients_used
-    
+    ingredients.distinct('ingredients.id').order('ingredients.name').pluck('ingredients.name')
   end
 end
