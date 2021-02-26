@@ -50,6 +50,12 @@ RSpec.describe "Dish Show Page" do
             expect(page).to_not have_content(@dish2.total_calories)
           end
       end
+      it "Next to each ingredient I see a button to remove the ingredient" do
+        visit "/dishes/#{@dish1.id}"
+          within "#dish-ingredients" do
+            expect(page).to have_button("Remove Ingredient")
+          end
+      end
     end
   end
 end
