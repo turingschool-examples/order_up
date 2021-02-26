@@ -3,7 +3,7 @@ Rails.application.routes.draw do
 
   get 'chefs/:id', to: 'chefs#show'
   get '/chefs/:chef_id/dishes/:id', to: 'dishes#show'
-  patch '/dishes/:id',to: 'dishes#update'
+  patch '/chefs/:chef_id/dishes/:id',to: 'dishes#update'
 
   get '/chefs/:id/ingredients', to: 'chef_ingredients#show'
 end
