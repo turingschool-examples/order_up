@@ -49,7 +49,7 @@ RSpec.describe "When I visit a chefs show page" do
   describe "I see three most popular ingredients chef uses in dishes" do
     it "Based off how many dishes use that ingredient" do
 
-      visit chef_ingredients_path(@gordon.id)
+      visit chef_path(@gordon.id)
 
       within(".most_popular_ingredients") do
         expect(page).to have_content(@parm.name)
