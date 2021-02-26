@@ -6,4 +6,9 @@ class Chef <ApplicationRecord
   def all_ingredients_used
     ingredients.distinct('ingredients.id').order('ingredients.name').pluck('ingredients.name')
   end
+
+  def top_ingredients
+    ingredients.distinct('ingredients.id').order('ingredients.name')
+  end
 end
+Chef.joins(:ingredients).joins(:dishes).select("ingredients.name, count(dishes) as ingredient_dish_count").group_by('ingredient.id')
