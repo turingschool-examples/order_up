@@ -2,21 +2,21 @@ require 'rails_helper'
 
 describe 'Dish Show Page' do
   before :each do
-    @chef = Chef.new(name: "Gordan")
-    @dish = Dish.new(name: "Pizza", description: "Tasty", chef_id: @chef.id)
-    @ingredient1 = Ingredient.new(name: "Sauce", calories: 40, dish_id:  @dish.id)
-    @ingredient2 = Ingredient.new(name: "Crust", calories: 100, dish_id: @dish.id)
-    @ingredient3 = Ingredient.new(name: "Cheese", calories: 90, dish_id: @dish.id)
+    @chef = Chef.create(name: "Gordan")
+    @dish = @chef.dishes.create(name: "Pizza", description: "Tasty")
+    @ingredient1 = @dish.ingredients.create(name: "Sauce", calories: 40)
+    @ingredient2 = @dish.ingredients.create(name: "Crust", calories: 100)
+    @ingredient3 = @dish.ingredients.create(name: "Cheese", calories: 90)
 end
- it "sees Dish's attributes" do
-   visit "/chefs/#{@chef.id}/dishes/#{@dish.id}"
+ it 'sees Dish attributes' do
+   visit "/dishes/#{@dish.id}"
 
    expect(page).to have_content(@dish.name)
    expect(page).to have_content(@dish.description)
    expect(page).to have_content(@ingredient1.name)
    expect(page).to have_content(@ingredient2.name)
    expect(page).to have_content(@ingredient3.name)
-   expect(page).to have_content(@chef.name)
    expect(page).to have_content(@dish.calorie_count)
+   expect(page).to have_content(@chef.name)
  end
 end
