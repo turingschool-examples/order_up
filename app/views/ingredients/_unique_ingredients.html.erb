@@ -1,3 +1,5 @@
-<% chef.find_unique_ingredients.each do |ingredient| %>
-  <p><%= ingredient.name %></p>
-<% end %>
+<ul>
+  <% chef.find_unique_ingredients.each do |ingredient| %>
+    <li><%= ingredient.name %></li>
+  <% end %>
+</ul>

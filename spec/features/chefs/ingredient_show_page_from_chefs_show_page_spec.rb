@@ -60,6 +60,7 @@ RSpec.describe "When I visit a chefs show page" do
     it "Takes me to ingredient/index with unique list of all ingredients" do
 
       visit chef_ingredients_path(@gordon.id)
+      save_and_open_page
 
       expect(page).to have_content(@parm.name)
       expect(page).to have_content(@puff_pastry.name)
