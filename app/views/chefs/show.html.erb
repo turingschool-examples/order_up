@@ -1,2 +1,5 @@
 Name:  <%= @chef.name %>
 <%= link_to "Ingredients", "/chefs/#{@chef.id}/ingredients" %>
+<%= @chef.favorite_ingredients.each do |ingredeint| %>
+<%= ingredeint.name %>
+<% end %>
