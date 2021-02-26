@@ -16,7 +16,7 @@ RSpec.describe "dish show page" do
       visit "/dishes/#{@dish.id}"
 
       expect(page).to have_content(@dish.name)
-      expect(page).to have_content(@dish.discription)
+      expect(page).to have_content(@dish.description)
     end
 
     it "shows a list of ingredients for the dish" do
@@ -31,7 +31,7 @@ RSpec.describe "dish show page" do
     it "shows the Chefs name" do
       visit "/dishes/#{@dish.id}"
 
-      expect(page).to have_content(@chef.name)
+      expect(page).to have_content("Chef: #{@chef.name}")
     end
 
     it "shows the total calories for the dish" do
