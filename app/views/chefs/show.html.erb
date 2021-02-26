@@ -1,0 +1,7 @@
+<section id="chef-info">
+  <h1> Chef : <%= @chef.name %> </h1>
+</section>
+
+<section id="chef-ingredients-link">
+  <%= link_to "Ingredients used in Recipes", chefs_ingredients_path(@chef), method: :get %>
+</section>
