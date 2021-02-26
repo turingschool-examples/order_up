@@ -1,6 +1,5 @@
 Rails.application.routes.draw do
-  resources :dishes, only:[:show]
-  namespace :dishes do
+  resources :dishes, only:[:show] do
     resources :ingredients, only: [:destroy]
   end
 
