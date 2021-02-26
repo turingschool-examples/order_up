@@ -4,5 +4,6 @@ class DishesController < ApplicationController
     @dish = Dish.find(params[:id])
     @dish_ingredients = @dish.ingredients
     @dish_chef = @dish.chef.name
+    @dish_calories = @dish.calorie_count
   end
 end
