@@ -5,6 +5,7 @@ RSpec.describe 'As a visitor' do
     @chef = Chef.create!(name: "Bob")
     @dish_1 = Dish.create!(name: "Pasta", description: 'Good dish', chef_id: @chef.id)
     @dish_2 = Dish.create!(name: "Soup", description: 'Good soup', chef_id: @chef.id)
+    @dish_3 = Dish.create!(name: "Another pasta", description: 'Good soup', chef_id: @chef.id)
 
     @ingredient_1 = @dish_1.ingredients.create!(name: 'onions', calories: 100)
     @ingredient_2 = @dish_1.ingredients.create!(name: 'noodles', calories: 350)
@@ -13,6 +14,10 @@ RSpec.describe 'As a visitor' do
     @ingredient_4 = @dish_2.ingredients << @ingredient_1
     @ingredient_5 = @dish_2.ingredients.create!(name: 'chicken stock', calories: 100)
     @ingredient_6 = @dish_2.ingredients.create!(name: 'bell peppers', calories: 25)
+
+    @dish_3.ingredients << @ingredient_1
+    @dish_3.ingredients << @ingredient_2
+    @dish_3.ingredients << @ingredient_3
   end
 
   describe "When I visit a chef's show page" do
@@ -57,6 +62,8 @@ RSpec.describe 'As a visitor' do
       visit chef_ingredients_path(@chef)
 
       expect(page).to have_content(@ingredient_1.name)
+      expect(page).to have_content(@ingredient_2.name)
+      expect(page).to have_content(@ingredient_3.name)
     end
   end
 end
