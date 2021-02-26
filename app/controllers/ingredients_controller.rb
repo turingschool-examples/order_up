@@ -3,4 +3,8 @@ class IngredientsController < ApplicationController
     # binding.pry
     @chef = Chef.find(params[:chef_id])
   end
+
+  def destroy
+    binding.pry
+  end
 end

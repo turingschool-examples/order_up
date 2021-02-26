@@ -4,6 +4,11 @@ Calories:<%=  @dish.calorie_count%> <br>
 
 <% @dish.ingredients.each do |ingredient| %>
 Ingredients: <%= ingredient.name%><br>
+<form action="/dishes/<%= @dish.id %>" method="POST">
+      <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+      <input type="hidden" name="_method" value="DELETE">
+      <input type="submit" value="Remove Ingredient"/>
+  </form>
 <% end %>
 
 Created by: <%= @dish.chef.name%>

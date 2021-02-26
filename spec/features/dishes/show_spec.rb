@@ -19,4 +19,16 @@ end
    expect(page).to have_content(@dish.calorie_count)
    expect(page).to have_content(@chef.name)
  end
+
+ it "can delete ingredients from dish" do
+   visit "/dishes/#{@dish.id}"
+
+   expect(page).to have_content(@ingredient1.name)
+   expect(page).to have_content(@ingredient2.name)
+   expect(page).to have_content(@ingredient3.name)
+
+   # save_and_open_page
+   click_button("Remove Ingredient", match: :first)
+   expect(page).to_not have_content(@ingredient1.name)
+ end
 end
