@@ -17,6 +17,10 @@ RSpec.describe "When I visit a chefs show page" do
       name: "Seafood Risotto",
       description: "Also Bloody Brilliant"
     )
+    @seafood_ravioli = @gordon.dishes.create!(
+      name: "Seafood Ravioli",
+      description: "Is this store bought??"
+    )
     @beef = Ingredient.create!(
       name: "Dont forget the lamb sauce",
       calories: 1000
@@ -44,6 +48,7 @@ RSpec.describe "When I visit a chefs show page" do
     @wellington.ingredients << [@parm, @puff_pastry, @beef]
     @penne.ingredients << [@parm, @noodles, @sauce]
     @risotto.ingredients << [@parm, @noodles, @salmon]
+    @seafood_ravioli.ingredients << [@noodles, @sauce]
   end
 
   describe "Next to each ingredient theres a button to remove it" do
@@ -72,6 +77,24 @@ RSpec.describe "When I visit a chefs show page" do
       visit dish_path(@risotto.id)
 
       expect(page).to have_content(@parm.name)
+    end
+    it "Shows error if dish has no ingredients left" do
+
+      visit dish_path(@seafood_ravioli.id)
+
+      within("#ingredient-#{@noodles.id}") do
+        expect(page).to have_button("Remove")
+        click_button "Remove"
+      end
+
+      within("#ingredient-#{@sauce.id}") do
+        expect(page).to have_button("Remove")
+        click_button "Remove"
+      end
+
+      within(".flash") do
+        expect(page).to have_content("Notice: Dish has no ingredients")
+      end
     end
   end
 end
