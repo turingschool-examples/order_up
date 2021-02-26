@@ -47,4 +47,27 @@ RSpec.describe "When I visit  a dish's show page" do
     expect(page).to have_content("Made by Chef: #{@ina.name}")
     expect(page).to have_content("Total Calories: #{@spaghetti.total_calories}")
   end
+
+  it "next to each ingredient there is a button to remove that ingredient" do
+    visit chef_dish_path(@ina, @spaghetti)
+
+    within ".ingredients" do
+      within "#ingredient-#{@tomatoes.id}" do
+        expect(page).to have_button("Remove Ingredient")
+      end
+    end
+  end
+
+  it "when I click 'Remove Ingredient' I am brought back to dish show page and no longer see that ingredient" do
+    visit chef_dish_path(@ina, @spaghetti)
+
+    within ".ingredients" do
+      within "#ingredient-#{@parmesan.id}" do
+        click_button("Remove Ingredient")
+      end
+    end
+
+    expect(current_path).to eq("/chefs/#{@ina.id}/dishes/#{@spaghetti.id}")
+    expect(page).to_not have_content("#{@parmesan.name}")
+  end
 end
