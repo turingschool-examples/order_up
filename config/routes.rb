@@ -8,4 +8,7 @@ Rails.application.routes.draw do
   resources :chefs, only: [:show] do
     resources :ingredients, only: [:index]
   end
+
+  #dish_ingredients
+  resources :dish_ingredients, only: [:destroy]
 end

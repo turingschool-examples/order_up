@@ -1,4 +1,4 @@
-rrequire "rails_helper"
+require "rails_helper"
 
 RSpec.describe "When I visit a chefs show page" do
   before :each do
@@ -58,6 +58,20 @@ RSpec.describe "When I visit a chefs show page" do
 
       expect(current_path).to eq(dish_path(@penne.id))
     end
-    it "No longer shows the dish, but dish record not deleted entirely"
+    it "No longer shows the dish, but dish record not deleted entirely" do
+
+      visit dish_path(@penne.id)
+
+      within("#ingredient-#{@parm.id}") do
+        expect(page).to have_button("Remove")
+        click_button "Remove"
+      end
+
+      expect(page).not_to have_content(@parm.name)
+
+      visit dish_path(@risotto.id)
+
+      expect(page).to have_content(@parm.name)
+    end
   end
 end

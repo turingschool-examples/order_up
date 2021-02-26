@@ -1,4 +1,7 @@
 <h2>Ingredient List: </h2><br>
 <% dish.ingredients.each do |ingredient| %>
+  <div id="ingredient-<%= ingredient.id %>">
   <p><%= ingredient.name %></p>
+  <%= button_to "Remove", dish_ingredient_path(ingredient.id, dish.id), method: :delete %>
+  </div>
 <% end %>
