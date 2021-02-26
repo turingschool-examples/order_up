@@ -1,0 +1,18 @@
+<section id="dish-info">
+  <p> Dish Name : <%= @dish.name %> </p>
+  <p> Description : <%= @dish.description %></p>
+</section>
+
+<section id="dish-chef">
+  <p> By Chef : <%= @dish.chef.name %></p>
+</section>
+
+<section id="dish-calories">
+  <p> Calories for Dish : <%= @dish.total_calories %></p>
+</section>
+
+<section id="dish-ingredients">
+  <% @dish.ingredients.each do |ingredient| %>
+    <p><%= ingredient.name %></p> <%= button_to "Remove Ingredient", dish_path(id: @dish.id, ingredient_id: ingredient.id), method: :delete %>
+  <% end %>
+</section>
