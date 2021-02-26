@@ -23,12 +23,17 @@ RSpec.describe "Dish Show Page" do
 
       expect(page).to have_content(@dish_1.calorie_count)
     end
-    it "displays a delete button next to each ingredient that deletes the ingredient from the dish" do
+    it "displays a delete button next to each ingredient that deletes the
+     ingredient from the dish but does not delete the ingredient entirely" do
+
       visit "/chefs/#{@chef_a.id}/dishes/#{@dish_1.id}"
       first(:button, 'Remove').click
+
       within ".chef_dishes#ingredients" do
         expect(page).to_not have_content(@asparagus.name)
       end
+    
+      expect(Ingredient.find(@asparagus.id)).to eq(@asparagus)
     end
    end
 
