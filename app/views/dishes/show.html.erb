@@ -4,4 +4,12 @@
   <p>Name: <%= @dish.name %></p>
   <p>Description: <%= @dish.description %></p>
   <p>Chef: <%= @dish.chef_name %></p>
+  <section id='ingredients'>
+    <p>Ingredients:</p>
+    <ol>
+      <% @dish.ingredients.each do |ingredient| %>
+        <li><%= ingredient.name %></li>
+      <% end %>
+    </ol>
+  </section>
 </section>

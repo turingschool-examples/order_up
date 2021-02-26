@@ -18,8 +18,16 @@ RSpec.describe 'Dish show page' do
       end
     end
 
-    xit "shows list of dish's ingredients" do
+    it "shows list of dish's ingredients" do
+      @dish.ingredients.create!(name: 'Bun', calories: 10)
+      @dish.ingredients.create!(name: 'Meat', calories: 50)
+
       visit dish_path(@dish)
+
+      within('#ingredients') do
+        expect(page).to have_content('Bun')
+        expect(page).to have_content('Meat')
+      end
     end
 
     xit "shows dish's calorie count" do
