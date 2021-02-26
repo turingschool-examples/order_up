@@ -1,8 +1,8 @@
 <h1>Dish: <%= @dish.name %></h1>
 <h2>Description: <%= @dish.description %></h2>
 
-<section id="chef-<% chef.id %>">
-  <h2>Dish By:</h2><%= @chef.name %>
+<section id="chef-<%= chef.id %>">
+  <h2>Dish By:</h2><%= @dish.chef.name %>
 </section>
 
 <section id="ingredient-list">
