@@ -8,4 +8,8 @@ class Chef < ApplicationRecord
     .distinct
     .pluck('ingredients.name')
   end
+
+  # def remove_ingredient(ingredient_id)
+  #   ingredients.delete(ingredient_id)
+  # end
 end

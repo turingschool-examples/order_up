@@ -4,6 +4,8 @@ Rails.application.routes.draw do
   get '/dishes/:id', to: 'dishes#show'
 
   get '/chefs/:id', to: 'chefs#show'
-  
+  post '/chefs/:id', to: 'chefs#remove_ingredient'
+
   get '/chefs/:id/ingredients', to: 'chef_ingredients#index'
+
 end

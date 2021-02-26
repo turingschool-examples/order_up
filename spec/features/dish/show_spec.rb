@@ -33,5 +33,17 @@ RSpec.describe 'Dish show page', type: :feature do
       expect(page).to have_content(@chef.name)
       expect(page).to have_content(@dish_1.total_calories)
     end
+
+    # it 'Displays button to remove ingredient from dish' do
+    #   visit "/dishes/#{@dish_1.id}"
+    #
+    #   within("#dish-#{@dish_1.id}") do
+    #     expect(page).to have_button("Remove this ingredient")
+    #     click_on "Remove this ingredient"
+    #   end
+    #
+    #   expect(current_path).to eq("/dishes/#{@dish_1.id}")
+    #   expect(page).to_not have_content(@dish_1.name)
+    # end
   end
 end

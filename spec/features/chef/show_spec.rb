@@ -29,7 +29,7 @@ RSpec.describe 'Chef show page', type: :feature do
     expect(page).to have_link("Ingredents they use")
   end
 
-  it 'Links takes you to unique list of chefs ingredients' do
+  it 'Link takes you to unique list of chefs ingredients' do
     visit "/chefs/#{@chef.id}"
 
     click_on "Ingredents they use"
