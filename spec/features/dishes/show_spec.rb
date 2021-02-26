@@ -49,5 +49,37 @@ RSpec.describe 'As a visitor' do
         expect(page).to have_content(650)
       end
     end
+
+    it 'I see a button to remove the ingredient next to it' do
+      visit dish_path(@dish_1)
+
+      within("#ingredient-#{@ingredient_1.id}") do
+        expect(page).to have_button("Remove Ingredient")
+      end
+    end
+
+    it "I am redirected back to the dish's show page after I click the button" do
+      visit dish_path(@dish_1)
+
+      within("#ingredient-#{@ingredient_1.id}") do
+        click_button("Remove Ingredient")
+      end
+
+      expect(current_path).to eq(dish_path(@dish_1))
+    end
+
+    it 'I no longer see the ingredient listed for this dish' do
+      visit dish_path(@dish_1)
+
+      within("#ingredient-#{@ingredient_1.id}") do
+        click_button("Remove Ingredient")
+      end
+
+      within("#dish-#{@dish_1.id}") do
+        expect(page).not_to have_content(@ingredient_1.name)
+        expect(page).to have_content(@ingredient_2.name)
+        expect(page).to have_content(@ingredient_3.name)
+      end
+    end
   end
 end
