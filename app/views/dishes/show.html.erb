@@ -9,7 +9,11 @@
     <p>Ingredients:</p>
     <ol>
       <% @dish.ingredients.each do |ingredient| %>
-        <li><%= ingredient.name %></li>
+        <li>
+          <%= ingredient.name %>
+          <% # TODO stopped at this vvvv line %>
+          <%= button_to 'Delete', id: "delete-ingredient-#{ingredient.id}", dish_ingredient_path(@dish, ingredient), method: :delete %>
+        </li>
       <% end %>
     </ol>
   </section>

@@ -4,6 +4,10 @@ RSpec.describe 'Dish show page' do
   before :each do
     chef = Chef.create!(name: 'Guy Fieri')
     @dish = chef.dishes.create!(name: 'Burger', description: 'A classic.')
+    @bun = Ingredient.create!(name: 'Bun', calories: 10)
+    @meat = Ingredient.create!(name: 'Meat', calories: 50)
+    @dish.ingredients << @bun
+    @dish.ingredients << @meat
   end
 
   describe 'as a visitor' do
@@ -17,10 +21,15 @@ RSpec.describe 'Dish show page' do
       end
     end
 
-    it "shows list of dish's ingredients" do
-      @dish.ingredients.create!(name: 'Bun', calories: 10)
-      @dish.ingredients.create!(name: 'Meat', calories: 50)
+    it "shows dish's calorie count" do
+      visit dish_path(@dish)
 
+      within('#dish-info') do
+        expect(page).to have_content('60')
+      end
+    end
+
+    it "shows list of dish's ingredients" do
       visit dish_path(@dish)
 
       within('#ingredients') do
@@ -29,14 +38,12 @@ RSpec.describe 'Dish show page' do
       end
     end
 
-    it "shows dish's calorie count" do
-      @dish.ingredients.create!(name: 'Bun', calories: 10)
-      @dish.ingredients.create!(name: 'Meat', calories: 50)
-
+    it 'shows delete button for each dish ingredient' do
       visit dish_path(@dish)
 
-      within('#dish-info') do
-        expect(page).to have_content('60')
+      within('#ingredients') do
+        expect(page).to have_button("delete-ingredient-#{@bun.id}")
+        expect(page).to have_content("delete-ingredient-#{@meat.id}")
       end
     end
   end
