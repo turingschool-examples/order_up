@@ -3,8 +3,7 @@ require 'rails_helper'
 RSpec.describe 'Dish show page' do
   before :each do
     chef = Chef.create!(name: 'Guy Fieri')
-    chef.dishes.create!(name: 'Burger', description: 'A classic.')
-    @dish = chef.dishes.first
+    @dish = chef.dishes.create!(name: 'Burger', description: 'A classic.')
   end
 
   describe 'as a visitor' do
@@ -30,8 +29,15 @@ RSpec.describe 'Dish show page' do
       end
     end
 
-    xit "shows dish's calorie count" do
+    it "shows dish's calorie count" do
+      @dish.ingredients.create!(name: 'Bun', calories: 10)
+      @dish.ingredients.create!(name: 'Meat', calories: 50)
+
       visit dish_path(@dish)
+
+      within('#dish-info') do
+        expect(page).to have_content('60')
+      end
     end
   end
 end
