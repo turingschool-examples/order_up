@@ -1,0 +1,8 @@
+ <h3>Most Popular Ingredients: </h3>
+ <section class="most_popular_ingredients">
+  <ol>
+   <% chef.most_popular_ingredients.each do |ingredient| %>
+      <li><%= ingredient.name %></li>
+   <% end %>
+  </ol>
+ </section>

@@ -1,0 +1,5 @@
+<h1><%= @dish.name %></h1>
+<h3>Description: <%= @dish.description %></h3>
+<h4>Total calorie count for <%= @dish.name %>: <%= @dish.total_calories %></h4>
+<%= render partial: "ingredients", locals: { dish: @dish } %>
+<h2>Cooked by: <%= @dish.chef.name %></h2>
