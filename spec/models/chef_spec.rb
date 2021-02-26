@@ -20,6 +20,13 @@ RSpec.describe Chef, type: :model do
         expect(@chef_a.all_ingredients_used).to eq(answer)
       end
     end
+    describe "#top_ingredients" do
+      it "lists the names of the top 3 ingredients use in the chef's dishes" do
+        answer = [@asparagus.name, @noodles.name, @snap_peas.name]
+
+        expect(@chef_a.top_ingredients).to eq(answer)
+      end
+    end
   end
 
   def set_up
@@ -36,11 +43,13 @@ RSpec.describe Chef, type: :model do
       @beef = Ingredient.create!(name: "Beef", calories: 500)
 
       @chef_a.dishes.find(@dish_1.id).ingredients << @asparagus
-      @chef_a.dishes.find(@dish_1.id).ingredients << @snap_peas
-      @chef_a.dishes.find(@dish_1.id).ingredients << @noodles
       @chef_a.dishes.find(@dish_2.id).ingredients << @asparagus
-      @chef_a.dishes.find(@dish_2.id).ingredients << @beef
       @chef_a.dishes.find(@dish_3.id).ingredients << @asparagus
+      @chef_a.dishes.find(@dish_1.id).ingredients << @snap_peas
+      @chef_a.dishes.find(@dish_2.id).ingredients << @snap_peas
+      @chef_a.dishes.find(@dish_1.id).ingredients << @noodles
+      @chef_a.dishes.find(@dish_3.id).ingredients << @noodles
+      @chef_a.dishes.find(@dish_2.id).ingredients << @beef
 
     end
   end
