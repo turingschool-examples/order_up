@@ -1,0 +1,4 @@
+<h3><%="#{@dish.name} " + "description - " + "#{@dish.description}"%></h3>
+<%@dish.ingredient_names.each do |ingredient_name|%>
+  <h2><%=ingredient_name%></h2>
+<%end%>
