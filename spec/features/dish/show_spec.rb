@@ -6,8 +6,6 @@ RSpec.describe 'dish show page' do
       @dish_1 = @chef.dishes.create(name: "Cheese Burger", description: "Delicious")
       @cheese = @dish_1.ingredients.create(name: "American cheese", calories: 100)
       @beef = @dish_1.ingredients.create(name: "beef", calories: 200)
-      DishIngredient.create(dish: @dish_1, ingredient: @cheese)
-      DishIngredient.create(dish: @dish_1, ingredient: @beef)
     end
 
     it "can show dish name and description" do
