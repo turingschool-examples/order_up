@@ -1,0 +1,7 @@
+<h1><center> <%= @chef.name %> </center></h1>
+
+<%= link_to "Ingredients", "/chefs/#{@chef.id}/ingredients" %><br>
+
+<% @chef.dishes.each do |dish| %>
+  <%= link_to "#{dish.name}", "/chefs/#{@chef.id}/dishes/#{dish.id}" %><br>
+<% end %>

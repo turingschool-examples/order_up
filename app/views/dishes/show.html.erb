@@ -4,7 +4,10 @@
 <h2>Ingredients:</h2>
 
 <% @dish.ingredients.each do |ing| %>
-  <%= ing.name %>
+<%= ing.name %>
+<p id="ingredient-<%=ing.id%>">
+<%= button_to "Remove Ingredient", "/chefs/#{@chef.id}/dishes/#{@dish.id}" ,method: :patch, local: true, class: "btn btn-secondary btn-sm", params: {remove: ing.id} %>
+</p>
 <% end %>
 
 <h2>Chefs:</h2>

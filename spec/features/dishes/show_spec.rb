@@ -29,4 +29,10 @@ RSpec.describe 'Dish Show Page' do
     expect(page).to have_content(@dish1.total_calories)
   end
 
+  it "can remove ingredient" do
+    within "#ingredient-#{@fudge.id}" do
+    click_button("Remove Ingredient")
+    end
+  end
+
 end
