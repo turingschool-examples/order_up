@@ -7,3 +7,20 @@
 <section id="description">
   <p><%= "Dish Description: #{@dish.description}"%></p>
 </section>
+
+<section id="ingredients">
+  <h2>Ingredients: </h2>
+  <ol>
+  <% @dish.ingredients.each do |ing| %>
+    <li><%= ing.name%></li>
+  <% end %>
+</ol>
+</section>
+
+<section id="chef-name">
+  <h2><%= "Chef Name: #{@chef.name}" %></h2>
+</section>
+
+<section id="total-calories">
+  <h3><%= "Total Calories: #{@dish.total_calories}" %></h3>
+</section>
