@@ -6,8 +6,11 @@
 
 <h3>List of ingredients</h3>
 <% @dish.ingredients.each do |ingredient| %>
+
 <%= ingredient.name %>
+<%= button_to "remove #{ingredient.name}", {:controller => "dishes", :action => "destroy", :ingredient_id => "#{ingredient.id}" }, :method=>:delete  %>
 <% end %>
+
 
 <h3>Total calories</h3>
 <%= @dish.calories %>

@@ -31,12 +31,10 @@ RSpec.describe "As a visitor" do
       visit "/chefs/#{@chef.id}"
 
       click_link
-      #
-      # expect(page).to have_content(@sauce.name)
-      # expect(page).to have_content(@cheese.name)
-      # expect(page).to have_content(@dough.name)
 
-
+      expect(page).to have_content(@sauce.name)
+      expect(page).to have_content(@cheese.name)
+      expect(page).to have_content(@dough.name)
 
     end
   end
