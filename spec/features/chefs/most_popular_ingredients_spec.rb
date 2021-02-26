@@ -41,30 +41,21 @@ RSpec.describe "When I visit a chefs show page" do
       name: "Salmon",
       calories: 500
     )
-    @wellington.ingredients << [@parm, @puff_pastry, @beef]
+    @wellington.ingredients << [@parm, @puff_pastry, @beef, @sauce]
     @penne.ingredients << [@parm, @noodles, @sauce]
     @risotto.ingredients << [@parm, @noodles, @salmon]
   end
 
-  describe "I see the name of the chef" do
-    it "Has a link to a list of all ingredients chef uses in all dishes" do
-
-      visit chef_path(@gordon.id)
-
-      expect(page).to have_content(@gordon.name)
-      expect(page).to have_link("View all ingredients #{@gordon.name} uses")
-    end
-    it "Takes me to ingredient/index with unique list of all ingredients" do
+  describe "I see three most popular ingredients chef uses in dishes" do
+    it "Based off how many dishes use that ingredient" do
 
       visit chef_ingredients_path(@gordon.id)
 
-      expect(page).to have_content(@parm.name)
-      expect(page).to have_content(@puff_pastry.name)
-      expect(page).to have_content(@beef.name)
-      expect(page).to have_content(@parm.name)
-      expect(page).to have_content(@noodles.name)
-      expect(page).to have_content(@sauce.name)
-      expect(page).to have_content(@salmon.name)
+      within(".most_popular_ingredients") do
+        expect(page).to have_content(@parm.name)
+        expect(page).to have_content(@noodles.name)
+        expect(page).to have_content(@sauce.name)
+      end
     end
   end
 end
