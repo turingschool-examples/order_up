@@ -1,23 +1,23 @@
 require 'rails_helper'
 
-RSpec.describe Dish, type: :model do
-  describe "validations" do
-    it {should validate_presence_of :name}
-    it {should validate_presence_of :description}
-  end
-  describe "relationships" do
-    it {should belong_to :chef}
-    it {should have_many :dish_ingredients}
-    it {should have_many(:ingredients).through(:dish_ingredients)}
-  end
-
+RSpec.describe 'Ingredients index page' do
   before :each do
     set_up
   end
 
-  describe 'instance methods' do
-    it 'total_calories' do
-      expect(@fish.total_calories).to eq(750)
+  describe 'chef ingredient index page' do
+    it 'has unique list of all the chef ingredients' do
+      visit "/chefs/#{@jon.id}/ingredients"
+
+      expect(page).to have_content("#{@jon.name}'s Ingredients")
+
+      within ".ingredient-#{@salmon.id}" do
+        expect(page).to have_content(@salmon.name)
+      end
+
+      within ".ingredient-#{@potatoes.id}" do
+        expect(page).to have_content(@potatoes.name)
+      end
     end
   end
 
