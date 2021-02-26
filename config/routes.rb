@@ -1,3 +1,11 @@
 Rails.application.routes.draw do
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+  resources :dishes, only:[:show]
+  namespace :dishes do
+    resources :ingredients, only: [:destroy]
+  end
+
+  resources :chefs, only: [:show]
+  namespace :chefs do
+    resources :ingredients, only: [:index]
+  end
 end
