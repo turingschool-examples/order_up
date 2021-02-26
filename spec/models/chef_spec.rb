@@ -4,9 +4,11 @@ RSpec.describe Chef, type: :model do
   describe "validations" do
     it {should validate_presence_of :name}
   end
+
   describe "relationships" do
     it {should have_many :dishes}
   end
+
   describe "instance methods" do
     it "#find_unique_ingredients" do
       @gordon = Chef.create!(
@@ -58,6 +60,7 @@ RSpec.describe Chef, type: :model do
       expect(expected[0].name).to eq(@puff_pastry.name)
       expect(expected[1].name).to eq(@noodles.name)
     end
+
     it "#most_popular_ingredients" do
         @gordon = Chef.create!(
           name: "Gordon Ramsey"
@@ -104,9 +107,9 @@ RSpec.describe Chef, type: :model do
 
         expected = @gordon.most_popular_ingredients
 
-        expect(expected[2].name).to eq(@puff_pastry.name)
         expect(expected[0].name).to eq(@beef.name)
         expect(expected[1].name).to eq(@noodles.name)
+        expect(expected[2].name).to eq(@puff_pastry.name)
     end
   end
 end

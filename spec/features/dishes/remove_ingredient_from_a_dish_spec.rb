@@ -63,6 +63,7 @@ RSpec.describe "When I visit a chefs show page" do
 
       expect(current_path).to eq(dish_path(@penne.id))
     end
+
     it "No longer shows the dish, but dish record not deleted entirely" do
 
       visit dish_path(@penne.id)
@@ -78,6 +79,7 @@ RSpec.describe "When I visit a chefs show page" do
 
       expect(page).to have_content(@parm.name)
     end
+    
     it "Shows error if dish has no ingredients left" do
 
       visit dish_path(@seafood_ravioli.id)

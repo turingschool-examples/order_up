@@ -5,11 +5,13 @@ RSpec.describe Dish, type: :model do
     it {should validate_presence_of :name}
     it {should validate_presence_of :description}
   end
+
   describe "relationships" do
     it {should belong_to :chef}
     it {should have_many :dish_ingredients}
     it {should have_many(:ingredients).through(:dish_ingredients)}
   end
+
   describe "instance methods" do
     it "#total_calories" do
       @gordon = Chef.create!(
@@ -28,7 +30,7 @@ RSpec.describe Dish, type: :model do
         calories: 800
       )
       @wellington.ingredients << [@beef, @puff_pastry]
-      
+
       expect(@wellington.total_calories).to eq 1800
     end
   end

@@ -57,6 +57,7 @@ RSpec.describe "When I visit a chefs show page" do
       expect(page).to have_content(@gordon.name)
       expect(page).to have_link("View all ingredients #{@gordon.name} uses")
     end
+    
     it "Takes me to ingredient/index with unique list of all ingredients" do
 
       visit chef_ingredients_path(@gordon.id)
@@ -77,6 +78,7 @@ RSpec.describe "When I visit a chefs show page" do
       visit chef_path(@guy.id)
 
       click_link "View all ingredients #{@guy.name} uses"
+
       within(".flash") do
         expect(page).to have_content("This Chef has no Ingredients")
       end
