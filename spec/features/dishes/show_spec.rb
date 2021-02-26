@@ -39,5 +39,34 @@ RSpec.describe "dish show page" do
 
       expect(page).to have_content("Total calories: 10")
     end
+
+    it "shows a button to remove each ingredient" do
+      visit "/dishes/#{@dish.id}"
+
+      within(".ingredients") do
+        within("#ingrediant_id_#{@ingredient1.id}") do
+          expect(page).to have_button("Remove")
+        end
+
+        within("#ingrediant_id_#{@ingredient2.id}") do
+          expect(page).to have_button("Remove")
+        end
+      end
+    end
+  end
+  describe "when a remove button is clicked" do
+    it "removes the item" do
+      visit "/dishes/#{@dish.id}"
+
+      within(".ingredients") do
+        within("#ingrediant_id_#{@ingredient1.id}") do
+          click_button("Remove")
+        end
+      end
+
+      expect(current_path).to eq("/dishes/#{@dish.id}")
+
+      expect(page).to_not have_content(@ingredient1.name)
+    end
   end
 end
