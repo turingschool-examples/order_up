@@ -8,7 +8,7 @@
 <% @dish.ingredients.each do |ingredient| %>
 
 <%= ingredient.name %>
-<%= button_to "remove #{ingredient.name}", {:controller => "dishes", :action => "destroy", :ingredient_id => "#{ingredient.id}" }, :method=>:delete  %>
+<%= button_to "remove #{ingredient.name}", {:controller => "dish_ingredients", :action => "destroy", :ingredient_id => "#{ingredient.id}" }, :method=>:delete  %>
 <% end %>
 
 
