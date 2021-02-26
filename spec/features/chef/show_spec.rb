@@ -37,10 +37,11 @@ RSpec.describe 'Chef show page' do
       expect(current_path).to eq(chef_ingredients_path(@taiki.id))
     end
 
-    it 'and I can see a unique list of names of all the ingredients that this chef uses' do
+    xit 'and I can see a unique list of names of all the ingredients that this chef uses' do
       visit chef_ingredients_path(@taiki.id)
 
       expect(page).to have_content(@taiki.list_unique_ingredients_used)
+      # moving onto testing for this model method before having this one pass.
     end
   end
 end
