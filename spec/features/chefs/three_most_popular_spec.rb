@@ -26,8 +26,8 @@ RSpec.describe 'As a visitor' do
     it "I see the three most popular ingredients that the chef uses in their dishes" do
       visit "/chefs/#{@chef_1.id}"
 
-
       expect(page).to have_content("Most popular")
+
       within ("#most_popular") do
         expect(page).to have_content(@corn.name)
         expect(page).to have_content(@fish.name)
@@ -36,10 +36,3 @@ RSpec.describe 'As a visitor' do
     end
   end
 end
-
-#
-# Extension
-# As a visitor
-# When I visit a chef's show page
-# I see the three most popular ingredients that the chef uses in their dishes
-# (Popularity is based off of how many dishes use that ingredient)

@@ -1,6 +1,5 @@
 require 'rails_helper'
 
-
 RSpec.describe 'As a visitor' do
   describe "When I visit the dishes show page (/dishes/:id)" do
     before(:each) do
@@ -17,28 +16,22 @@ RSpec.describe 'As a visitor' do
     end
 
     it "shows me the dish name, description, list of ingredients, chef, and total calories" do
-        visit "/dishes/#{@dish_1.id}"
+      visit "/dishes/#{@dish_1.id}"
 
-        expect(current_path).to eq("/dishes/#{@dish_1.id}")
-        expect(page).to have_content(@dish_1.name)
-        expect(page).to have_content(@dish_1.chef.name)
-        expect(page).to have_content(@dish_1.description)
-        expect(page).to have_content(@dish_1.total_calories)
+      expect(current_path).to eq("/dishes/#{@dish_1.id}")
+      expect(page).to have_content(@dish_1.name)
+      expect(page).to have_content(@dish_1.chef.name)
+      expect(page).to have_content(@dish_1.description)
+      expect(page).to have_content(@dish_1.total_calories)
 
-        within("#ingredient-#{@fish.id}") do
-          expect(page).to have_content(@fish.name)
-          expect(page).to have_content(@fish.calories)
-        end
-        within("#ingredient-#{@broth.id}") do
-          expect(page).to have_content(@broth.name)
-          expect(page).to have_content(@broth.calories)
-        end
+      within("#ingredient-#{@fish.id}") do
+        expect(page).to have_content(@fish.name)
+        expect(page).to have_content(@fish.calories)
+      end
+      within("#ingredient-#{@broth.id}") do
+        expect(page).to have_content(@broth.name)
+        expect(page).to have_content(@broth.calories)
       end
     end
   end
-
-# When I visit a dish's show page
-# I see the dish’s name and description
-# And I see a list of ingredients for that dish
-# And I see the chef's name
-# Abd I see the total calorie count for that dish.
+end

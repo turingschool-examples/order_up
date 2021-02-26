@@ -1,6 +1,5 @@
 require 'rails_helper'
 
-
 RSpec.describe 'As a visitor' do
   describe "When I visit the chef show page (/chefs/:id)" do
     before(:each) do
