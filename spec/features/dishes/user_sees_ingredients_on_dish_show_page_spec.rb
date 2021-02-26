@@ -46,6 +46,7 @@ RSpec.describe "When I visit a dish's show page" do
     it "Shows the total calorie count for that dish" do
 
       visit dish_path(@penne.id)
+      save_and_open_page
 
       expect(page).to have_content("Total calorie count for #{@penne.name}: 1500")
     end
