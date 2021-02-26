@@ -17,6 +17,14 @@ RSpec.describe 'Dish show page', type: :feature do
       expect(page).to have_content(@dish_1.description)
     end
 
+    it 'Displays ingredients for the dish' do
+      visit "/dishes/#{@dish_1.id}"
 
+      within("#dish-#{@dish_1.id}") do
+        expect(page).to have_content(@ingredient_1.name)
+        expect(page).to have_content(@ingredient_2.name)
+        expect(page).to have_content(@ingredient_3.name)
+      end
+    end 
   end
 end
