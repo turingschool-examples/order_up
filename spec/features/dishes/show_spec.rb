@@ -41,6 +41,10 @@ RSpec.describe 'Dish show page' do
       end
       it "And I see the chef's name" do
         visit dish_path(@dish1)
+
+        within ".chef" do
+          expect(page).to have_content("Chef: #{@chef.name}")
+        end
       end
       it "And I see the total calorie count for that dish." do
         visit dish_path(@dish1)
