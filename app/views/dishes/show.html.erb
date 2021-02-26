@@ -10,7 +10,7 @@
 <h4>Ingredients:</h4>
 <ul>
   <% @dish.ingredients.each do |ingredient| %>
-    <section>
+    <section id="ingredient-<%= ingredient.id %>">
       <li><%= ingredient.name %></li>
       <li><%= ingredient.calories %></li>
     </section>
