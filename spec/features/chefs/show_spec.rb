@@ -36,7 +36,6 @@ RSpec.describe 'Chef show page' do
       within ".ingredient-#{@salmon.id}" do
         expect(page).to have_content(@salmon.name)
       end
-
     end
   end
 

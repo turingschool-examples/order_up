@@ -1,8 +1,7 @@
 class DishIngredientsController < ApplicationController
   def destroy
     @dish = Dish.find(params[:id])
-    @dish_ingredient = DishIngredient.where(dish_id: @dish.id, ingredient_id: params[:remove]).first
-    DishIngredient.find(@dish_ingredient.id).destroy
+    DishIngredient.dish_ingredient_destroy(@dish.id, params[:remove])
 
     redirect_to "/dishes/#{@dish.id}"
   end
