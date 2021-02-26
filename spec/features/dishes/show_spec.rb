@@ -49,7 +49,6 @@ RSpec.describe "Dish Show Page" do
       within("#dish-details") do
         expect(page).to have_content(@mac_cheese.calorie_count)
       end
-      save_and_open_page
     end
   end
 

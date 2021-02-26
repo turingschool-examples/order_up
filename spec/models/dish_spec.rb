@@ -29,4 +29,26 @@ RSpec.describe Dish, type: :model do
       end
     end
   end
+
+  describe "Class Methods" do
+    describe "::ingredients_list" do
+      it "lists all of the ingredients in all the dishes" do
+        chef = Chef.create(name: "Chef")
+
+        pizza = chef.dishes.create(name: "Pizza", description: "Even when its bad its good")
+
+        cheese = Ingredient.create(name: "Cheese", calories: 150)
+        dough = Ingredient.create(name: "Pizza Dough", calories: 200)
+        sauce = Ingredient.create(name: "Pizza Sauce", calories: 50)
+
+        chicken = Ingredient.create(name: "Chicken", calories: 100)
+
+        pizza.ingredients << [dough, cheese, sauce]
+
+        expected = [cheese, dough, sauce]
+
+        expect(Dish.ingredients_list).to eq(expected)
+      end
+    end
+  end
 end
