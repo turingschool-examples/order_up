@@ -15,6 +15,14 @@ RSpec.describe 'Chef show page' do
         expect(page).to have_content('Guy')
       end
     end
+
+    it 'shows link to ingredients used by chef' do
+      visit chef_path(@guy)
+
+      expect(page).to have_link('View Ingredients Used By Guy Fieri')
+      click_link('View Ingredients Used By Guy Fieri')
+      expect(current_path).to eq(chef_ingredients_path(@guy))
+    end
   end
 
   def create_burger_for_guy

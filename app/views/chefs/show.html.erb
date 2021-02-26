@@ -2,4 +2,5 @@
 
 <section id='chef-info'>
   <p>Name: <%= @chef.name %></p>
+  <p><%= link_to "View Ingredients Used By #{@chef.name}", chef_ingredients_path(@chef) %></p>
 </section>

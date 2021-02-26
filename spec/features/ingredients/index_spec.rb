@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe Chef, type: :model do
+RSpec.describe 'Chef ingredients index page' do
   before :each do
     @guy = Chef.create!(name: 'Guy Fieri')
     create_ingredients
@@ -8,20 +8,16 @@ RSpec.describe Chef, type: :model do
     create_nachos_for_guy
   end
 
-  describe "validations" do
-    it {should validate_presence_of :name}
-  end
+  describe 'as a visitor' do
+    it 'shows distinct list of ingredients from all dishes' do
+      visit chef_ingredients_path(@guy)
 
-  describe "relationships" do
-    it { should have_many :dishes }
-    it { should have_many(:dish_ingredients).through(:dishes) }
-    it { should have_many(:ingredients).through(:dish_ingredients) }
-  end
-
-  describe 'instance methods' do
-    describe '#ingredients_used' do
-      it 'should return alpha-sorted unique list of ingredients from all dishes' do
-        expect(@guy.ingredients_used).to eq([@bun, @cheese, @chip, @jalepeno, @meat])
+      within('#all-ingredients') do
+        expect(page).to have_content('Bun', count: 1)
+        expect(page).to have_content('Meat', count: 1)
+        expect(page).to have_content('Chips', count: 1)
+        expect(page).to have_content('Cheese', count: 1)
+        expect(page).to have_content('Jalepeno', count: 1)
       end
     end
   end
