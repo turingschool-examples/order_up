@@ -6,8 +6,8 @@ RSpec.describe "Dish Show Page" do
   end
   describe "as a visitor" do
     it "displays the dishes information" do
-      visit "/chefs/:chef_id/dishes/:id"
-      
+      visit "/chefs/:chef_id/dishes/#{@dish_1.id}"
+
       expect(page).to have_content(@dish_1.name)
       expect(page).to have_content(@dish_1.ingredients.pluck(:name))
     end
