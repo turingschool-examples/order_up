@@ -12,10 +12,13 @@ RSpec.describe Chef, type: :model do
     @ingredient1 = Ingredient.create(name: 'Chicken', calories: 100)
     @ingredient2 = Ingredient.create(name: 'Rice', calories: 200)
     @ingredient3 = Ingredient.create(name: 'Beef', calories: 150)
+    @ingredient4 = Ingredient.create(name: 'Salad', calories: 25)
     @dish_ingredient1 = DishIngredient.create(dish_id: @dish1.id, ingredient_id: @ingredient1.id)
     @dish_ingredient2 = DishIngredient.create(dish_id: @dish1.id, ingredient_id: @ingredient2.id)
-    @dish_ingredient3 = DishIngredient.create(dish_id: @dish2.id, ingredient_id: @ingredient3.id)
+    @dish_ingredient3 = DishIngredient.create(dish_id: @dish2.id, ingredient_id: @ingredient4.id)
     @dish_ingredient4 = DishIngredient.create(dish_id: @dish2.id, ingredient_id: @ingredient1.id)
+    @dish_ingredient5 = DishIngredient.create(dish_id: @dish2.id, ingredient_id: @ingredient4.id)
+    @dish_ingredient5 = DishIngredient.create(dish_id: @dish2.id, ingredient_id: @ingredient3.id)
   end
   describe "validations" do
     it {should validate_presence_of :name}
@@ -29,7 +32,7 @@ RSpec.describe Chef, type: :model do
   describe "instance methods" do
     describe "#unique_ingredients" do
       it "gets unique ingredients for that chef" do
-        expect(@chef.unique_ingredients).to eq(["Beef", "Chicken", "Rice"])
+        expect(@chef.unique_ingredients).to eq(["Beef","Chicken", "Rice", "Salad"])
       end
     end
   end

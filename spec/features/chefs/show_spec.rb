@@ -12,10 +12,12 @@ RSpec.describe 'Chef show page' do
     @ingredient1 = Ingredient.create(name: 'Chicken', calories: 100)
     @ingredient2 = Ingredient.create(name: 'Rice', calories: 200)
     @ingredient3 = Ingredient.create(name: 'Beef', calories: 150)
+    @ingredient4 = Ingredient.create(name: 'Salad', calories: 25)
     @dish_ingredient1 = DishIngredient.create(dish_id: @dish1.id, ingredient_id: @ingredient1.id)
     @dish_ingredient2 = DishIngredient.create(dish_id: @dish1.id, ingredient_id: @ingredient2.id)
-    @dish_ingredient3 = DishIngredient.create(dish_id: @dish2.id, ingredient_id: @ingredient3.id)
+    @dish_ingredient3 = DishIngredient.create(dish_id: @dish2.id, ingredient_id: @ingredient4.id)
     @dish_ingredient4 = DishIngredient.create(dish_id: @dish2.id, ingredient_id: @ingredient1.id)
+    @dish_ingredient5 = DishIngredient.create(dish_id: @dish2.id, ingredient_id: @ingredient4.id)
   end
 
   describe 'As a visitor' do
@@ -35,6 +37,16 @@ RSpec.describe 'Chef show page' do
           click_link("All Ingredients")
 
           expect(current_path).to eq(chef_ingredients_path(@chef))
+        end
+      end
+      it "I see the three most popular ingredients that the chef uses in their dishes" do
+        visit chef_path(@chef)
+
+        within '.popular-ingredients' do
+          expect(page).to have_content("3 Most Popular Ingredients")
+          expect(page).to have_content(@ingredient1.name)
+          expect(page).to have_content(@ingredient4.name)
+          expect(page).to have_content(@ingredient2.name)
         end
       end
     end
