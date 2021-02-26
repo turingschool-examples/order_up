@@ -18,7 +18,6 @@ RSpec.describe 'As a visitor' do
 
     it "shows me the chefs name and has link to ingredients" do
       visit "/chefs/#{@chef_1.id}"
-      save_and_open_page
 
       expect(current_path).to eq("/chefs/#{@chef_1.id}")
       expect(page).to have_content(@chef_1.name)
@@ -30,7 +29,6 @@ RSpec.describe 'As a visitor' do
 
       expect(page).to have_link("ingredients")
       click_link("ingredients")
-      save_and_open_page
       expect(current_path).to eq("/chefs/#{@chef_1.id}/ingredients")
     end
 
@@ -46,16 +44,6 @@ RSpec.describe 'As a visitor' do
         expect(page).to have_content(@broth.name)
         expect(page).to have_content(@broth.calories)
       end
-      save_and_open_page
     end
   end
 end
-
-#
-# As a visitor
-# When I visit a chef's show page
-# I see the name of that chef
-# And I see a link to view a list of all ingredients that this chef uses in their dishes
-# When I click on that link
-# I'm taken to a chef's ingredient index page
-# and I can see a unique list of names of all the ingredients that this chef uses
