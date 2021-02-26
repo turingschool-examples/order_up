@@ -16,4 +16,9 @@ class Dish <ApplicationRecord
     chef.name
   end
 
+  def remove_ingredient(ingredient_id)
+    remove_association = DishIngredient.where("ingredient_id = ?", ingredient_id).first.id
+    DishIngredient.destroy(remove_association)
+  end
+
 end

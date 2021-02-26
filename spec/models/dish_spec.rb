@@ -16,7 +16,7 @@ RSpec.describe Dish, type: :model do
     describe "#dish_information" do
       it "shows a dish's ingredients" do
         chef_1 = Chef.create!(name: "Chef")
-        dish_1 = Dish.create!(name: "Pizza", description: "Tasty", chef_id: chef_1.id )
+        dish_1 = Dish.create!(name: "Pizza", description: "Tasty", chef_id: chef_1.id)
         ingred_1 = Ingredient.create!(name: "Cheese", calories: 450)
         ingred_2 = Ingredient.create!(name: "Dough", calories: 300)
         ingred_3 = Ingredient.create!(name: "Marinara", calories: 100)
@@ -24,9 +24,9 @@ RSpec.describe Dish, type: :model do
         dish_1_ingred_2 = DishIngredient.create!(dish_id: dish_1.id, ingredient_id: ingred_2.id)
         dish_1_ingred_3 = DishIngredient.create!(dish_id: dish_1.id, ingredient_id: ingred_3.id)
 
-        expected = dish_1.dish_information.map do |ingred|
-                    ingred.name
-                  end
+        expected =  dish_1.dish_information.map do |ingred|
+                      ingred.name
+                    end
 
         expect(expected).to eq(["Cheese", "Dough", "Marinara"])
       end
@@ -54,6 +54,28 @@ RSpec.describe Dish, type: :model do
       dish_1 = Dish.create!(name: "Pizza", description: "Tasty", chef_id: chef_1.id )
 
       expect(dish_1.chef_information).to eq("Chef")
+    end
+  end
+
+  describe "#remove_ingredient" do
+    it "removes an ingredient from the dish" do
+      chef_1 = Chef.create!(name: "Chef")
+      dish_1 = Dish.create!(name: "Pizza", description: "Tasty", chef_id: chef_1.id )
+      ingred_1 = Ingredient.create!(name: "Cheese", calories: 450)
+      ingred_2 = Ingredient.create!(name: "Dough", calories: 300)
+      ingred_3 = Ingredient.create!(name: "Marinara", calories: 100)
+      dish_1_ingred_1 = DishIngredient.create!(dish_id: dish_1.id, ingredient_id: ingred_1.id)
+      dish_1_ingred_2 = DishIngredient.create!(dish_id: dish_1.id, ingredient_id: ingred_2.id)
+      dish_1_ingred_3 = DishIngredient.create!(dish_id: dish_1.id, ingredient_id: ingred_3.id)
+
+      dish_1.remove_ingredient(ingred_3.id)
+
+      expected_1 =  dish_1.ingredients.map do |dish|
+                    dish.name
+                  end
+
+      expect(expected_1).to eq(["Cheese", "Dough"])
+      expect(Ingredient.find(ingred_3.id).name == "Marinara").to eq(true)
     end
   end
 end
