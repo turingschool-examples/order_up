@@ -23,13 +23,13 @@ RSpec.describe "Chef Show Page", type: :feature do
     DishIngredient.create(dish: @dish4, ingredient: @ingredient5)
   end
   describe "When I visit a Chef's Show page" do
-    # I see the name of that chef
+
     it "I see the name of the chef" do
       visit "chefs/#{@chef1.id}"
 
       expect(page).to have_content(@chef1.name)
     end
-    # And I see a link to view a list of all ingredients that this chef uses in their dishes
+
     it "sees a link to view a list of all ingredients that this chef uses" do
       visit "chefs/#{@chef1.id}"
 
@@ -37,8 +37,7 @@ RSpec.describe "Chef Show Page", type: :feature do
         expect(page).to have_link("See this Chef's Ingredients", href: "/chefs/#{@chef1.id}/ingredients")
       end
     end
-    # When I click on that link
-    # I'm taken to a chef's ingredient index page
+
     it "can click on the ingredients link and is taken to the chefs ingredients page" do
       visit "chefs/#{@chef1.id}"
 
@@ -46,6 +45,21 @@ RSpec.describe "Chef Show Page", type: :feature do
       
       expect(current_path).to eq("/chefs/#{@chef1.id}/ingredients")
     end
-    # and I can see a unique list of names of all the ingredients that this chef uses
+
+    it "shows the three most popular ingredients" do
+      dish3 = @chef1.dishes.create(name: "Test Meal", description: "For popularity")
+      DishIngredient.create(dish: @dish1, ingredient: @ingredient3)
+      DishIngredient.create(dish: dish3, ingredient: @ingredient3)
+      DishIngredient.create(dish: @dish2, ingredient: @ingredient5)
+
+      visit "chefs/#{@chef1.id}"
+
+      within(".most-popular") do
+        expect(page).to have_content(@ingredient3.name)
+        expect(page).to have_content(@ingredient3.name)
+        expect(page).to have_content(@ingredient3.name)
+        expect(page).to_not have_content(@ingredient4.name)
+      end
+    end
   end
 end
