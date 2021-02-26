@@ -1,0 +1,10 @@
+<h1><%= @dish.name %></h1>
+<h3><%= @dish.description %></h3>
+<% @dish.ingredients.each do |ingredient| %>
+  <div id = "ingredient-<%= ingredient.id %>">
+  <p><%= "#{ingredient.name}" %></p>
+  <%= button_to "Remove", dish_ingredient_path(ingredient), params: { dish_id:  @dish.id }, method: :delete %>
+</div>
+<% end %>
+<p><%= @dish.chef.name %></P>
+<p> <%= @dish.total_callories %></p>
