@@ -1,0 +1,9 @@
+<section id="name">
+  <h1><%= "#{@chef.name}'s Ingredients" %> </h1>
+</section>
+
+<section id="ingredients">
+  <% @chef.distinct_ingredients.each do |ingr| %>
+    <p><%= ingr %></p>
+  <% end %>
+</section>

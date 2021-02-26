@@ -3,4 +3,7 @@ Rails.application.routes.draw do
 
   resources :dish, only: [:show]
 
+  resources :chef, only: [:show] do 
+    resources :ingredient, only: [:index] 
+  end
 end
