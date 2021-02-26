@@ -3,7 +3,10 @@
   <h2><%= @dish.description %></h2>
   <h3>Ingredients:</h3>
   <% @ingredients.each do |ingredient| %>
-    <p><%= ingredient.name %></p>
+    <div id="ingredient-<%= ingredient.id %>">
+      <%= ingredient.name %>
+      <%= button_to 'Remove Ingredient', dish_ingredient_path(@dish), method: :delete, params: {ingredient_id: ingredient.id} %>
+    </div>
   <% end %>
   <h3>Chef:</h3>
   <p><%= @chef.name %></p>
