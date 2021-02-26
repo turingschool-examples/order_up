@@ -1,0 +1,7 @@
+<h2>Here are the ingredients Chef <%= @chef.name %> uses:</h2>
+
+<ul id="ingredients">
+  <%= @chef.unique_ingredients do |ingredient| %>
+    <li><%= ingredient.name %></li>
+  <% end %>
+</ul>  
