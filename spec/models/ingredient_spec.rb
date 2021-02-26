@@ -7,9 +7,9 @@ RSpec.describe Ingredient, type: :model do
   end
 
   before :each do
-    @ingredient_1 = @dish_1.ingredients.create!(name: 'onions', calories: 100)
-    @ingredient_2 = @dish_1.ingredients.create!(name: 'noodles', calories: 350)
-    @ingredient_3 = @dish_1.ingredients.create!(name: 'sauce', calories: 200)
+    @ingredient_1 = Ingredient.create!(name: 'onions', calories: 100)
+    @ingredient_2 = Ingredient.create!(name: 'noodles', calories: 350)
+    @ingredient_3 = Ingredient.create!(name: 'sauce', calories: 200)
   end
 
   describe 'class methods' do
