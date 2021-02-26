@@ -7,6 +7,10 @@ class DishIngredientsController < ApplicationController
 
     dish_ingredient.destroy
 
+    if dish_ingredient.dish.ingredients.empty?
+      flash[:notice] = "Dish has no ingredients"
+    end
+
     redirect_to dish_path(params[:format])
   end
 end

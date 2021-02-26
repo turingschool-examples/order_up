@@ -93,7 +93,7 @@ RSpec.describe "When I visit a chefs show page" do
       end
 
       within(".flash") do
-        expect(page).to have_content("Notice: Dish has no ingredients")
+        expect(page).to have_content("Dish has no ingredients")
       end
     end
   end
