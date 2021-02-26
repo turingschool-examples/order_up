@@ -11,9 +11,9 @@ RSpec.describe 'As a visitor' do
     @ingredient_2 = @dish_1.ingredients.create!(name: 'noodles', calories: 350)
     @ingredient_3 = @dish_1.ingredients.create!(name: 'sauce', calories: 200)
 
-    @ingredient_4 = @dish_2.ingredients << @ingredient_1
-    @ingredient_5 = @dish_2.ingredients.create!(name: 'chicken stock', calories: 100)
-    @ingredient_6 = @dish_2.ingredients.create!(name: 'bell peppers', calories: 25)
+    @dish_2.ingredients << @ingredient_1
+    @ingredient_4 = @dish_2.ingredients.create!(name: 'chicken stock', calories: 100)
+    @ingredient_5 = @dish_2.ingredients.create!(name: 'bell peppers', calories: 25)
 
     @dish_3.ingredients << @ingredient_1
     @dish_3.ingredients << @ingredient_2
@@ -55,7 +55,6 @@ RSpec.describe 'As a visitor' do
       expect(page).to have_content(@ingredient_3.name)
       expect(page).to have_content(@ingredient_4.name)
       expect(page).to have_content(@ingredient_5.name)
-      expect(page).to have_content(@ingredient_6.name)
     end
 
     it 'I see the three most popular ingredients that the chef uses in their dishes' do
