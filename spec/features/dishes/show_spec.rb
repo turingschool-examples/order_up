@@ -2,6 +2,10 @@ require 'rails_helper'
 
 RSpec.describe 'Dish show page' do
   before :each do
+    Ingredient.destroy_all
+    Dish.destroy_all
+    DishIngredient.destroy_all
+    Chef.destroy_all
     @chef = Chef.create(name: 'Chef 1')
     @dish1 = @chef.dishes.create(name: 'Dish 1', description: 'dish description')
     @dish2 = @chef.dishes.create(name: 'Dish 2', description: 'dish2 description')
@@ -48,6 +52,10 @@ RSpec.describe 'Dish show page' do
       end
       it "And I see the total calorie count for that dish." do
         visit dish_path(@dish1)
+
+        within ".calorie-count" do
+          expect(page).to have_content("Total Calorie Count: #{dish.total_calorie_count}")
+        end
       end
     end
   end
