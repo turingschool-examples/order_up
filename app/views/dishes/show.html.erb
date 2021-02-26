@@ -1,0 +1,10 @@
+<p><%= @dish.name %> </p>
+<p><%= @dish.description %> </p>
+
+<% @dish.dish_information.each do |dish| %>
+  <p><%= dish.name %></p>
+<% end %>
+
+<p><%= "#{@dish.chef_information}" %></p>
+
+<p><%= "#{@dish.calorie_calculation}"  %>
