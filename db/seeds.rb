@@ -5,3 +5,7 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+    @chef = Chef.create(name: "Bob")
+    @dish = @chef.dishes.create(name: 'Pasta', description: 'Taste good')
+    @ingredient1 = @dish.ingredients.create(name: 'oregano', calories: 0)
+    @ingredient2 = @dish.ingredients.create(name: 'butter', calories: 10)
