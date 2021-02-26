@@ -72,13 +72,14 @@ RSpec.describe "When I visit a chefs show page" do
   end
 
   describe "When a chef has no dishes" do
-    it "See error message when trying to view all ingredients with none" do
+    it "See message when trying to view all ingredients with none" do
 
-      visit chef_ingredients_path(@guy.id)
+      visit chef_path(@guy.id)
 
       click_link "View all ingredients #{@guy.name} uses"
-
-      expect(page).to have_content("This Chef has no Ingredients")
+      within(".flash") do
+        expect(page).to have_content("This Chef has no Ingredients")
+      end
     end
   end
 end
