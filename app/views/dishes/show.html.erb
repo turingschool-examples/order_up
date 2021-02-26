@@ -6,9 +6,10 @@
 
 <section class= "dish-ingredients">
   <h3>Ingredients:</h3>
-  <% @dish.ingredients.each do |ingredient| %>
-    <section class= "ingredient-<%=ingredient.id%>">
-      <p><%= ingredient.name %></p>
+  <% @dish.dish_ingredients.each do |dish_ingredient| %>
+    <section class= "ingredient-<%=dish_ingredient.ingredient.id%>">
+      <p><%= dish_ingredient.ingredient.name %></p>
+      <%= button_to 'Remove Ingredient', "/dish_ingredients/#{dish_ingredient.id}", method: :delete, params: {dish_id: @dish.id} %>
     </section>
   <% end %>
 </section>

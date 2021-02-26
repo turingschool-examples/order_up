@@ -70,11 +70,11 @@ RSpec.describe 'Dish show page' do
 
                 click_button("Remove Ingredient")
               end
-              expect(current_path).to eq (dish_path(@dish1)
-              expect(page).to_not have_content(@dish1.name)
+              expect(current_path).to eq(dish_path(@dish1))
+              expect(page).to_not have_content(@ingredient1.name)
 
-              visit dish_path(@dish1)
-              expect(page).to have_content(@dish1.name)
+              visit dish_path(@dish2)
+              expect(page).to have_content(@ingredient1.name)
             end
           end
         end
