@@ -12,6 +12,8 @@
 @ingredient2 = Ingredient.create(name: 'Dough', calories: 200)
 @ingredient3 = Ingredient.create(name: 'Cheese', calories: 100)
 @ingredient4 = Ingredient.create(name: 'Pepperoni', calories: 150)
+@ingredient5 = Ingredient.create(name: 'Olive Oil', calories: 300)
+@ingredient6 = Ingredient.create(name: 'Bacon', calories: 200)
 DishIngredient.create(dish: @dish1, ingredient: @ingredient1)
 DishIngredient.create(dish: @dish1, ingredient: @ingredient2)
 DishIngredient.create(dish: @dish1, ingredient: @ingredient3)
