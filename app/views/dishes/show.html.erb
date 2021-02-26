@@ -1,0 +1,23 @@
+<h1><%= @dish.name %></h1>
+
+<h2>Prepared by: <%= @dish.chef.name %></h2>
+
+<section>
+  <h3>description: <%= @dish.description %></h3>
+  <h3>total calories: <%= @dish.total_calories %></h3>
+</section>
+
+<h4>Ingredients:</h4>
+<ul>
+  <% @dish.ingredients.each do |ingredient| %>
+    <section id="ingredient-<%= ingredient.id %>">
+      <li><%= ingredient.name %></li>
+      <li><%= ingredient.calories %></li>
+      <%= form_with url: "/dishes/#{@dish.id}/ingredients/#{ingredient.id}", method: :delete, local: true do |form| %>
+      <%= form.hidden_field :ingredient_id, value: ingredient.id%>
+      <%= form.hidden_field :dish_id, value: @dish.id%>
+      <%= form.submit 'remove ingredient' %>
+      <% end %>
+    </section>
+  <% end  %>
+</ul>

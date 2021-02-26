@@ -1,0 +1,9 @@
+<h4>Ingredients:</h4>
+<ul>
+  <% @ingredients.each do |ingredient| %>
+    <section id="ingredient-<%= ingredient.id %>">
+      <li><%= ingredient.name %></li>
+      <li><%= ingredient.calories %></li>
+    </section>
+  <% end  %>
+</ul>

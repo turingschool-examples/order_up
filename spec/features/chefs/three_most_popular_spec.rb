@@ -1,29 +1,9 @@
 require 'rails_helper'
 
-RSpec.describe Chef, type: :model do
-  describe "validations" do
-    it {should validate_presence_of :name}
-  end
 
-  describe "relationships" do
-    it {should have_many :dishes}
-  end
-
-  describe "instance methods" do
-    it "should return total list of ingredients" do
-      @chef_1 = Chef.create!(name: "Kris Litman")
-      @dish_1 = @chef_1.dishes.create!(name: "dank curry", description: "Southern style fish curry")
-      @fish = Ingredient.create(name: "fish", calories: 100)
-      @broth = Ingredient.create(name: "Chicken broth", calories: 100)
-      @potato = Ingredient.create(name: "Potato", calories: 125)
-      @dish_1.ingredients << @fish
-      @dish_1.ingredients << @broth
-      @dish_1.ingredients << @potato
-
-      expect(@chef_1.all_ingredients).to eq([@fish, @broth, @potato])
-    end
-
-    it "returns most poplular" do
+RSpec.describe 'As a visitor' do
+  describe "When I visit the chef show page (/chefs/:id)" do
+    before(:each) do
       @chef_1 = Chef.create!(name: "Kris Litman")
       @dish_1 = @chef_1.dishes.create!(name: "dank curry", description: "Southern style fish curry")
       @dish_2 = @chef_1.dishes.create!(name: "pazole", description: "sabores de las mayas")
@@ -41,8 +21,18 @@ RSpec.describe Chef, type: :model do
       @dish_2.ingredients << @potato
       @dish_2.ingredients << @fish
       @dish_2.ingredients << @broth
+    end
 
-      expect(@chef_1.most_popular).to eq([@fish, @broth, @potato])
+    it "I see the three most popular ingredients that the chef uses in their dishes" do
+      visit "/chefs/#{@chef_1.id}"
+
+      expect(page).to have_content("Most popular")
+
+      within ("#most_popular") do
+        expect(page).to have_content(@corn.name)
+        expect(page).to have_content(@fish.name)
+        expect(page).to have_content(@broth.name)
+      end
     end
   end
 end
