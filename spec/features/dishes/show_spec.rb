@@ -42,6 +42,9 @@ RSpec.describe "When I visit  a dish's show page" do
   end
 
   it "I see the chef's name and total calorie count for that dish" do
-
+    visit chef_dish_path(@ina, @spaghetti)
+    save_and_open_page
+    expect(page).to have_content("Made by Chef: #{@ina.name}")
+    expect(page).to have_content("Total Calories: #{@spaghetti.total_calories}")
   end
 end
