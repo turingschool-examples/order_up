@@ -27,10 +27,11 @@ RSpec.describe 'Chef show page' do
         expect(page).to have_content(@chef.name)
       end
       describe "And I see a link to view a list of all ingredients that this chef uses in their dishes" do
-        desribe "When I click on that link, I'm taken to a chef's ingredient index page" do
+        describe "When I click on that link, I'm taken to a chef's ingredient index page" do
           it "and I can see a unique list of names of all the ingredients that this chef uses" do
           end
         end
       end
     end
+  end
 end
