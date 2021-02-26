@@ -64,7 +64,6 @@ RSpec.describe "When I visit  a dish's show page" do
   it "when I click 'Remove Ingredient' I am brought back to dish show page and no longer see that ingredient" do
     visit chef_dish_path(@ina, @spaghetti)
     spaghetti_parm = @parmesan.dish_ingredients.first
-    save_and_open_page
 
     within ".ingredients" do
       within "#dish_ingredient-#{spaghetti_parm.id}" do
