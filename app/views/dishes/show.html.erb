@@ -6,6 +6,7 @@
   <% @dish.ingredients.each do |ingredient| %>
     <p>Ingredient: <%= ingredient.name %></p>
     <p>Calories: <%= ingredient.calories %></p>
+    <%= button_to 'Remove', "/dishes/#{@dish.id}/ingredients/#{ingredient.id}", method: :delete %>
   <% end %>
 
   <h4 class="chef-name">Chef Name: <%= @chef.name %></h4>

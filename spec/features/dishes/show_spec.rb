@@ -39,6 +39,16 @@ RSpec.describe 'When a user visits a dishes show page', type: :feature do
         end
       end
     end
+
+    it "Shows a button to remove each ingredient" do
+      visit dish_path(@dish_1.id)
+
+      expect(page).to have_button("Remove")
+      first(:button, "Remove").click
+
+      expect(page).not_to have_content("Ingredient: Tortilla")
+      expect(page).not_to have_content("Calories: 150")
+    end
   end
 
 end

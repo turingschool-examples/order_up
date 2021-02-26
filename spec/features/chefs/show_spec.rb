@@ -13,8 +13,8 @@ RSpec.describe 'When a user visits a chefs show page', type: :feature do
   end
 
   describe "As a visitor" do
-    describe "When I visit a dish's show page" do
-      it "Displays the dish's name and description" do
+    describe "When I visit a chef's show page" do
+      it "Displays the chef's name and description" do
         visit chef_path(@chef.id)
 
         expect(page).to have_content("Gordan Ramsey")
