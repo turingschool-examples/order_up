@@ -1,0 +1,12 @@
+<h1><%= @dish.name %></h1>
+<p> <%= @dish.description %></p>
+
+<h2> Ingredients </h2>
+<ul><%@ingredients.each do |ingredient| %>
+  <li> <%=ingredient.name%> </li>
+  <%= button_to "Remove #{ingredient.name}", '/dishes/:id', method: :delete, params:{dish: @dish.id, ingredient: ingredient.id}%><br>
+<% end %> </ul>
+
+<p>Prepared by: <%= @chef.name %></p>
+
+<p>Total calories: <%= @total_cals %></p>
