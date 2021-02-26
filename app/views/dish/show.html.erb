@@ -13,6 +13,7 @@
   <ol>
   <% @dish.ingredients.each do |ing| %>
     <li><%= ing.name%></li>
+    <%= button_to "Delete Ingredient" %>
   <% end %>
 </ol>
 </section>
