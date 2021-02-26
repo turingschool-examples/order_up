@@ -15,6 +15,7 @@ RSpec.describe 'Dish show page' do
     @dish_ingredient1 = DishIngredient.create(dish_id: @dish1.id, ingredient_id: @ingredient1.id)
     @dish_ingredient2 = DishIngredient.create(dish_id: @dish1.id, ingredient_id: @ingredient2.id)
     @dish_ingredient3 = DishIngredient.create(dish_id: @dish2.id, ingredient_id: @ingredient3.id)
+    @dish_ingredient3 = DishIngredient.create(dish_id: @dish2.id, ingredient_id: @ingredient1.id)
   end
 
   describe 'As a visitor' do
@@ -55,6 +56,27 @@ RSpec.describe 'Dish show page' do
 
         within ".calorie-count" do
           expect(page).to have_content("Total Calorie Count: #{@dish1.total_calorie_count}")
+        end
+      end
+      describe "Next to each ingredient I see a button to remove the ingredient" do
+        describe "When I click the button I am redirected back to the dish's show page" do
+          it "And I no longer see the ingredient listed for this dish" do
+            visit dish_path(@dish1)
+            within ".dish-ingredients" do
+
+              within ".ingredient-#{@ingredient1.id}" do
+                expect(page).to have_content(@ingredient1.name)
+                expect(page).to have_button("Remove Ingredient")
+
+                click_button("Remove Ingredient")
+              end
+              expect(current_path).to eq (dish_path(@dish1)
+              expect(page).to_not have_content(@dish1.name)
+
+              visit dish_path(@dish1)
+              expect(page).to have_content(@dish1.name)
+            end
+          end
         end
       end
     end
