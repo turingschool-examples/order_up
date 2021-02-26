@@ -13,7 +13,7 @@ RSpec.describe 'the dish show page' do
     expect(page).to have_content('Clam Spaghetti')
     expect(page).to have_content('spicy seafood pasta')
   end
-  it 'displays a list of the ingredients' do
+  it 'displays a list of the ingredients with associated delete buttons' do
     visit "/dishes/#{@dish1.id}"
 
     within('.ingredients') do
