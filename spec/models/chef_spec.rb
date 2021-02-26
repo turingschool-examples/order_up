@@ -13,16 +13,19 @@ RSpec.describe Chef, type: :model do
       @dish1 = @gus.dishes.create!( name: 'Clam Spaghetti', description: 'spicy seafood pasta' )
       @dish2 = @gus.dishes.create!( name: 'Bingo Soup', description: 'creative and colorful' )
 
-      @clam = @dish1.ingredients.create!( name: 'clams', calories: 200 )
-      @spag = @dish1.ingredients.create!( name: 'thin spaghetti', calories: 400 )
+      @clam = Ingredient.create!( name: 'clams', calories: 200 )
+      @spag = Ingredient.create!( name: 'thin spaghetti', calories: 400 )
 
-      @fish = @dish2.ingredients.create!( name: 'smoked fish', calories: 150)
-      @rice = @dish2.ingredients.create!( name: 'omni-rice', calories: 5511)
-      @clam2 = @dish2.ingredients.create!( name: 'clams', calories: 200 )
+      @fish = Ingredient.create!( name: 'smoked fish', calories: 150)
+      @rice = Ingredient.create!( name: 'omni-rice', calories: 5511)
+      @clam2 = Ingredient.create!( name: 'clams', calories: 200 )
+
+      @dish1.ingredients << [@clam, @spag]
+      @dish2.ingredients << [@fish, @rice, @clam2]
     end
-    describe '#used_ings' do
+    describe '#used_ingredients' do
       it 'returns a collection of all used ingredients' do
-        expect(@gus.used_ings).to eq(['clams', 'thin spaghetti', 'smoked fish', 'omni-rice', 'clams'])
+        expect(@gus.used_ingredients).to eq(['clams', 'thin spaghetti', 'smoked fish', 'omni-rice', 'clams'])
       end
     end
   end
