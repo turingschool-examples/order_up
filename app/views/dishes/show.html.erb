@@ -1,5 +1,6 @@
 <h2>Dish name: <%= @dish.name %></h2>
-<p>Description: <%= @dish.description %><p>
+<p>Description: <%= @dish.description %></p>
+<p>Total calories: <%= @dish.total_calories %>
 
 <h4>Ingredents in this dish:</h4>
 <ul id="dish-<%= @dish.id %>">
@@ -7,3 +8,5 @@
       <li><%= ingredient.name %>
   <% end %>
 </ul>
+
+<p>Chef's name: <%= @dish.chef.name  %></p>
