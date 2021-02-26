@@ -4,9 +4,12 @@
 <div class="ingredients">
   <h4>Ingredients</h4>
   <% @dish.ingredients.each do |ingredient| %>
-    <p id="ingrediant_id_<%=ingredient.id%>">
-      <%= ingredient.name %>
-    </p>
+    <div id="ingredient_id_<%=ingredient.id%>">
+      <p>
+        <%= ingredient.name %>
+        <%= button_to "Remove", "/dishes/#{@dish.id}/ingredients/#{ingredient.id}", method: :delete %>
+      </p>
+    </div>
   <% end %>
 </div>
 <div class="calorie">

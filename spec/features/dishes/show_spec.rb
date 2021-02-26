@@ -44,11 +44,11 @@ RSpec.describe "dish show page" do
       visit "/dishes/#{@dish.id}"
 
       within(".ingredients") do
-        within("#ingrediant_id_#{@ingredient1.id}") do
+        within("#ingredient_id_#{@ingredient1.id}") do
           expect(page).to have_button("Remove")
         end
 
-        within("#ingrediant_id_#{@ingredient2.id}") do
+        within("#ingredient_id_#{@ingredient2.id}") do
           expect(page).to have_button("Remove")
         end
       end
@@ -59,7 +59,7 @@ RSpec.describe "dish show page" do
       visit "/dishes/#{@dish.id}"
 
       within(".ingredients") do
-        within("#ingrediant_id_#{@ingredient1.id}") do
+        within("#ingredient_id_#{@ingredient1.id}") do
           click_button("Remove")
         end
       end
