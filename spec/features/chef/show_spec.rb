@@ -35,7 +35,7 @@ RSpec.describe "chef show page" do
 
       click_link("Chef's ingredients list")
 
-      expect(current_path).to eq("/chefs/ingredients")
+      expect(current_path).to eq("/chefs/#{@chef.id}/ingredients")
     end
   end
 end
