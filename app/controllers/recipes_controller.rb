@@ -6,4 +6,4 @@ class RecipesController < ApplicationController
     
     redirect_to dish_path(params[:dish_id])
   end
-end
+end 

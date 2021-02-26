@@ -30,5 +30,30 @@ RSpec.describe Chef, type: :model do
         expect(chef.ingredients_list).to eq(expected)
       end
     end
+
+    describe "#top_ingredients" do
+      it "returns a list of the chef's 3 most popular ingredients" do
+        chef = Chef.create(name: "Chef")
+
+        mac_cheese = chef.dishes.create(name: "Mac and Cheese", description: "Cheesy Goodness")
+        pizza = chef.dishes.create(name: "Pizza", description: "Even when its bad its good")
+        spaghetti = chef.dishes.create(name: "Spaghetti", description: "Pasta and sauce")
+
+        mac = Ingredient.create(name: "Mac", calories: 100)
+        cheese = Ingredient.create(name: "Cheese", calories: 150)
+        dough = Ingredient.create(name: "Pizza Dough", calories: 200)
+        sauce = Ingredient.create(name: "Pizza Sauce", calories: 50)
+
+        chicken = Ingredient.create(name: "Chicken", calories: 100)
+
+        mac_cheese.ingredients << [mac, cheese]
+        pizza.ingredients << [dough, cheese, sauce]
+        spaghetti.ingredients << [mac, sauce]
+
+        expected = [mac, cheese, sauce]
+        
+        expect(chef.top_ingredients).to eq(expected)
+      end
+    end
   end
 end

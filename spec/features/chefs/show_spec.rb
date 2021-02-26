@@ -6,6 +6,7 @@ RSpec.describe "Chef Show Page" do
 
     @mac_cheese = @chef.dishes.create(name: "Mac and Cheese", description: "Cheesy Goodness")
     @pizza = @chef.dishes.create(name: "Pizza", description: "Even when its bad its good")
+    @spaghetti = @chef.dishes.create(name: "Spaghetti", description: "Pasta and sauce")
 
     @mac = Ingredient.create(name: "Mac", calories: 100)
     @cheese = Ingredient.create(name: "Cheese", calories: 150)
@@ -16,6 +17,7 @@ RSpec.describe "Chef Show Page" do
 
     @mac_cheese.ingredients << [@mac, @cheese]
     @pizza.ingredients << [@dough, @cheese, @sauce]
+    @spaghetti.ingredients << [@mac, @sauce]
   end
 
   describe "As a visitor" do
@@ -45,23 +47,32 @@ RSpec.describe "Chef Show Page" do
       click_link("#{@chef.name}'s Ingredient List")
       
       expect(page).to have_content(@cheese.name, count: 1)
-
+      
       within("#ingredient-#{@mac.id}") do
         expect(page).to have_content(@mac.name)
       end
-
+      
       within("#ingredient-#{@cheese.id}") do
         expect(page).to have_content(@cheese.name)
       end
-
+      
       within("#ingredient-#{@dough.id}") do
         expect(page).to have_content(@dough.name)
       end
-
+      
       within("#ingredient-#{@sauce.id}") do
         expect(page).to have_content(@sauce.name)
       end
     end
+    
+    it "shows the chef's three most popular ingredients" do
+      visit chef_path(@chef)
+      
+      within("#chef-top-ingredients") do
+        expect(page).to have_content(@sauce.name, count: 1)
+        expect(page).to have_content(@cheese.name, count: 1)
+        expect(page).to have_content(@mac.name, count: 1)
+      end
+    end
   end
-
 end
