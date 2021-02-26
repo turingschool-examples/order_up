@@ -18,7 +18,15 @@ RSpec.describe 'the dish show page' do
 
     within('.ingredients') do
       expect(page).to have_content('clams')
+      expect(page).to have_link('Remove clams')
       expect(page).to have_content('thin spaghetti')
+      expect(page).to have_link('Remove thin spaghetti')
+      click_link 'Remove thin spaghetti'
+      expect(current_path).to eq("/dishes/#{@dish1.id}")
+      expect(page).to have_content('clams')
+      expect(page).to have_link('Remove clams')
+      expect(page).to_not have_content('thin spaghetti')
+      expect(page).to_not have_content('Remove thin spaghetti')
     end
   end
   it 'displays the chefs name' do

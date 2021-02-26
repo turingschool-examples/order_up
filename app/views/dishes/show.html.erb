@@ -6,6 +6,7 @@
   <ul>
     <% @dish.ingredients.each do |ing| %>
       <li><%= ing.name %></li>
+      <%= link_to "Remove #{ing.name}", "/dishes/#{@dish.id}/ingredients/#{ing.id}", method: :delete %>
     <% end %>
   </ul>
 </section>
