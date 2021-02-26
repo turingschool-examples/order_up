@@ -36,8 +36,11 @@ RSpec.describe "Dish Show page", type: :feature do
     it "sees a list of ingredients for that dish" do
       visit "/dishes/#{@dish1.id}"
 
-      within(".ingredients") do
+      within(".ingredient-#{@ingredient1.id}") do
         expect(page).to have_content(@ingredient1.name)
+      end
+
+      within(".ingredient-#{@ingredient5.id}") do
         expect(page).to have_content(@ingredient5.name)
       end
     end
@@ -57,6 +60,29 @@ RSpec.describe "Dish Show page", type: :feature do
         expect(page).to have_content(@dish1.calories)
         expect(page).to have_content(135)
       end
+    end
+    # Next to each ingredient I see a button to remove the ingredient
+    it "Has a button next to each ingredient to remove it" do
+      visit "/dishes/#{@dish1.id}"
+
+      within (".ingredient-#{@ingredient1.id}") do
+        expect(page).to have_button("Remove")
+      end
+      within (".ingredient-#{@ingredient5.id}") do
+        expect(page).to have_button("Remove")
+      end
+    end
+
+    it "can remove an ingredient from a dish" do
+      visit "/dishes/#{@dish1.id}"
+
+      within(".ingredient-#{@ingredient1.id}") do
+        click_button "Remove"
+      end
+      
+      expect(current_path).to eq("/dishes/#{@dish1.id}")
+      expect(page).to_not have_css(".ingredient-#{@ingredient1.id}")
+      expect(page).to have_css(".ingredient-#{@ingredient5.id}")
     end
   end
 end

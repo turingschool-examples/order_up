@@ -3,12 +3,14 @@
   <p><b>Chef:</b> <%= @chef.name %></p>
   <p><b>Description:</b> <%= @dish.description %></p><hr>
 </div>
-<section class="ingredients">
-  <h4>Ingredients:</h4>
-  <% @ingredients.each do |ingredient| %>
-    <%= ingredient.name %> <br>
-  <% end %>
-</section><hr>
+<h4>Ingredients:</h4>
+<% @ingredients.each do |ingredient| %>
+  <section class="ingredient-<%= ingredient.id %>">
+      <%= ingredient.name %> <%= form_with url: "/dishes/#{@dish.id}/ingredients/#{ingredient.id}", method: :delete, local: :true do |f|%>
+        <%= f.button "Remove" %>
+      <% end %><br>
+    </section>
+  <% end %> <hr>
 <section class="calories">
   <p><b>Total Calories:</b> <%= @dish.calories %></p>
 </section>
