@@ -53,10 +53,3 @@ RSpec.describe "Dish Show Page" do
     end
   end
 end
-
-# As a visitor
-# When I visit a dish's show page
-# I see the dish’s name and description
-# And I see a list of ingredients for that dish
-# And I see the chef's name
-# Abd I see the total calorie count for that dish.
