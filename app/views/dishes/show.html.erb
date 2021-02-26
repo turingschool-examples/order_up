@@ -1,0 +1,8 @@
+<h1> <%= "#{@chef.name}'s famous" %> </h1><br>
+<%= "Dish Name: #{@dish.name}"  %> <br>
+<%= "Dish Ingredients:"%><br>
+<% @dish.ingredients.each do |ingredient| %><br>
+<%= ingredient.name %>
+<%= button_to "Remove Ingredient", chef_dish_path(@chef, @dish, ingredient.id), method: :delete %>
+<%end %>
+<%= "This Dish has: #{@dish.calorie_count} calories" %>
