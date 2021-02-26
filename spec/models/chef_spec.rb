@@ -11,9 +11,15 @@ RSpec.describe Chef, type: :model do
     set_up
   end
 
-  describe 'instacne methods' do
+  describe 'instance methods' do
     it 'chef ingredients' do
       expect(@jon.chef_ingredients).to eq([@salmon, @potatoes])
+    end
+
+    it 'chef ingredient dishes' do
+      expected = [@salmon.id, @potatoes.id]
+
+      expect(@jon.chef_ingredient_dishes).to eq(expected)
     end
   end
 
