@@ -26,10 +26,24 @@ RSpec.describe 'Dish show page' do
         expect(page).to_not have_content(@dish2.description)
       end
       it "And I see a list of ingredients for that dish" do
+        visit dish_path(@dish1)
+        within ".dish-ingredients" do
+
+          expect(page).to have_content("Ingredients:")
+
+          within ".ingredient-#{@ingredient1.id}" do
+            expect(page).to have_content(@ingredient1.name)
+          end
+          within ".ingredient-#{@ingredient2.id}" do
+            expect(page).to have_content(@ingredient2.name)
+          end
+        end
       end
       it "And I see the chef's name" do
+        visit dish_path(@dish1)
       end
       it "And I see the total calorie count for that dish." do
+        visit dish_path(@dish1)
       end
     end
   end
