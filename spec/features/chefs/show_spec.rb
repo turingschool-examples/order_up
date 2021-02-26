@@ -1,39 +1,41 @@
 require 'rails_helper'
 
-RSpec.describe Chef, type: :model do
-  describe "validations" do
-    it {should validate_presence_of :name}
-  end
-  describe "relationships" do
-    it {should have_many :dishes}
-  end
+RSpec.describe 'Chef show page' do
   before :each do
     set_up
   end
 
-  describe 'instance methods' do
-    it 'chef ingredients' do
-      expected = [@salmon, @potatoes, @bread, @pork]
+  describe "visit chefs show page" do
+    it 'visit chefs show page and i see chef name and a link to their ingredients' do
+      visit "/chefs/#{@jon.id}"
 
-      expect(@jon.chef_ingredients).to eq(expected)
+      expect(page).to have_content("#{@jon.name}")
+      expect(page).to have_link("Chef's Ingredients")
     end
 
-    it 'chef ingredient dishes' do
-      expected = [@salmon.id, @potatoes.id, @bread.id, @pork.id]
+    it 'the chef ingredients link takes me to the chef ingrerdients index' do
+      visit "/chefs/#{@jon.id}"
 
-      expect(@jon.chef_ingredient_dishes).to eq(expected)
+      click_link("Chef's Ingredients")
+      expect(current_path).to eq("/chefs/#{@jon.id}/ingredients")
     end
 
-    it 'most popular ingredients id' do
-      expected = [@potatoes.id, @pork.id, @salmon.id]
+    it 'show page has the chefs most popular dishes' do
+      visit "/chefs/#{@jon.id}"
 
-      expect(@jon.most_popular_ingredients_id).to eq(expected)
-    end
+      expect(page).to have_content("Chef's Three Most Popular Dishes:")
 
-    it 'most popular ingredients' do
-      expected = [@potatoes, @pork, @salmon]
+      within ".ingredient-#{@potatoes.id}" do
+        expect(page).to have_content(@potatoes.name)
+      end
 
-      expect(@jon.most_popular_ingredients).to eq(expected)
+      within ".ingredient-#{@pork.id}" do
+        expect(page).to have_content(@pork.name)
+      end
+
+      within ".ingredient-#{@salmon.id}" do
+        expect(page).to have_content(@salmon.name)
+      end
     end
   end
 
