@@ -56,7 +56,7 @@ RSpec.describe 'As a visitor' do
     it 'I see the three most popular ingredients that the chef uses in their dishes' do
       visit chef_ingredients_path(@chef)
 
-        expect(page).to have_content(@ingredient_1.name)
+      expect(page).to have_content(@ingredient_1.name)
     end
   end
 end
