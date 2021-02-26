@@ -9,14 +9,29 @@ RSpec.describe 'the dish show page' do
   end
   it 'displays dish name and description' do
     visit "/dishes/#{@dish1.id}"
-  end
-  xit 'displays a list of the ingredients' do
 
+    expect(page).to have_content('Clam Spaghetti')
+    expect(page).to have_content('spicy seafood pasta')
   end
-  xit 'displays the chefs name' do
+  it 'displays a list of the ingredients' do
+    visit "/dishes/#{@dish1.id}"
 
+    within('.ingredients') do
+      expect(page).to have_content('clams')
+      expect(page).to have_content('thin spaghetti')
+    end
   end
-  xit 'displays the total calorie count for the dish' do
+  it 'displays the chefs name' do
+    visit "/dishes/#{@dish1.id}"
+    within('.chef') do
+      expect(page).to have_content('Chef Gusteau')
+    end
+  end
+  it 'displays the total calorie count for the dish' do
+    visit "/dishes/#{@dish1.id}"
 
+    within('.nutrition') do
+      expect(page).to have_content('Total Calories per Serving: 600')
+    end
   end
 end
