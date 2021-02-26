@@ -14,7 +14,7 @@ RSpec.describe Dish, type: :model do
 
   describe "instance methods" do
     describe "#dish_information" do
-      it "shows a dish's ingredients and chef's name" do
+      it "shows a dish's ingredients" do
         chef_1 = Chef.create!(name: "Chef")
         dish_1 = Dish.create!(name: "Pizza", description: "Tasty", chef_id: chef_1.id )
         ingred_1 = Ingredient.create!(name: "Cheese", calories: 450)
@@ -47,40 +47,13 @@ RSpec.describe Dish, type: :model do
       expect(dish_1.calorie_calculation).to eq(850)
     end
   end
+
+  describe "#chef_information" do
+    it "shows chef's name" do
+      chef_1 = Chef.create!(name: "Chef")
+      dish_1 = Dish.create!(name: "Pizza", description: "Tasty", chef_id: chef_1.id )
+
+      expect(dish_1.chef_information).to eq("Chef")
+    end
+  end
 end
-
-
-
-# it "shows dishes name and description"
-#   chef_1 = Chef.create!(name: "Chef")
-#   dish_1 = Dish.create!(name: "Pizza", description: "Tasty", chef_id: "#{chef_1.id}" )
-#
-#   expect(dish_1.dish_information).to eq("Pizza", "Tasty")
-#
-# end
-
-# create_table "chefs", force: :cascade do |t|
-#   t.string "name"
-#   t.datetime "created_at", null: false
-#   t.datetime "updated_at", null: false
-# end
-#
-# create_table "dish_ingredients", force: :cascade do |t|
-#   t.bigint "dish_id"
-#   t.bigint "ingredient_id"
-#   t.index ["dish_id"], name: "index_dish_ingredients_on_dish_id"
-#   t.index ["ingredient_id"], name: "index_dish_ingredients_on_ingredient_id"
-# end
-#
-# create_table "dishes", force: :cascade do |t|
-#   t.string "name"
-#   t.string "description"
-#   t.bigint "chef_id"
-#   t.datetime "created_at", null: false
-#   t.datetime "updated_at", null: false
-#   t.index ["chef_id"], name: "index_dishes_on_chef_id"
-# end
-#
-# create_table "ingredients", force: :cascade do |t|
-#   t.string "name"
-#   t.integer "calories"

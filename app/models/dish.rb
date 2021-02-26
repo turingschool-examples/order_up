@@ -4,11 +4,16 @@ class Dish <ApplicationRecord
   has_many :dish_ingredients
   has_many :ingredients, through: :dish_ingredients
 
+  def calorie_calculation
+    ingredients.sum("calories")
+  end
+
   def dish_information
     ingredients.select("name")
   end
 
-  def calorie_calculation
-    ingredients.sum("calories")
+  def chef_information
+    chef.name
   end
+
 end
