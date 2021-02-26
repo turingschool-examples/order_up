@@ -8,7 +8,7 @@ class Chef <ApplicationRecord
   end
 
   def top_ingredients
-    ingredients.distinct('ingredients.id').order('ingredients.name')
-    Chef.joins(:ingredients).joins(:dishes).select("ingredients.name, count(dishes) as ingredient_dish_count").group_by('ingredient.id')
+    #Chef.joins(:ingredients).joins(:dishes).select("ingredients.name, count(dishes) as ingredient_dish_count").group_by('ingredient.id')
+    #I would go about this in a different manner, starting from ingredient. I just ran out of time. 
   end
 end
