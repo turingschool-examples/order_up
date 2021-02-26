@@ -14,11 +14,22 @@ RSpec.describe "Dish Show page" do
     @dish_ing2 = DishIngredient.create!(dish_id: @dish.id, ingredient_id: @ingredient2.id)
     @dish_ing3 = DishIngredient.create!(dish_id: @dish.id, ingredient_id: @ingredient3.id)
   end
-  it "shows the dishs name and description" do 
-    vist "/dish/#{@dish.id}"
+  describe "When I visit the dish show page" do 
+    it "it shows the dishs name and description" do 
+      visit "/dish/#{@dish.id}"
 
-    expect(page).to have_content("Dish name: #{@dish.name}")
-    expect(page).to have_content("Dish description: #{@dish.description}")
+       expect(current_path).to eq("/dish/#{@dish.id}")
+
+       within("#name") do 
+        expect(page).to have_content("Dish Name: #{@dish.name}")
+       end
+
+     within("#description") do 
+          expect(page).to have_content("Dish Description: #{@dish.description}")
+     end
+     
+
+    end
   end
 
 end
