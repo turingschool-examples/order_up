@@ -42,4 +42,6 @@ Two migrations have been made for you. The one to many relationship has been set
 
 ## User Stories
 
+https://gist.github.com/BrianZanti/8544465bc71a915baccc3440887e3498
+
 User Stories will be released at the start of the challenge.

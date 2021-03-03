@@ -1,0 +1,27 @@
+<h1><%= "#{@dish.name} Show Page" %></h1>
+
+<section id="name">
+  <p><%= "Dish Name: #{@dish.name}"%></p>
+</section>
+
+<section id="description">
+  <p><%= "Dish Description: #{@dish.description}"%></p>
+</section>
+
+<section id="ingredients">
+  <h2>Ingredients: </h2>
+  <ol>
+  <% @dish.ingredients.each do |ing| %>
+    <li><%= ing.name%></li>
+    <%= button_to "Delete Ingredient" %>
+  <% end %>
+</ol>
+</section>
+
+<section id="chef-name">
+  <h2><%= "Chef Name: #{@chef.name}" %></h2>
+</section>
+
+<section id="total-calories">
+  <h3><%= "Total Calories: #{@dish.total_calories}" %></h3>
+</section>

@@ -1,0 +1,9 @@
+<h1>Chef Show Page</h1>
+
+<section id="chef-name">
+  <h2><%= "Chef's name: #{@chef.name}" %></h2>
+</section>
+
+<section id="all-ingredients">
+  <%= link_to "All Ingredients", chef_ingredient_index_path(@chef)%>
+</section>
