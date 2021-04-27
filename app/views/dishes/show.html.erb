@@ -1,0 +1,15 @@
+
+<h1><%= @dish.name %></h1>
+<h3>Created by: <%= @dish_chef %></h3>
+
+<section class="chef_dishes"id="ingredients">
+  <% @dish_ingredients.each do |ingredient| %>
+    <p> <%= ingredient.name %> </p>
+    <%= form_with url: "/chefs/#{@chef_id}/dishes/#{@dish.id}", method: :patch, local: true do |form| %>
+      <%= form.hidden_field :ingredient_id, value: ingredient.id %>
+      <%= form.submit 'Remove'%>
+    <% end %>
+  <% end %>
+</section>
+
+<h4>Total Calories: <%= @dish_calories %></h4>
