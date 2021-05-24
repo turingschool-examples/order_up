@@ -1,0 +1,15 @@
+<h2><%= @dish.name %></h2>
+<p><%= @dish.description %></p>
+<section class="ingredients">
+  <ul>Ingredients:
+    <% @dish.dish_ingredients.each do |dish_ingredient| %>
+      <div id="dish_ingredient-<%= dish_ingredient.id %>">
+        <li><%= dish_ingredient.ingredient.name %><br>
+        <%= button_to 'Remove Ingredient', "/dish_ingredients/#{dish_ingredient.id}", params: {dish_id: @dish.id}, method: :delete %></li><br>
+      </div>
+    <% end %>
+  </ul>
+</section>
+
+<h3>Made by Chef: <%= @chef.name %></h3>
+<h4>Total Calories: <%= @dish.total_calories%></h4>
