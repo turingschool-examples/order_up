@@ -1,0 +1,9 @@
+<%= @chef.name %>
+<%= link_to 'List of all ingredients used', "/chefs/#{@chef.id}/ingredients" %>
+
+Three most popular ingredients:
+<ul>
+  <%= @chef.top_3_ingredients.each do |ingredient| %>
+  <li> <%= ingredient.name %> </li>
+  <% end %>
+</ul>
