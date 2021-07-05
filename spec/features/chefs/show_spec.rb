@@ -1,21 +1,12 @@
 require 'rails_helper'
 
-RSpec.describe Chef, type: :model do
-  describe "validations" do
-    it {should validate_presence_of :name}
-  end
-
-  describe "relationships" do
-    it { should have_many :dishes }
-    it { should have_many(:ingredients).through(:dishes) }
-  end
-
-  describe "instance methods" do
+RSpec.describe 'As a visitor', type: :feature do
+  describe 'When I visit the chef show page' do
     before(:each) do
       @susan = Chef.create(name: 'Susan Daly')
 
       @eggs = Ingredient.create(name: 'Scrambled egg', calories: 100)
-      @noodles = Ingredient.create(name: 'Rice noodles', calories: 200)
+      @noodles = Ingredient.create(name: 'Noodles', calories: 200)
       @rice = Ingredient.create(name: 'Rice', calories: 250)
       @chicken = Ingredient.create(name: 'Chicken', calories: 150)
       @soy_sauce = Ingredient.create(name: 'Soy sauce', calories: 50)
@@ -40,22 +31,35 @@ RSpec.describe Chef, type: :model do
       DishIngredient.create(dish: @fried_rice, ingredient: @eggs)
       DishIngredient.create(dish: @fried_rice, ingredient: @rice)
       DishIngredient.create(dish: @fried_rice, ingredient: @chicken)
+      DishIngredient.create(dish: @fried_rice, ingredient: @carrots)
+
     end
 
-    it ".distinct_ingredients" do
-      ingredients_list = [@eggs, @noodles, @rice, @chicken, @soy_sauce]
-      not_all = [@eggs, @noodles, @rice, @chicken, @soy_sauce, @carrots]
+    it "I see the chef name and ingredients used link" do
+      visit chef_path(@susan)
 
-      expect(@susan.distinct_ingredients).to eq(ingredients_list)
-      expect(@susan.distinct_ingredients).to_not eq(not_all)
+      within('.chef-info') do
+        expect(page).to have_content(@susan.name)
+      end
+
+      click_link 'Ingredients Used'
+      expect(current_path).to eq(chef_ingredients_path(@susan))
+      expect(page).to have_content(@eggs.name, count: 1)
+      expect(page).to have_content(@noodles.name, count: 1)
+      expect(page).to have_content(@rice.name, count: 1)
+      expect(page).to have_content(@chicken.name, count: 1)
+      expect(page).to have_content(@soy_sauce.name, count: 1)
     end
 
-    it ".top-ingredients" do
-      top_ones = [@eggs, @chicken, @soy_sauce]
-      not_all = [@eggs, @noodles, @rice, @chicken, @soy_sauce, @carrots]
+    it "I see the top three used ingredients" do
+      visit chef_path(@susan)
 
-      expect(@susan.top_ingredients).to eq(top_ones)
-      expect(@susan.top_ingredients).to_not eq(not_all)
+      within('.top-ingredients') do
+        expect(page).to have_content(@soy_sauce.name)
+        expect(page).to have_content(@chicken.name)
+        expect(page).to have_content(@eggs.name)
+        expect(page).to_not have_content(@carrots.name)
+      end
     end
   end
 end
