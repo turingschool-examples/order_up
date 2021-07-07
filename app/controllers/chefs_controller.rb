@@ -1,0 +1,11 @@
+class ChefsController < ApplicationController
+
+  def index
+    @chefs - Chef.all
+  end
+
+  def show
+    @chef = Chef.find(params[:id])
+    @dish = Dish.find(params[:id])
+  end
+end
