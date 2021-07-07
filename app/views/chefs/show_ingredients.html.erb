@@ -1,0 +1,15 @@
+<h1>Chef <%= @chef.name %>'s ingredients</h1>
+
+<ul>
+  <% @ingredients.each do |ingredient| %>
+    <li><%= ingredient.name %></li>
+  <% end %>
+</ul>
+
+<h3>3 Most Popular Ingredients</h3>
+
+<ul>
+  <% @most_popular_ingredients.each do |ingredient| %>
+    <li><%= Ingredient.find(ingredient).name %></li>
+  <% end %>
+</ul>
