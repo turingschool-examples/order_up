@@ -1,15 +1,18 @@
 require 'rails_helper'
 
-RSpec.describe Chef, type: :model do
-  describe "validations" do
-    it {should validate_presence_of :name}
-  end
-  describe "relationships" do
-    it {should have_many :dishes}
-  end
+describe 'As a visitor' do
+  describe 'When I visit the chefs show page and click on "All ingredients"' do
+    it "I am taken to the ingredient index page" do
+      gordon = Chef.create({name: "Gordon Ramsey"})
 
-  describe 'model methods' do
-    it "should return a uniq list of ingredients the chef uses" do
+      visit "/chefs/#{gordon.id}"
+
+      click_link "All Ingredients"
+
+      expect(current_path).to eq("/chefs/#{gordon.id}/ingredients")
+    end
+
+    it "I see a list of uniq ingredients the chef uses" do
       gordon = Chef.create({name: "Gordon Ramsey"})
 
       burger = Dish.create({name: "Cheese Burger", description: "Famous Burger", chef_id: gordon.id})
@@ -32,7 +35,17 @@ RSpec.describe Chef, type: :model do
       DishIngredient.create({dish_id: chicken_alfredo.id, ingredient_id: cheese.id})
       DishIngredient.create({dish_id: burger.id, ingredient_id: cheese.id})
 
-      expect(gordon.all_ingredients).to eq([buns,patty,tomato,onion,pasta,chicken,cheese])
+      visit "/chefs/#{gordon.id}/ingredients"
+
+      expect(page).to have_content(buns.name)
+      expect(page).to have_content(patty.name)
+      expect(page).to have_content(tomato.name)
+      expect(page).to have_content(onion.name)
+      
+      expect(page).to have_content(cheese.name)
+
+      expect(page).to have_content(pasta.name)
+      expect(page).to have_content(chicken.name)
     end
   end
 end
